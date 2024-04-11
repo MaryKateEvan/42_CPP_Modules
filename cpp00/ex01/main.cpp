@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/11 06:52:59 by mevangel         ###   ########.fr       */
+/*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
+/*   Updated: 2024/04/11 06:35:48 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-#include <iostream>
+int main() {
+	PhoneBook instance;
 
-class PhoneBook {
-	
-public:
-
-	int hi;
-	
-	PhoneBook(void);
-	~PhoneBook(void);
-	
+	return 0;
 };
-
-
-
-
-#endif // PHONEBOOK_HPP

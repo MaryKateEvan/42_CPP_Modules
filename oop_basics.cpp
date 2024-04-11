@@ -532,3 +532,99 @@ int main()
 	// But if the Work method in the base class Employee was not virtual (line 473)
 	// Then the output for both Saldina and John would be: is checking emails
 }
+
+
+
+//! ORTHODOX CANONICAL FORM
+ /*
+	the key components of the Orthodox Canonical Form:
+
+	1) Default Constructor: This constructor initializes an object with default values. 
+		It's typically invoked when an object is created without any arguments.
+
+	2) Copy Constructor: This constructor creates a new object by copying the contents of 
+		an existing object of the same type. It's invoked when an object is initialized with 
+		another object of the same type or when an object is passed by value.
+
+	3) Copy Assignment Operator: This operator assigns the contents of one object to another 
+		object of the same type. It's invoked when an object is assigned the value of another
+		object of the same type using the assignment operator (=).
+
+	4) Move Constructor: This constructor creates a new object by moving the resources (such 
+		as dynamically allocated memory) from an existing object of the same type. It's invoked 
+		when an object is initialized with an rvalue reference.
+
+	5) Move Assignment Operator: This operator assigns the contents of one object to another 
+	object of the same type by moving resources from one object to another. It's invoked when 
+	an object is assigned the value of an rvalue reference using the assignment operator (=).
+
+	6) Destructor: This function is responsible for releasing any resources allocated by the 
+	class when an object is destroyed. It's invoked automatically when an object goes out of 
+	scope or is explicitly deleted.
+ */
+
+// TODO : FROM INTRA VIDEOS 
+---------------------------------
+
+//"this" is a pointer on a current instance
+
+class Sample {
+
+public:
+
+	char	a1;
+	int		a2;
+	float	a3;
+
+	Sample( char p1, int p2, float p3);
+	~Sample( void );
+}
+
+//? The syntax of the constructor from the intra video:
+
+Sample::Sample( char p1, int p2, float p3 ) : a1(p1), a2(p2), a3(p3) {
+
+	std::cout << "Constructor called" << std::endl;
+}
+
+
+
+//! If I write a member function that doesn't modify the instance of my class, I should 
+//! always define it as const. Like:
+
+class Sample {
+
+public:
+
+	char	a1;
+	int		a2;
+	float	a3;
+
+	Sample( char p1, int p2, float p3);
+	~Sample( void );
+
+	void	bar(void) const;
+};
+
+//and then the definition of the bar:
+void	Sample::bar(void) const {
+
+	std::cout << "Hello from bar method" << std::endl;
+}
+
+//? The syntax of the constructor from the intra video:
+
+Sample::Sample( char p1, int p2, float p3 ) : a1(p1), a2(p2), a3(p3) {
+
+	std::cout << "Constructor called" << std::endl;
+}
+
+
+//! in c++:
+//!		the scope of a struct is public by default
+//!		the scope of a class is private by default
+
+// Two different instances of a class are not physically equivalent (different addresses), but
+// They are "structurally" same (exactly same content) if they have been both just initialized.
+
+// a static attribute or method in a class is a "non-member function/attribute" 
