@@ -9,8 +9,7 @@ CLEAR	 =	\033[0m
 
 OBJ_DIR  =	./objs
 
-SRC		 =	PhoneBook.cpp PhoneBook.hpp \
-			Contact.cpp Contact.hpp main.cpp
+SRC		 =	PhoneBook.cpp Contact.cpp main.cpp
 
 OBJ		 =	$(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 
