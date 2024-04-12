@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/12 07:43:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/12 11:12:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <string>
 
 void	greet_and_inform_user(std::string user) {
-	
+
 	std::cout << "Hi there " << user << "! \U0001F44B" << std::endl;
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << std::endl;
@@ -58,10 +58,14 @@ int main() {
 		std::getline(std::cin, command);
 		// std::cout << std::endl;
 		
-		if (command == "ADD")
+		if (command == "ADD") {
 			phone_book.add();
-		else if (command == "SEARCH")
+			std::cout << std::endl;
+		}
+		else if (command == "SEARCH") {
 			phone_book.search();
+			std::cout << std::endl;
+		}
 		else if (command == "EXIT")
 			break ;
 		else {

@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/12 10:00:41 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/12 11:52:09 by mevangel         ###   ########.fr       */
+/*   Created: 2024/04/12 10:09:51 by mevangel          #+#    #+#             */
+/*   Updated: 2024/04/12 12:41:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-# define ZOMBIE_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
-#include <string>
-#include <new>
+//setter for the private attribute _name:
+void Zombie::setName( std::string name) {
+	this->_name = name;
+}
 
-class Zombie {
+//destructor:
+Zombie::~Zombie(void) {
+	
+	std::cout << this->_name << " is destroyed." << std::endl;
+}
 
-	private:
-		std::string _name;
+//the method "announce":
+void Zombie::announce( void ) const {
+	
+	std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
 
-	public:
-		Zombie( std::string name ); //constructor
-		~Zombie( void ); //destructor
-		void announce( void ) const;
-};
 
-Zombie*	newZombie( std::string name );
-void	randomChump( std::string name );
-
-#endif //ZOMBIE_HPP

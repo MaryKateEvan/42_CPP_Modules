@@ -628,3 +628,21 @@ Sample::Sample( char p1, int p2, float p3 ) : a1(p1), a2(p2), a3(p3) {
 // They are "structurally" same (exactly same content) if they have been both just initialized.
 
 // a static attribute or method in a class is a "non-member function/attribute" 
+
+
+//! new and delete for dynamic allocation of objects
+
+//for one object:
+int main() {
+	Student *mk = new Student("mevangel");
+	// ...
+	delete mk;
+}
+
+//for array of objects:
+int main ()
+{
+	Sample* pointer_to_array = new Sample[42];
+	//...
+	delete [] pointer_to_array; //! i must not forget the []
+}
