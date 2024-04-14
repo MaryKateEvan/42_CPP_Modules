@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:03:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 09:33:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:06:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,16 @@ void HumanB::attack() const {
 		std::cout << _name << " doesn't have a weapon to attack" << std::endl;
 }
 
-void HumanB::setWeapon(Weapon to_set) {
+void HumanB::setWeapon(Weapon& to_set) {
 	
-	*_weapon = to_set;
+	_weapon = &to_set;
 }
 
-HumanB::HumanB(std::string name) : _name(name) {}
+// The constructor doesn't take the Weapon in HumanB
+HumanB::HumanB(std::string name) : _name(name) {
 
+	_weapon = NULL;
+}
+
+//destructor
 HumanB::~HumanB() {}
