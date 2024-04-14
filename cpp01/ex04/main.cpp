@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 11:47:05 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 11:50:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static std::string replace_s1_with_s2(char* argv[], std::string& content) {
 	// 	result
 		
 	// 	content = content.substr(0, pos) + s2 + content.substr(pos + s1_len);
-	// }
+	}
 }
 
 int main(int argc, char* argv[]) {
