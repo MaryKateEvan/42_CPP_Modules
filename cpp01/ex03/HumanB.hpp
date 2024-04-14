@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:02:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 09:07:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 09:29:03 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 class HumanB {
 	
 	private:
-		Weapon*	_weapon;
 		std::string	_name;
+		Weapon*	_weapon ;
 
 	public:
 		void attack() const;
-		// The constructor doesn't take the Weapon in HumanB:
-		HumanB(std::string name);
+		HumanB(std::string name); // The constructor doesn't take the Weapon in HumanB
+		void setWeapon(Weapon to_set);
 		~HumanB();
 };
 
