@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 12:56:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 11:50:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 13:06:31 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,25 @@
 #include <string>
 #include <fstream>
 
-static std::string replace_s1_with_s2(char* argv[], std::string& content) {
+static std::string replace_s1_with_s2(char* argv[], std::string content) {
 
-	std::string s1 = argv[2];
-	std::string s2 = argv[3];
+	std::string s1 = argv[2]; //to be changed
+	std::string s2 = argv[3]; //the new value
 	
-	std::string result;
+	std::string ret;
 
-	size_t pos = content.find(s1); // to find the first occurence of s1.
-	size_t s1_len = s1.length();
+	// size_t s1_len = s1.length();
+	size_t s1_idx = content.find(s1, 0); // to find the first occurence of s1.
+	size_t start_idx = 0;
 	
-	result = content.substr(0, pos) + s2;
-	while (pos != std::string::npos) { // =while the pos is not equal with the index of the last character of the string
-		pos += content.find(s1, pos + s2.length());
-	// 	result
+	while (start_idx != std::string::npos) { // =while the start_idx is not equal with the index of the last character of the string
+		ret += (content.substr(start_idx, s1_idx - start_idx) + s2);
+		start_idx = s1_idx + s1.length();
+		s1_idx = content.find(s1, start_idx);
 		
 	// 	content = content.substr(0, pos) + s2 + content.substr(pos + s1_len);
 	}
+	return (ret);
 }
 
 int main(int argc, char* argv[]) {
