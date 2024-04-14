@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:03:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 10:06:59 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:14:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ HumanB::HumanB(std::string name) : _name(name) {
 	_weapon = NULL;
 }
 
-//destructor
+// Destructor
 HumanB::~HumanB() {}

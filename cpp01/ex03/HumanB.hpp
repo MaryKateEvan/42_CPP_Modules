@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:02:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 10:06:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 10:12:55 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ class HumanB {
 
 	public:
 		void attack() const;
-		HumanB(std::string name); 
 		void setWeapon(Weapon& to_set);
-		~HumanB();
+		HumanB(std::string name); //constructor
+		~HumanB(); //destructor
 };
 
 #endif //HUMANB_HPP
