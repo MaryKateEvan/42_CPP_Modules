@@ -646,3 +646,18 @@ int main ()
 	//...
 	delete [] pointer_to_array; //! i must not forget the []
 }
+
+
+//! References: 
+
+// "They're just an alias for existing variable"
+// "It's a pointer that is constant, always unreferenced and never void"
+
+
+
+
+
+
+
+
+CVb3d2023

@@ -1,4 +1,4 @@
-NAME	 =	ref_and_pointers
+NAME	 =	refs_and_pointers
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
