@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 12:22:41 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/13 13:23:04 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 09:15:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,14 @@
 class HumanA {
 	
 	private:
-		Weapon&	_Weapon;
-		
+		std::string	_name;
+		Weapon&	_weapon;
+
 	public:
-		std::string	name;
 		void attack() const;
-		HumanA(Weapon& weapon);
+		// The constructor takes the Weapon in HumanA:
+		HumanA(std::string name, Weapon& weapon);
+		~HumanA();
 };
 
 #endif //HUMANA_HPP

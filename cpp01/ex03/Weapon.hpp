@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 12:04:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/13 12:52:14 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 08:45:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Weapon {
 		std::string const & getType() const;
 		void setType(std::string new_one);
 		Weapon(std::string new_type);
-		~Weapon();
+		~Weapon(); //? do i actually need a destructor?
 };
 
 #endif //WEAPON_HPP
