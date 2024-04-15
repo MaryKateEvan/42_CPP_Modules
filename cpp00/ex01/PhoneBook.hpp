@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 16:51:12 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:41:00 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PHONEBOOK_HPP
 
 # include <iostream>
+# include <string>
 # include "Contact.hpp"
 // # include "PhoneBook.cpp"
 
@@ -67,6 +68,8 @@ class PhoneBook {
 		//member functions:
 		void add();
 		void search() const;
+
+		// void displaySavedContacts() const ;
 	
 };
 

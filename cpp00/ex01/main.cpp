@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 17:29:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:41:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 #include <cstdlib>
 #include <thread>
 #include <chrono>
-//for the std::getline
-#include <string>
+
 
 void	greet_and_inform_user(void) {
 
@@ -53,9 +52,9 @@ int main() {
 	while (1) {
 
 		std::cout << "[Command to execute]: ";
-		std::getline(std::cin, command);
-		// std::cout << std::endl;
-		
+		if (!std::getline(std::cin, command) && std::cin.eof())
+			std::exit(2); // if End-of-file encountered (Ctrl+D), break out of the loop.
+
 		if (command == "ADD") {
 			phone_book.add();
 			std::cout << std::endl;
@@ -71,5 +70,5 @@ int main() {
 			std::cout << std::endl;
 		}
 	}
-	return 0;
+	return EXIT_SUCCESS;
 }

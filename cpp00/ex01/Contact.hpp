@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:11:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 16:35:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 21:51:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 class Contact {
 	
 	private:
+		short 		index;
 		std::string _firstName;
 		std::string _lastName;
 		std::string _nickname;
@@ -31,7 +32,9 @@ class Contact {
 	public:
 		Contact();
 		~Contact();
-		void setContactDetails();
+		void setContactDetails(short idx);
+		void displayLineForSearch(void) const ;
+		void displayAllInfo( void ) const ;
 };
 
 #endif //CONTACT_HPP
