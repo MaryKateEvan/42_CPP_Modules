@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 13:30:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 16:51:12 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,22 @@
 
 class PhoneBook {
 	
-public:
+	private:
+		
 
-	// Contact Contacts_array[8];
 	
-	PhoneBook(void);
-	~PhoneBook(void);
+	public:
 	
-	void add();
-	void search() const;
+		PhoneBook();
+		~PhoneBook();
+
+		Contact contacts[8];
+		short idx_to_add;
+		short sum_contacts;
+
+		//member functions:
+		void add();
+		void search() const;
 	
 };
 

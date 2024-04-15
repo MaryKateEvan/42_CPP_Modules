@@ -1,4 +1,4 @@
-NAME	 =	phonebook
+NAME	 =	phone_book
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
@@ -16,7 +16,7 @@ OBJ		 =	$(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 # ----------------------- Makefile Rules ----------------------- #
 $(NAME): $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(GREEN)PhoneBook compiled!$(CLEAR)"
+	@echo "$(GREEN)$(NAME) compiled!$(CLEAR)"
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)

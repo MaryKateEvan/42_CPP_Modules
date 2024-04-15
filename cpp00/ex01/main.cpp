@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/12 11:12:57 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/14 17:29:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,11 @@
 //for the std::getline
 #include <string>
 
-void	greet_and_inform_user(std::string user) {
+void	greet_and_inform_user(void) {
 
-	std::cout << "Hi there " << user << "! \U0001F44B" << std::endl;
+	std::string	user_name = getenv("USER");
+	
+	std::cout << "Hi there " << user_name << "! \U0001F44B" << std::endl;
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	std::cout << std::endl;
 
@@ -43,15 +45,11 @@ void	greet_and_inform_user(std::string user) {
 
 int main() {
 
+	greet_and_inform_user();
+	
 	PhoneBook phone_book; //the instance of my PhoneBook class
-
-	std::string	user_name = getenv("USER");
 	std::string	command;
 
-	greet_and_inform_user(user_name);
-	
-	
-	
 	while (1) {
 
 		std::cout << "[Command to execute]: ";
