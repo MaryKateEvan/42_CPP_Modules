@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:41:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:56:07 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int main() {
 	PhoneBook phone_book; //the instance of my PhoneBook class
 	std::string	command;
 
-	while (1) {
+	while (true) {
 
 		std::cout << "[Command to execute]: ";
 		if (!std::getline(std::cin, command) && std::cin.eof())

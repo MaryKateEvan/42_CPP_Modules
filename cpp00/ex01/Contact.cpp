@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:09:59 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:36:53 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:49:35 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void Contact::setContactDetails(short idx) {
 	std::cout << "Contact saved in PhoneBook!" << std::endl;
 }
 
+//TODO: This will need the formatting, i need to search how to:
 void Contact::displayLineForSearch( void ) const {
 
 	std::cout << index + 1 << " | " << _firstName << " | " << _lastName << " | " << _nickname << std::endl;

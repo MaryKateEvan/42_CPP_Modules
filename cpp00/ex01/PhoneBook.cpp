@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:37:18 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/15 22:54:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,12 @@ void PhoneBook::add(void) {
 // }
 
 void PhoneBook::search(void) const {
+	
+	if (sum_contacts == 0) {
+		std::cout << "No contacts yet to display and search from." << std::endl;
+		std::cout << "Consider adding some first." << std::endl;
+		return ;
+	}
 	
 	short 		index_user_wants;
 	std::string	input;
