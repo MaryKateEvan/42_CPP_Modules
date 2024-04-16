@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:09:59 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 16:18:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:39:38 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,13 @@ std::string Contact::receiveInputFor(std::string wanted_info, std::string type) 
 
 	std::cout << "\033[1m" << "Enter " << wanted_info << "\033[0m" << ": ";
 	if (!std::getline(std::cin, input) && std::cin.eof())
-		std::exit(2);
+		exit(2);
 	
 	while (InputIsValid(input, type) == false) {
 		std::cout << "Not a valid " << wanted_info << ". Please try again." << std::endl;
 		std::cout << "\033[1m" << "Enter " << wanted_info << "\033[0m" << ": ";
 		if (!std::getline(std::cin, input) && std::cin.eof())
-			std::exit(2);
+			exit(2);
 	}
 	return input;
 }

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 13:53:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:39:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ void PhoneBook::search(void) const {
 	std::string	input;
 	std::cout << "Enter the index of the contact you want to see more: ";
 	if (!std::getline(std::cin, input) && std::cin.eof())
-		std::exit(2);
+		exit(2);
 
-	short index_user_wants = (short)std::atoi(input.c_str());
+	short index_user_wants = (short)atoi(input.c_str());
 
 	while (index_user_wants < 1 || index_user_wants > sum_contacts)
 	{
 		std::cout << "No contact with such index. Please try again." << std::endl;
 		std::cout << "Enter the index of the contact you want to see more: ";
 		if (!std::getline(std::cin, input) && std::cin.eof())
-			std::exit(2);
-		index_user_wants = (short)std::atoi(input.c_str());
+			exit(2);
+		index_user_wants = (short)atoi(input.c_str());
 	}
 	
 	std::cout << std::endl;
