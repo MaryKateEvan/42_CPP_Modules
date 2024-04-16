@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:54:05 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:37:14 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,8 @@ void PhoneBook::add(void) {
 	idx_to_add++; //move the index to be ready for the next addition.
 	
 	if (sum_contacts != 8)
-		sum_contacts++;
+		sum_contacts++; //the sum of the contacts can reach maximum 8
 }
-
-// void PhoneBook::displaySavedContacts() const {
-	
-	
-// }
 
 void PhoneBook::search(void) const {
 	
@@ -51,19 +46,20 @@ void PhoneBook::search(void) const {
 		std::cout << "Consider adding some first." << std::endl;
 		return ;
 	}
-	
-	short 		index_user_wants;
-	std::string	input;
 
+	std::cout << std::endl;
+	std::cout << BOLD_UNDERLINE("|   Index  |First Name| Last Name| Nickname |") << std::endl;
 	for (int i = 0; i < sum_contacts; i++) {
 		contacts[i].displayLineForSearch();
 	}
 	std::cout << std::endl;
 
+	std::string	input;
 	std::cout << "Enter the index of the contact you want to see more: ";
 	if (!std::getline(std::cin, input) && std::cin.eof())
 		std::exit(2);
-	index_user_wants = (short)std::atoi(input.c_str());
+
+	short index_user_wants = (short)std::atoi(input.c_str());
 
 	while (index_user_wants < 1 || index_user_wants > sum_contacts)
 	{
@@ -74,6 +70,7 @@ void PhoneBook::search(void) const {
 		index_user_wants = (short)std::atoi(input.c_str());
 	}
 	
-	
+	std::cout << std::endl;
+	std::cout << "Here's the info of Contact no." << index_user_wants << ":" << std::endl;
 	contacts[index_user_wants - 1].displayAllInfo();
 }

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:11:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 21:51:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:06:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 #include <iostream>
 #include <string>
-// #include "PhoneBook.cpp"
-// #include "Contact.cpp"
-// #include "PhoneBook.hpp"
+#include <iomanip> //for the std::setw
+
+# define UNDERLINE(text) "\033[4m" << text << "\033[0m"
+# define BOLD(text) "\033[1m" << text << "\033[0m"
+# define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
+
 
 class Contact {
 	
@@ -33,8 +36,9 @@ class Contact {
 		Contact();
 		~Contact();
 		void setContactDetails(short idx);
-		void displayLineForSearch(void) const ;
-		void displayAllInfo( void ) const ;
+		void displayLineForSearch() const ;
+		void displayAllInfo() const ;
+		std::string cut_string(std::string str) const ;
 };
 
 #endif //CONTACT_HPP
