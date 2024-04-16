@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:41:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:59:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
-# define ITALIC_TEXT(text) "\033[3m" << text << "\033[0m"
+# define ITALIC(text) "\033[3m" << text << "\033[0m"
 
 # define ADD "\033[32m" << "ADD" << "\033[0m" //in green
 # define SEARCH "\033[34m" << "SEARCH" << "\033[0m" //in blue
@@ -53,24 +53,15 @@
 class PhoneBook {
 	
 	private:
-		
-
-	
-	public:
-	
-		PhoneBook();
-		~PhoneBook();
-
 		Contact contacts[8];
 		short idx_to_add;
 		short sum_contacts;
 
-		//member functions:
+	public:
+		PhoneBook();
+		~PhoneBook();
 		void add();
 		void search() const;
-
-		// void displaySavedContacts() const ;
-	
 };
 
 

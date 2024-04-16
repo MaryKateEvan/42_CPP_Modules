@@ -6,19 +6,19 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:31:09 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/15 22:56:07 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 12:47:55 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
+
 //for the initial printing to user:
 #include <cstdlib>
 #include <thread>
 #include <chrono>
 
-
-void	greet_and_inform_user(void) {
+static void	greet_and_inform_user(void) {
 
 	std::string	user_name = getenv("USER");
 	
@@ -36,10 +36,6 @@ void	greet_and_inform_user(void) {
 	std::cout << RED << "EXIT" << RESET << ": terminates this program and your contacts are lost forever!" << std::endl;
 	std::this_thread::sleep_for(std::chrono::seconds(7));
 	std::cout << std::endl;
-
-	// std::cout << "Enjoy your Phone Book! \U0001F609" << std::endl;
-	// std::this_thread::sleep_for(std::chrono::seconds(2));
-	// std::cout << std::endl;
 }
 
 int main() {

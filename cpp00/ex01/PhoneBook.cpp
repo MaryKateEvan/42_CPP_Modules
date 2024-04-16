@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 12:37:14 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 13:53:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void PhoneBook::search(void) const {
 	
 	if (sum_contacts == 0) {
 		std::cout << "No contacts yet to display and search from." << std::endl;
-		std::cout << "Consider adding some first." << std::endl;
+		std::cout << "Consider adding some first, using " << ADD << "." << std::endl;
 		return ;
 	}
 
@@ -71,6 +71,6 @@ void PhoneBook::search(void) const {
 	}
 	
 	std::cout << std::endl;
-	std::cout << "Here's the info of Contact no." << index_user_wants << ":" << std::endl;
+	std::cout << "Here's the info of " << "\033[1m" << "Contact no." << index_user_wants << "\033[0m" << ":" << std::endl;
 	contacts[index_user_wants - 1].displayAllInfo();
 }

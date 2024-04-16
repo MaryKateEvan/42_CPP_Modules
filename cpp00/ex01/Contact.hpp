@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:11:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 12:06:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:00:31 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
+// # define ITALIC(text) "\033[3m" << text << "\033[0m"
+
+# define IN_GREEN(text) "\033[32m" << text << "\033[0m"
 
 
 class Contact {
@@ -36,6 +39,8 @@ class Contact {
 		Contact();
 		~Contact();
 		void setContactDetails(short idx);
+		std::string receiveInputFor(std::string wanted_info, std::string type) const ;
+		bool InputIsValid(std::string input, std::string type) const ;
 		void displayLineForSearch() const ;
 		void displayAllInfo() const ;
 		std::string cut_string(std::string str) const ;

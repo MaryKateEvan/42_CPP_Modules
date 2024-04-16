@@ -6,43 +6,72 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:09:59 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 12:31:51 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:18:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+// Constructor
 Contact::Contact() {}
 
+// Destructor
 Contact::~Contact() {}
 
-//TODO: okay it works now, but should i check if the user doesn't give something valid?
-//also the pdf says "Once all the fields have been completed, add the contact to the phonebook"
+bool Contact::InputIsValid(std::string input, std::string type) const {
+
+	if (input.empty() == true)
+		return false;
+
+	bool not_empty = false;
+	for (int i = 0; input[i]; i++) {
+
+		if (input[i] != ' ')
+			not_empty = true;
+		if (type == "alpha" && !(std::isalpha(input[i]) || input[i] == ' '))
+			return false;
+		else if (type == "digit") {
+			if (i == 0 && !(std::isdigit(input[i]) || input[i] == '+'))
+				return false;
+			else if (i >= 1 && !std::isdigit(input[i]))
+				return false;
+		}
+		else if (type == "alnum" && (input[i] < ' ' || input[i] > '~'))
+			return false;
+	}
+	if (!not_empty)
+		return false;
+	return true;
+}
+
+std::string Contact::receiveInputFor(std::string wanted_info, std::string type) const {
+	
+	std::string input;
+
+	std::cout << "\033[1m" << "Enter " << wanted_info << "\033[0m" << ": ";
+	if (!std::getline(std::cin, input) && std::cin.eof())
+		std::exit(2);
+	
+	while (InputIsValid(input, type) == false) {
+		std::cout << "Not a valid " << wanted_info << ". Please try again." << std::endl;
+		std::cout << "\033[1m" << "Enter " << wanted_info << "\033[0m" << ": ";
+		if (!std::getline(std::cin, input) && std::cin.eof())
+			std::exit(2);
+	}
+	return input;
+}
+
 void Contact::setContactDetails(short idx) {
 	
 	this->index = idx;
-	
-	std::cout << "Enter First name: ";
-	if (!std::getline(std::cin, this->_firstName) && std::cin.eof())
-		std::exit(2);
 
-	std::cout << "Enter Last name: ";
-	if (!std::getline(std::cin, this->_lastName) && std::cin.eof())
-		std::exit(2);
+	this->_firstName = receiveInputFor("First Name", "alpha");
+	this->_lastName = receiveInputFor("Last Name", "alpha");
+	this->_nickname = receiveInputFor("Nickname", "alpha");
+	this->_phoneNumber = receiveInputFor("Phone Number", "digit");
+	this->_darkestSecret = receiveInputFor("Darkest Secret", "alnum");
 
-	std::cout << "Enter Nickname: ";
-	if (!std::getline(std::cin, this->_nickname) && std::cin.eof())
-		std::exit(2);
-
-	std::cout << "Enter Phone Number: ";
-	if (!std::getline(std::cin, this->_phoneNumber) && std::cin.eof())
-		std::exit(2);
-
-	std::cout << "Enter darkest secret: ";
-	if (!std::getline(std::cin, this->_darkestSecret) && std::cin.eof())
-		std::exit(2);
-
-	std::cout << "Contact saved in PhoneBook!" << std::endl;
+	std::cout << IN_GREEN("Contact saved in PhoneBook!") << std::endl;
 }
 
 std::string Contact::cut_string(std::string str) const {
@@ -70,16 +99,3 @@ void Contact::displayAllInfo() const {
 	std::cout << UNDERLINE("Phone Number") << ": " << _phoneNumber << std::endl;
 	std::cout << UNDERLINE("Darkest Secret") << ": " << _darkestSecret << std::endl;
 }
-
-
-// Contact::Contact(std::string first_name, std::string last_name, std::string nickname, std::string phone, std::string secret) {
-	
-// 	_firstName = first_name;
-// 	_lastName = last_name;
-// 	_nickname = nickname;
-// 	_phoneNumber = phone;
-// 	_darkestSecret = secret;
-// }
-
-
-
