@@ -6,15 +6,11 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 17:39:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:45:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-
-//TODO: I should always use initialization list he said on the video. 
-//TODO: And he wants this syntax for the constructor: 
-//TODO: Sample::Sample( char p1, int p2, float p3 ) : a1(p1), a2(p2), a3(p3)
 
 // constructor
 PhoneBook::PhoneBook() {

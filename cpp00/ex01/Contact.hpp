@@ -6,17 +6,17 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:11:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 17:40:01 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:45:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
-#include <string>
-#include <iomanip> //for the std::setw
-#include <cstdlib> //for the exit and atoi
+# include <iostream>
+# include <string>
+# include <iomanip> //for the std::setw
+# include <cstdlib> //for the exit and atoi
 
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define IN_GREEN(text) "\033[32m" << text << "\033[0m"

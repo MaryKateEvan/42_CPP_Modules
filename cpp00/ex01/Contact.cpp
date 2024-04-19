@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 04:09:59 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 17:39:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:46:31 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ void Contact::displayLineForSearch() const {
 	std::cout << std::setw(10) << cut_string(_firstName) << "|";
 	std::cout << std::setw(10) << cut_string(_lastName) << "|";
 	std::cout << std::setw(10) << cut_string(_nickname) << "|" << std::endl;
-	// std::cout << index + 1 << " | " << _firstName << " | " << _lastName << " | " << _nickname << std::endl;
 }
 
 void Contact::displayAllInfo() const {
