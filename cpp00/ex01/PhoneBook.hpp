@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/16 17:38:12 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/19 23:50:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include <cstdlib>
-# include <unistd.h>
+# include <cstdlib> //for the getenv()
+# include <unistd.h> //for the sleep()
 
 # include "Contact.hpp"
 
