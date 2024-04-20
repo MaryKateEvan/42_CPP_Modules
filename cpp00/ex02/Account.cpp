@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:12:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/20 18:10:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:19:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,7 @@ int	Account::getNbWithdrawals( void ) {
 }
 
 // The Private Constructor that can only be used from inside the class:
-Account::Account( void ) {
-
-	// prints the creation message: [19920104_091532] index:0;amount:42;created
-	_displayTimestamp();
-	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
-}
+Account::Account( void ) {}
 
 // The Public constructor that's called first, and needs an int argument:
 Account::Account( int initial_deposit ) {
@@ -67,7 +62,8 @@ Account::Account( int initial_deposit ) {
 
 	// and then we call the second, private constructor to print the message that
 	// the account was created, with its corresponding index and initial amount.
-	Account();
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
 	
 	// and then we modify accordingly the static, shared among the objects, variables:
 	_nbAccounts++; // we increase it to be used in the construction of the next object:
@@ -117,16 +113,13 @@ void	Account::makeDeposit( int deposit ) {
 	std::cout << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
-
 // Allows making a withdrawal from the account. Checks if the account has 
 // sufficient balance (amount) to cover the withdrawal. If yes, it subtracts 
 // the withdrawal amount and returns true, otherwise returns false.
 bool	Account::makeWithdrawal( int withdrawal ) {
 	
-	if (withdrawal > 0)
-		return true;
-	else
-		return false;
+	std::cout << "account no." << this->_accountIndex << " wants to withdraw " << withdrawal << std::endl;
+	return true;
 }
 
 // Returns the current balance (amount) of the account object.
