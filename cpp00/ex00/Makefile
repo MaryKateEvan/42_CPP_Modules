@@ -16,7 +16,7 @@ OBJ		 =	$(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 # ----------------------- Makefile Rules ----------------------- #
 $(NAME): $(OBJ)
 	@$(CPP) $(CPPFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(GREEN)Megaphone is compiled!$(CLEAR)"
+	@echo "$(GREEN)$(NAME) is compiled!$(CLEAR)"
 
 $(OBJ_DIR)/%.o: %.cpp
 	@mkdir -p $(dir $@)
