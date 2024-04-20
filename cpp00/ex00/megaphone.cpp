@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:28:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/20 20:44:33 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 20:45:42 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int main(int argc, char **argv) {
 		}
 	}
 	std::cout << std::endl;
-	
+
 	return 0;
 }
