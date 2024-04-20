@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:12:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/20 18:19:59 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 19:21:14 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ Account::Account( int initial_deposit ) {
 //Destructor:
 Account::~Account( void ) {
 
-	// prints the closing message: [19920104_091532] index:0;amount:47;closed
+	// message example: [19920104_091532] index:0;amount:47;closed
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
 }
@@ -83,7 +83,7 @@ Account::~Account( void ) {
 // of accounts, total amount, etc.
 void	Account::displayAccountsInfos( void ) {
 
-	// prints the message: [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
+	// message example: [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
@@ -94,7 +94,7 @@ void	Account::displayAccountsInfos( void ) {
 // account balance (amount) by the specified deposit amount.
 void	Account::makeDeposit( int deposit ) {
 	
-	// It prints the message: 
+	// message example:: 
 	// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
 	
 	// So first we print the half message, with the initial amount:
@@ -104,12 +104,11 @@ void	Account::makeDeposit( int deposit ) {
 	// Then we update the relative attributes of this object, according to the Deposit being made:
 	this->_amount += deposit;
 	this->_nbDeposits++;
-	// And then we pdate the relative static (shared) variables:
+	// And then we update the relative static (shared) variables:
 	_totalAmount += deposit;
 	_totalNbDeposits++;
 
 	// And then we print the rest of the message: ;amount:47;nb_deposits:1
-	_displayTimestamp();
 	std::cout << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
@@ -118,8 +117,28 @@ void	Account::makeDeposit( int deposit ) {
 // the withdrawal amount and returns true, otherwise returns false.
 bool	Account::makeWithdrawal( int withdrawal ) {
 	
-	std::cout << "account no." << this->_accountIndex << " wants to withdraw " << withdrawal << std::endl;
-	return true;
+	if (withdrawal >= this->_amount) {
+		// message example: [19920104_091532] index:0;p_amount:47;withdrawal:refused
+		_displayTimestamp();
+		std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount << ";withdrawal:refused" << std::endl;
+		return false;
+	}
+	else {
+		// message example: [19920104_091532] index:1;p_amount:819;withdrawal:34;amount:785;nb_withdrawals:1
+		_displayTimestamp();
+		std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount << ";withdrawal:" << withdrawal;
+		
+		// Then we update the relative attributes of this object, according to the Deposit being made:
+		this->_amount -= withdrawal;
+		this->_nbWithdrawals++;
+		// And then we update the relative static (shared) variables:
+		_totalAmount -= withdrawal;
+		_totalNbWithdrawals++;
+
+		//and then we print the rest of the message: ;amount:785;nb_withdrawals:1
+		std::cout << ";amount:" << this->_amount << ";nb_withdrawals:" << this->_nbWithdrawals << std::endl;
+		return true;
+	}
 }
 
 // Returns the current balance (amount) of the account object.
@@ -128,11 +147,10 @@ int		Account::checkAmount( void ) const {
 	return this->_amount;
 }
 
-// Displays the status of the account, including its index, balance, 
-//number of deposits, and number of withdrawals.
+// Displays the status of the current Account Object.
 void	Account::displayStatus( void ) const {
 
-	//prints the message: [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
+	//message example: [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
 	_displayTimestamp();
 	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
@@ -142,6 +160,8 @@ void Account::_displayTimestamp() {
 	std::time_t now = std::time(NULL);
 	std::tm *localTime = std::localtime(&now);
 
-	// Format the timestamp
-	std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "] ";
+	char buffer[16];
+	std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", localTime);
+
+	std::cout << "[" << buffer << "] ";
 }
