@@ -1,4 +1,4 @@
-NAME	 =	megaphone
+NAME	 =	lost_file_recover
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98

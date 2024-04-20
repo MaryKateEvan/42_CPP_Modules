@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:12:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/20 13:57:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 16:40:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,6 @@
 #include <iostream>
 #include <iomanip>
 #include <ctime>
-
-//Constructor:
-Account::Account( int initial_deposit ) {
-
-	this->_amount = initial_deposit; //?first assumption. not sure. i need to verify.
-}
-
-//Destructor:
-Account::~Account( void ) {}
 
 // First, definition and initialization of the private static member variables, 
 // which are shared among all different objects of the class:
@@ -33,28 +24,62 @@ int Account::_totalNbWithdrawals = 0;
 
 // So that then the getters can be called:
 
-// Returns the total number of "Account" Objects created:
+// Getter for the total number of "Account" Objects created:
 int	Account::getNbAccounts( void ) {
 
 	return _nbAccounts;
 }
 
-// Returns the total amount of money across all Account objects.
+// Getter for the total amount of money across all Account objects.
 int	Account::getTotalAmount( void ) {
 
 	return _totalAmount;
 }
 
-// Returns the total number of deposits made across all Account objects.
+// Getter for the total number of deposits made across all Account objects.
 int	Account::getNbDeposits( void ) {
 
 	return _totalNbDeposits;
 }
 
-// Returns the total number of withdrawals made across all Account objects.
+// Getter for the total number of withdrawals made across all Account objects.
 int	Account::getNbWithdrawals( void ) {
 
 	return _totalNbWithdrawals;
+}
+
+// The Private Constructor that can only be used from inside the class:
+Account::Account( void ) {
+
+	// prints the creation message: [19920104_091532] index:0;amount:42;created
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";created" << std::endl;
+}
+
+// The Public constructor that's called first, and needs an int argument:
+Account::Account( int initial_deposit ) {
+
+	// First we initialize the 4 attributes of the current "Account" object:
+	this->_amount = initial_deposit;
+	this->_accountIndex = _nbAccounts;
+	this->_nbDeposits = 0;
+	this->_nbWithdrawals = 0;
+
+	// and then we call the second, private constructor to print the message that
+	// the account was created, with its corresponding index and initial amount.
+	Account();
+	
+	// and then we modify accordingly the static, shared among the objects, variables:
+	_nbAccounts++; // we increase it to be used in the construction of the next object:
+	_totalAmount += this->_amount;
+}
+
+//Destructor:
+Account::~Account( void ) {
+
+	// prints the closing message: [19920104_091532] index:0;amount:47;closed
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";closed" << std::endl;
 }
 
 
@@ -80,7 +105,10 @@ void	Account::makeDeposit( int deposit ) {
 // the withdrawal amount and returns true, otherwise returns false.
 bool	Account::makeWithdrawal( int withdrawal ) {
 	
-	
+	if (withdrawal > 0)
+		return true;
+	else
+		return false;
 }
 
 // Returns the current balance (amount) of the account object.
@@ -98,7 +126,7 @@ void	Account::displayStatus( void ) const {
 
 void Account::_displayTimestamp() {
 
-	std::time_t now = std::time(nullptr);
+	std::time_t now = std::time(NULL);
 	std::tm *localTime = std::localtime(&now);
 
 	// Format the timestamp
