@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 05:47:06 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/19 23:50:57 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 22:53:39 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include <cstdlib> //for the getenv()
-# include <unistd.h> //for the sleep()
+# include <cstdlib> //for the getenv, exit and atoi
+# include <unistd.h> //for the sleep
 
 # include "Contact.hpp"
 
@@ -30,11 +30,13 @@
 class PhoneBook {
 	
 	private:
+
 		Contact contacts[8];
 		short idx_to_add;
 		short sum_contacts;
 
 	public:
+	
 		PhoneBook();
 		~PhoneBook();
 		void add();

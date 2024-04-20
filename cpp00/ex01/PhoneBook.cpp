@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 06:25:00 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/19 23:45:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 22:50:02 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ PhoneBook::PhoneBook() {
 //destructor
 PhoneBook::~PhoneBook() {}
 
+/*
+*	It adds a new contact on the phonebook. If there are already 8 contacts, 
+*	which is the maximum capacity, it replaces the oldest contact.
+*/
 void PhoneBook::add(void) {
 	
 	if (idx_to_add == 8)
@@ -35,8 +39,13 @@ void PhoneBook::add(void) {
 		sum_contacts++; //the sum of the contacts can reach maximum 8
 }
 
+/*
+*	It displays the saved contacts as a list of 4 columns: index, first name, last name
+*	and nickname (each column 10 characters wide) and prompts the user for an index of 
+*	contact, for which it prints analytically all 5 details.
+*/
 void PhoneBook::search(void) const {
-	
+
 	if (sum_contacts == 0) {
 		std::cout << "No contacts yet to display and search from." << std::endl;
 		std::cout << "Consider adding some first, using " << ADD << "." << std::endl;
