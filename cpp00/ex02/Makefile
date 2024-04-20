@@ -1,4 +1,4 @@
-NAME	 =	lost_file_recover
+NAME	 =	recover_lost_file
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
