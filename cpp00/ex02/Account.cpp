@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 00:12:16 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/20 16:40:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/20 18:10:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ Account::Account( int initial_deposit ) {
 	
 	// and then we modify accordingly the static, shared among the objects, variables:
 	_nbAccounts++; // we increase it to be used in the construction of the next object:
-	_totalAmount += this->_amount;
+	_totalAmount += this->_amount; //we add this object's "amount" to the general shared amount of all accounts
 }
 
 //Destructor:
@@ -87,7 +87,9 @@ Account::~Account( void ) {
 // of accounts, total amount, etc.
 void	Account::displayAccountsInfos( void ) {
 
-	
+	// prints the message: [19920104_091532] accounts:8;total:20049;deposits:0;withdrawals:0
+	_displayTimestamp();
+	std::cout << "accounts:" << _nbAccounts << ";total:" << _totalAmount << ";deposits:" << _totalNbDeposits << ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
 
 
@@ -96,7 +98,23 @@ void	Account::displayAccountsInfos( void ) {
 // account balance (amount) by the specified deposit amount.
 void	Account::makeDeposit( int deposit ) {
 	
+	// It prints the message: 
+	// [19920104_091532] index:0;p_amount:42;deposit:5;amount:47;nb_deposits:1
+	
+	// So first we print the half message, with the initial amount:
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";p_amount:" << this->_amount << ";deposit:" << deposit;
+	
+	// Then we update the relative attributes of this object, according to the Deposit being made:
 	this->_amount += deposit;
+	this->_nbDeposits++;
+	// And then we pdate the relative static (shared) variables:
+	_totalAmount += deposit;
+	_totalNbDeposits++;
+
+	// And then we print the rest of the message: ;amount:47;nb_deposits:1
+	_displayTimestamp();
+	std::cout << ";amount:" << this->_amount << ";nb_deposits:" << this->_nbDeposits << std::endl;
 }
 
 
@@ -121,7 +139,9 @@ int		Account::checkAmount( void ) const {
 //number of deposits, and number of withdrawals.
 void	Account::displayStatus( void ) const {
 
-	
+	//prints the message: [19920104_091532] index:0;amount:42;deposits:0;withdrawals:0
+	_displayTimestamp();
+	std::cout << "index:" << this->_accountIndex << ";amount:" << this->_amount << ";deposits:" << this->_nbDeposits << ";withdrawals:" << this->_nbWithdrawals << std::endl;
 }
 
 void Account::_displayTimestamp() {
@@ -130,5 +150,5 @@ void Account::_displayTimestamp() {
 	std::tm *localTime = std::localtime(&now);
 
 	// Format the timestamp
-	std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "]: ";
+	std::cout << "[" << std::put_time(localTime, "%Y%m%d_%H%M%S") << "] ";
 }
