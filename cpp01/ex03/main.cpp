@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 04:20:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 10:08:12 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 01:12:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 #include "Weapon.hpp"
 #include "HumanA.hpp"
 #include "HumanB.hpp"
+
+#define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 
 int main() {
 
@@ -35,6 +37,6 @@ int main() {
 	jim.attack();
 	clubB.setType("some other type of club");
 	jim.attack();
-	
+
 	return 0;
 }
