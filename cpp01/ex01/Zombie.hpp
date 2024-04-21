@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 10:00:41 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/12 12:41:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:13:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,17 @@
 class Zombie {
 
 	private:
+
 		std::string _name;
 
 	public:
-		void setName( std::string name);
-		//no constructor, so the default one will be used
-		void announce( void ) const;
-		~Zombie( void ); //destructor
+	
+		Zombie();
+		~Zombie();
+		void setName(std::string name);
+		void announce(void) const;
 };
 
-Zombie*	zombieHorde( int N, std::string name );
+Zombie*	zombieHorde(int N, std::string name);
 
 #endif //ZOMBIE_HPP

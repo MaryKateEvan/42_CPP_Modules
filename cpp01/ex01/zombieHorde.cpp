@@ -6,13 +6,20 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 11:23:27 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/12 12:15:32 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 00:05:03 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie*	zombieHorde( int N, std::string name ) {
+/*
+*	Function that allocates N Zombie objects in a single allocation, and initializes
+*	each one of them with the "name" passed as parameter.
+*	@param N: the number of Zombie objects to allocate. If negative or zero, the functions returns.
+*	@param name: the name to assign to all the zombie objects of the horde.
+*	@returns a pointer to the first Zombie object of the dynamically allocated array of N Zombie objects.
+*/
+Zombie*	zombieHorde(int N, std::string name) {
 
 	if (N <= 0) {
 		std::cout << "N must be a positive number." << std::endl;
