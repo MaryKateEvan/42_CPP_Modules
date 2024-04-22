@@ -6,11 +6,15 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:21:18 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 16:30:31 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 02:21:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+
+Harl::Harl() {}
+
+Harl::~Harl() {}
 
 void Harl::debug( void ) {
 	
@@ -40,11 +44,11 @@ void Harl::error( void ) {
 void Harl::complain( std::string level ) {
 	
 	// Array of the level strings:
-	std::string levels[4] = { "DEBUG", "INFO", "WARNING", "ERROR" };
-	// Array of pointers to the 4 member functions of Harl class:
-	void (Harl::*functions[4])() = { &Harl::debug, &Harl::info, &Harl::warning, &Harl::error };
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	// Array of pointers to the 4 member functions of the class Harl.
+	void (Harl::*functions[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
 	
-	// I capitalize the "level" so that both "info" and "INFO" are accepted.
+	// Capitalize the "level" so that both "info" and "INFO" are accepted.
 	for (int j = 0; level[j]; j++) {
 		level[j] = std::toupper(level[j]);
 	}
@@ -59,12 +63,15 @@ void Harl::complain( std::string level ) {
 		case 0:
 			(this->*functions[0])();
 			std::cout << std::endl;
+			// fallthrough
 		case 1:
 			(this->*functions[1])();
 			std::cout << std::endl;
+			// fallthrough
 		case 2:
 			(this->*functions[2])();
 			std::cout << std::endl;
+			// fallthrough
 		case 3:
 			(this->*functions[3])();
 			std::cout << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:21:18 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/22 01:59:53 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 02:09:07 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ void Harl::complain(std::string level) {
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	// Array of pointers to the 4 member functions of the class Harl.
 	void (Harl::*functions[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	
+
+	// Capitalize the "level" so that both "info" and "INFO" are accepted.
 	for (int j = 0; level[j]; j++) {
 		level[j] = std::toupper(level[j]);
 	}
