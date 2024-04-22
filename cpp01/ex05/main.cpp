@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:13:50 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 15:34:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 01:58:21 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ int main() {
 	Harl_obj.complain("hahaha");
 	Harl_obj.complain("unacceptable");
 	
-	return (0);
+	return 0;
 }

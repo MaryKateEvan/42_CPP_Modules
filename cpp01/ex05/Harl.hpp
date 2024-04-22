@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/14 14:13:55 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/14 15:10:53 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/22 01:47:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,17 @@
 class Harl {
 
 	private:
-		void debug( void );
-		void info( void );
-		void warning( void );
-		void error( void );
+
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
 
 	public:
-		void complain( std::string level );
+
+		Harl();
+		~Harl();
+		void complain(std::string level);
 };
 
 #endif //HARL_HPP
