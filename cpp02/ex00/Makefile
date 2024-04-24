@@ -1,4 +1,4 @@
-NAME	 =	fixed_point_nums
+NAME	 =	fixed_point_int
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98

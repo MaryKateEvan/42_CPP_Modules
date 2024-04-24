@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 02:28:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 02:33:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,7 @@ Fixed::~Fixed () {
 	std::cout << "Destructor called" << std::endl;
 }
 
-// // Getter for the private attribute _fpnv:
-// int Fixed::getFpnv() const {
-
-// 	return this->_fpnv;
-// }
-
-// Copy assignment Operator overload:
+// Copy assignment Operator overload
 Fixed & Fixed::operator=(Fixed const & src) {
 
 	std::cout << "Copy assignment operator called" << std::endl;
@@ -48,14 +42,18 @@ Fixed & Fixed::operator=(Fixed const & src) {
 	return *this;
 }
 
+// Getter for the private attribute _fpnv
 int Fixed::getRawBits(void) const {
 
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "getRawBits member function called" << std::endl;
 	
 	return this->_fpnv;
 }
 
+// Setter for the private attribute _fpnv
 void Fixed::setRawBits(int const raw) {
 
+	std::cout << "setRawBits member function called" << std::endl;
+	
 	this->_fpnv = raw;
 }

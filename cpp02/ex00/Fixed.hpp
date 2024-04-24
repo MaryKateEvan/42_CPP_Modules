@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 02:24:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 02:30:07 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ class Fixed {
 		Fixed(Fixed const & to_copy);			// copy constructor
 		~Fixed();								// destructor
 		
-		// int getFpnv() const;
 		Fixed & operator=(Fixed const & src);	// Copy assignment operator overload
 
 		int getRawBits(void) const;
