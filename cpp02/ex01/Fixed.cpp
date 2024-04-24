@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 21:08:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:13:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,15 +94,15 @@ int Fixed::toInt(void) const {
 	// Same as: _fpnv / (2 ^ _fractBits)
 }
 
-
 // Insertion Operator Overload, that inserts a floating-point respresentation of
 // the fixed-point number into the output stream object passed as parameter
 std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 	
 	out << i.toFloat();
 	return out;
+	// it seens like std::cout prints only 6 digits of the float number. 
+	// For example: 1234.43 or 42.4219 (after performing round up)
 }
-
 
 float power(float base, int exponent) {
 	
