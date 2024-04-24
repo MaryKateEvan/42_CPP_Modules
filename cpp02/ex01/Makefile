@@ -1,4 +1,4 @@
-NAME	 =	fixed_point_int
+NAME	 =	fixed_upgraded
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98

@@ -6,11 +6,13 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 06:03:01 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 07:05:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+float power(float base, int exponent);
 
 // Default constructor
 Fixed::Fixed() : _fpnv(0) {
@@ -41,7 +43,7 @@ Fixed::Fixed(const float float_num) {
 
 	std::cout << "Float constructor called" << std::endl;
 	
-	
+	this->_fpnv = static_cast<int> (roundf(float_num * power(2, _fractBits)));
 }
 
 // Destructor
@@ -80,7 +82,7 @@ void Fixed::setRawBits(int const raw) {
 // Converts the fixed-point value to a floating-point value
 float Fixed::toFloat( void ) const {
 	
-	
+	return this->_fpnv / power(2, _fractBits);
 }
 
 // Converts the fixed-point value to an integer value
@@ -95,5 +97,17 @@ int Fixed::toInt(void) const {
 // the fixed-point number into the output stream object passed as parameter
 std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 	
-	std::cout << ;
+	out << i.toFloat();
+	return out;
+}
+
+
+float power(float base, int exponent) {
+	
+	float result = 1.0;
+
+	for (int i = 0; i < exponent; ++i) {
+		result = result * base;
+	}
+	return result;
 }
