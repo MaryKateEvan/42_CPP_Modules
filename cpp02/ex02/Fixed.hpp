@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 00:55:52 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 01:20:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ class Fixed {
 
 		Fixed & operator=(Fixed const & src);	// Copy assignment operator overload
 
-		int getRawBits(void) const;
+		int getRawBits() const;
 		void setRawBits(int const raw);
 
-		float toFloat(void) const;
-		int toInt(void) const;
+		float toFloat() const;
+		int toInt() const;
 
 		// Comparison operators overload:
 		bool operator>(Fixed const & b);
@@ -49,6 +49,10 @@ class Fixed {
 		bool operator!=(Fixed const & b);
 
 		// Arithmetic operators overload:
+		Fixed operator+(Fixed const & y);
+		Fixed operator-(Fixed const & y);
+		Fixed operator*(Fixed const & y);
+		Fixed operator/(Fixed const & y);
 
 		// Increment/Decrement operators overload:
 };

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 01:02:58 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 01:20:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ Fixed & Fixed::operator=(Fixed const & src) {
 }
 
 // Getter for the private attribute _fixedPointValue
-int Fixed::getRawBits(void) const {
+int Fixed::getRawBits() const {
 
 	// std::cout << "getRawBits member function called" << std::endl;
 	return this->_fixedPointValue;
@@ -78,13 +78,13 @@ void Fixed::setRawBits(int const raw) {
 }
 
 // Converts the fixed-point value to a floating-point value
-float Fixed::toFloat( void ) const {
+float Fixed::toFloat() const {
 	
 	return this->_fixedPointValue / power(2, _fractBits);
 }
 
 // Converts the fixed-point value to an integer value
-int Fixed::toInt(void) const {
+int Fixed::toInt() const {
 	
 	return this->_fixedPointValue >> this->_fractBits; // 8 to the right, since we want integer so we can ignore the 8 fractional bits.
 	// Same as: _fixedPointValue / (2 ^ _fractBits)
@@ -114,7 +114,7 @@ float power(float base, int exponent) {
 *	automatically passed instance "this" (c++ passes it as hidden first argument).
 *	For all the comparisons, we compare the private attribute _fixedPointValue.
 *	@param b: the instance that we wanna compare our current instance with.
-*	@returns: the result (true or false) of the logical operation/comparison.
+*	@returns: the result of the comparison which can be true or false.
 */ 
 
 bool Fixed::operator>(Fixed const & b) {
@@ -145,6 +145,39 @@ bool Fixed::operator==(Fixed const & b) {
 bool Fixed::operator!=(Fixed const & b) {
 
 	return (this->_fixedPointValue != b.getRawBits());
+}
+
+/*
+*	2) ARITHMETIC OPERATORS OVERLOAD
+*	Execution of the corresponding arithmetic operation (+, -, * or /) between
+*	the private attributes _fixedPointValue of the current instance "this" (passed 
+*	automatically as first argument) and of the passed by reference instance "b".
+*	And then the result is used by a copy constructor, who creates a 
+*	new object with _fixedPointValue that result.
+*	@param b: the instance whose _fixedPointValue we want to do the arithmetic 
+*			  operation with.
+*	@returns: a new "Fixed" object, with _fxedPointValue the result of the asked 
+*			  arithmetic operation
+*/ 
+
+Fixed Fixed::operator+(Fixed const & y) {
+	
+	return (Fixed(this->_fixedPointValue + y.getRawBits()));
+}
+
+Fixed Fixed::operator-(Fixed const & y) {
+	
+	return (Fixed(this->_fixedPointValue - y.getRawBits()));
+}
+
+Fixed Fixed::operator*(Fixed const & y) {
+	
+	return (Fixed(this->_fixedPointValue * y.getRawBits()));
+}
+
+Fixed Fixed::operator/(Fixed const & y) {
+	
+	return (Fixed(this->_fixedPointValue / y.getRawBits()));
 }
 
 
