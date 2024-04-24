@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 07:05:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 08:28:08 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ Fixed & Fixed::operator=(Fixed const & src) {
 // Getter for the private attribute _fpnv
 int Fixed::getRawBits(void) const {
 
-	std::cout << "getRawBits member function called" << std::endl;
+	// std::cout << "getRawBits member function called" << std::endl;
 
 	return this->_fpnv;
 }
@@ -74,7 +74,7 @@ int Fixed::getRawBits(void) const {
 // Setter for the private attribute _fpnv
 void Fixed::setRawBits(int const raw) {
 
-	std::cout << "setRawBits member function called" << std::endl;
+	// std::cout << "setRawBits member function called" << std::endl;
 
 	this->_fpnv = raw;
 }
@@ -104,7 +104,7 @@ std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 
 float power(float base, int exponent) {
 	
-	float result = 1.0;
+	float result = 1.0F;
 
 	for (int i = 0; i < exponent; ++i) {
 		result = result * base;
