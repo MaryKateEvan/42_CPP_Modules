@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 01:34:03 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 01:46:25 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,14 +150,13 @@ bool Fixed::operator!=(Fixed const & b) {
 /*
 *	2) ARITHMETIC OPERATORS OVERLOAD
 *	Execution of the corresponding arithmetic operation (+, -, * or /) between
-*	the private attributes _fixedPointValue of the current instance "this" (passed 
-*	automatically as first argument) and of the passed by reference instance "b".
-*	And then the result is used by a copy constructor, who creates a 
-*	new object with _fixedPointValue that result.
-*	@param b: the instance whose _fixedPointValue we want to do the arithmetic 
-*			  operation with.
-*	@returns: a new "Fixed" object, with _fxedPointValue the result of the asked 
-*			  arithmetic operation
+*	the float representations of the private attribute _fixedPointValue of i) the current 
+*	instance "this" (passed automatically as first argument) and of ii) the passed 
+*	by reference instance "b". And then the result is used by the corresponding 
+*	parameter constructor, who creates a new object with the converted _fixedPointValue.
+*	@param b: the instance whose the float representation of _fixedPointValue we want 
+*			  to do the arithmetic operation with.
+*	@returns: a new "Fixed" object, constructed with the result converted to fixedPointValue.
 */ 
 
 Fixed Fixed::operator+(Fixed const & y) {
@@ -172,8 +171,6 @@ Fixed Fixed::operator-(Fixed const & y) {
 
 Fixed Fixed::operator*(Fixed const & y) {
 	
-	// std::cout << "this has: " << this->toFloat() << std::endl;
-	// std::cout << "second has: " << y.toFloat() << std::endl;
 	return (Fixed(this->toFloat() * y.toFloat()));
 }
 
