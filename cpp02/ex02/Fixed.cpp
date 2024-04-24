@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 01:20:50 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 01:34:03 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,22 +162,24 @@ bool Fixed::operator!=(Fixed const & b) {
 
 Fixed Fixed::operator+(Fixed const & y) {
 	
-	return (Fixed(this->_fixedPointValue + y.getRawBits()));
+	return (Fixed(this->toFloat() + y.toFloat()));
 }
 
 Fixed Fixed::operator-(Fixed const & y) {
 	
-	return (Fixed(this->_fixedPointValue - y.getRawBits()));
+	return (Fixed(this->toFloat() - y.toFloat()));
 }
 
 Fixed Fixed::operator*(Fixed const & y) {
 	
-	return (Fixed(this->_fixedPointValue * y.getRawBits()));
+	// std::cout << "this has: " << this->toFloat() << std::endl;
+	// std::cout << "second has: " << y.toFloat() << std::endl;
+	return (Fixed(this->toFloat() * y.toFloat()));
 }
 
 Fixed Fixed::operator/(Fixed const & y) {
 	
-	return (Fixed(this->_fixedPointValue / y.getRawBits()));
+	return (Fixed(this->toFloat() / y.toFloat()));
 }
 
 
