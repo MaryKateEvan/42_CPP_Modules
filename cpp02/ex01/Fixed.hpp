@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 06:25:28 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:16:15 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Fixed {
 	private:
 
 		int _fpnv; //for "Fixed-Point Number Value"
-		static const int _fractBits = 8; //it means that i have 8 bits for the fractional part. So if the int is 32-bit, i would have 24 bits left for the integer part.
+		static const int _fractBits = 8;
 
 	public:
 
