@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 08:28:08 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 21:08:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ Fixed::Fixed(const float float_num) {
 	std::cout << "Float constructor called" << std::endl;
 	
 	this->_fpnv = static_cast<int> (roundf(float_num * power(2, _fractBits)));
+	// roundf rounds to the closest integer. 
+	// So 42.42 * 256 = 10859.52 -> the roundf will make it 10860
 }
 
 // Destructor
