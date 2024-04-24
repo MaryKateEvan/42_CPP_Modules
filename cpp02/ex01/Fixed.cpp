@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 03:14:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 06:03:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ Fixed::Fixed(Fixed const & to_copy) {
 Fixed::Fixed(const int num) {
 
 	std::cout << "Int constructor called" << std::endl;
-	this->_fpnv = num;
+	
+	this->_fpnv = num << this->_fractBits; //so that we move the bits of our int num 8 places to the left, in order to have 8 fractional bits.
+	// Same as: num * (2 ^ _fractBits)
 }
 
 // Float Parameter constructor, that converts the float_num passed as
@@ -38,7 +40,8 @@ Fixed::Fixed(const int num) {
 Fixed::Fixed(const float float_num) {
 
 	std::cout << "Float constructor called" << std::endl;
-	this->_fpnv = float_num;
+	
+	
 }
 
 // Destructor
@@ -83,7 +86,8 @@ float Fixed::toFloat( void ) const {
 // Converts the fixed-point value to an integer value
 int Fixed::toInt(void) const {
 	
-	
+	return this->_fpnv >> this->_fractBits; // 8 to the right, since we want integer so we can ignore the 8 fractional bits.
+	// Same as: _fpnv / (2 ^ _fractBits)
 }
 
 
@@ -91,5 +95,5 @@ int Fixed::toInt(void) const {
 // the fixed-point number into the output stream object passed as parameter
 std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 	
-	std::cout << 
+	std::cout << ;
 }

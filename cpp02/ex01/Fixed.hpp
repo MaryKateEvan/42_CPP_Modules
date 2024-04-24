@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 03:13:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/24 05:55:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Fixed {
 	private:
 
 		int _fpnv; //for "Fixed-Point Number Value"
-		static const int fract_bits = 8; //it means that i have 8 bits for the fractional part. So if the int is 32-bit, i would have 24 bits left for the integer part.
+		static const int _fractBits = 8; //it means that i have 8 bits for the fractional part. So if the int is 32-bit, i would have 24 bits left for the integer part.
 
 	public:
 
@@ -44,3 +44,6 @@ class Fixed {
 std::ostream & operator<<(std::ostream & out, Fixed const & i);
 
 #endif //FIXED_HPP
+
+7: 
+00000111.00000000
