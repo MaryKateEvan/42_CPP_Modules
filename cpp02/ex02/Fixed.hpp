@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 22:21:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 00:55:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Fixed {
 
 	private:
 
-		int _fpnv; //for "Fixed-Point Number Value"
+		int _fixedPointValue;
 		static const int _fractBits = 8;
 
 	public:
@@ -40,12 +40,17 @@ class Fixed {
 		float toFloat(void) const;
 		int toInt(void) const;
 
+		// Comparison operators overload:
 		bool operator>(Fixed const & b);
 		bool operator<(Fixed const & b);
 		bool operator>=(Fixed const & b);
 		bool operator<=(Fixed const & b);
 		bool operator==(Fixed const & b);
 		bool operator!=(Fixed const & b);
+
+		// Arithmetic operators overload:
+
+		// Increment/Decrement operators overload:
 };
 
 std::ostream & operator<<(std::ostream & out, Fixed const & i);

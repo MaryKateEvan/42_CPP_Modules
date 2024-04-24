@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 22:28:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 01:02:58 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 float power(float base, int exponent);
 
 // Default constructor
-Fixed::Fixed() : _fpnv(0) {
+Fixed::Fixed() : _fixedPointValue(0) {
 
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -33,7 +33,7 @@ Fixed::Fixed(const int num) {
 
 	std::cout << "Int constructor called" << std::endl;
 	
-	this->_fpnv = num << this->_fractBits; //so that we move the bits of our int num 8 places to the left, in order to have 8 fractional bits.
+	this->_fixedPointValue = num << this->_fractBits;
 	// Same as: num * (2 ^ _fractBits)
 }
 
@@ -43,9 +43,7 @@ Fixed::Fixed(const float float_num) {
 
 	std::cout << "Float constructor called" << std::endl;
 	
-	this->_fpnv = static_cast<int> (roundf(float_num * power(2, _fractBits)));
-	// roundf rounds to the closest integer. 
-	// So 42.42 * 256 = 10859.52 -> the roundf will make it 10860
+	this->_fixedPointValue = static_cast<int> (roundf(float_num * power(2, _fractBits)));
 }
 
 // Destructor
@@ -60,36 +58,36 @@ Fixed & Fixed::operator=(Fixed const & src) {
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src)
-		this->_fpnv = src.getRawBits();
+		this->_fixedPointValue = src.getRawBits();
 
 	return *this;
 }
 
-// Getter for the private attribute _fpnv
+// Getter for the private attribute _fixedPointValue
 int Fixed::getRawBits(void) const {
 
 	// std::cout << "getRawBits member function called" << std::endl;
-	return this->_fpnv;
+	return this->_fixedPointValue;
 }
 
-// Setter for the private attribute _fpnv
+// Setter for the private attribute _fixedPointValue
 void Fixed::setRawBits(int const raw) {
 
 	// std::cout << "setRawBits member function called" << std::endl;
-	this->_fpnv = raw;
+	this->_fixedPointValue = raw;
 }
 
 // Converts the fixed-point value to a floating-point value
 float Fixed::toFloat( void ) const {
 	
-	return this->_fpnv / power(2, _fractBits);
+	return this->_fixedPointValue / power(2, _fractBits);
 }
 
 // Converts the fixed-point value to an integer value
 int Fixed::toInt(void) const {
 	
-	return this->_fpnv >> this->_fractBits; // 8 to the right, since we want integer so we can ignore the 8 fractional bits.
-	// Same as: _fpnv / (2 ^ _fractBits)
+	return this->_fixedPointValue >> this->_fractBits; // 8 to the right, since we want integer so we can ignore the 8 fractional bits.
+	// Same as: _fixedPointValue / (2 ^ _fractBits)
 }
 
 // Insertion Operator Overload, that inserts a floating-point respresentation of
@@ -98,8 +96,6 @@ std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 	
 	out << i.toFloat();
 	return out;
-	// it seens like std::cout prints only 6 digits of the float number. 
-	// For example: 1234.43 or 42.4219 (after performing round up)
 }
 
 float power(float base, int exponent) {
@@ -112,52 +108,43 @@ float power(float base, int exponent) {
 	return result;
 }
 
-// COMPARISON OPERATORS OVERLOAD:
+/*
+*	1) COMPARISON OPERATORS OVERLOAD
+*	Comparison of the passed by reference instance of Fixed class "b", with the
+*	automatically passed instance "this" (c++ passes it as hidden first argument).
+*	For all the comparisons, we compare the private attribute _fixedPointValue.
+*	@param b: the instance that we wanna compare our current instance with.
+*	@returns: the result (true or false) of the logical operation/comparison.
+*/ 
 
 bool Fixed::operator>(Fixed const & b) {
-	
-	if (this->_fpnv > b.getRawBits())
-		return true;
-	else
-		return false;
+
+	return (this->_fixedPointValue > b.getRawBits());
 }
 
 bool Fixed::operator<(Fixed const & b) {
-	
-	if (this->_fpnv < b.getRawBits())
-		return true;
-	else
-		return false;
+
+	return (this->_fixedPointValue < b.getRawBits());
 }
 
 bool Fixed::operator>=(Fixed const & b) {
-	
-	if (this->_fpnv >= b.getRawBits())
-		return true;
-	else
-		return false;
+
+	return (this->_fixedPointValue >= b.getRawBits());
 }
 
 bool Fixed::operator<=(Fixed const & b) {
 
-	if (this->_fpnv <= b.getRawBits())
-		return true;
-	else
-		return false;
+	return (this->_fixedPointValue <= b.getRawBits());
 }
 
 bool Fixed::operator==(Fixed const & b) {
-	
-	if (this->_fpnv == b.getRawBits())
-		return true;
-	else
-		return false;
+
+	return (this->_fixedPointValue == b.getRawBits());
 }
 
 bool Fixed::operator!=(Fixed const & b) {
-	
-	if (this->_fpnv != b.getRawBits())
-		return true;
-	else
-		return false;
+
+	return (this->_fixedPointValue != b.getRawBits());
 }
+
+
