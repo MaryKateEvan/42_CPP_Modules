@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 04:10:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 05:13:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,20 @@ float power(float base, int exponent);
 // Default constructor
 Fixed::Fixed() : _fixedPointValue(0) {
 
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 // Copy constructor
 Fixed::Fixed(Fixed const & to_copy) {
 
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = to_copy;
 }
 
 // Int Parameter constructor, that converts the "num" to fixed-point value.
 Fixed::Fixed(const int num) {
 
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	
 	this->_fixedPointValue = num << this->_fractBits;
 	// Same as: num * (2 ^ _fractBits)
@@ -39,7 +39,7 @@ Fixed::Fixed(const int num) {
 // Float Parameter constructor, that converts the "float_num" to fixed-point value.
 Fixed::Fixed(const float float_num) {
 
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 	
 	this->_fixedPointValue = static_cast<int> (roundf(float_num * power(2, _fractBits)));
 }
@@ -47,13 +47,13 @@ Fixed::Fixed(const float float_num) {
 // Destructor
 Fixed::~Fixed () {
 
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 // Copy assignment Operator overload
 Fixed & Fixed::operator=(Fixed const & src) {
 
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src)
 		this->_fixedPointValue = src.getRawBits();
@@ -222,9 +222,12 @@ Fixed Fixed::operator--(int) {
 }
 
 /*
-*	4) PUBLIC OVERLOADED MEMBER FUNCTIONS:
-*	
+*	4) MIN AND MAX OVERLOADED MEMBER FUNCTIONS:
+*	Static member functions of the class "Fixed", so they belong to the class itself and
+*	not to individual objects. Thus, they can be used to compare different objects of the 
+*	class and return the reference of the one with the maximum or minimum _fixedPointValue.
 */
+
 
 Fixed & Fixed::min(Fixed & a, Fixed & b) {
 

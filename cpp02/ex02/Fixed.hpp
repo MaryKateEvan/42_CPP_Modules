@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 04:08:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 04:52:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,17 @@ class Fixed {
 
 		// Comparison operators overload:
 		bool operator>(Fixed const & b) const;
-		bool operator<(Fixed const & b) const ;
-		bool operator>=(Fixed const & b) const ;
-		bool operator<=(Fixed const & b) const ;
-		bool operator==(Fixed const & b) const ;
-		bool operator!=(Fixed const & b) const ;
+		bool operator<(Fixed const & b) const;
+		bool operator>=(Fixed const & b) const;
+		bool operator<=(Fixed const & b) const;
+		bool operator==(Fixed const & b) const;
+		bool operator!=(Fixed const & b) const;
 
 		// Arithmetic operators overload:
-		Fixed operator+(Fixed const & y) const ;
-		Fixed operator-(Fixed const & y) const ;
-		Fixed operator*(Fixed const & y) const ;
-		Fixed operator/(Fixed const & y) const ;
+		Fixed operator+(Fixed const & y) const;
+		Fixed operator-(Fixed const & y) const;
+		Fixed operator*(Fixed const & y) const;
+		Fixed operator/(Fixed const & y) const;
 
 		// Increment/Decrement operators overload:
 		Fixed & operator++();	// Pre-increment
