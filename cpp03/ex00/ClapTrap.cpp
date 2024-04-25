@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 00:13:51 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 01:16:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ ClapTrap::ClapTrap() {};
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
 ClapTrap::ClapTrap(std::string name)
-	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {};
+	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+		
+	std::cout << "Constructor called" << std::endl;
+};
 
 // Copy constructor
 ClapTrap::ClapTrap(ClapTrap const & to_copy) {
 
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = to_copy; //assignment operator overload called
 }
 
@@ -35,7 +38,7 @@ ClapTrap::~ClapTrap () {
 // Copy assignment Operator overload
 ClapTrap& ClapTrap::operator=(ClapTrap const & src) {
 
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->_Name = src.getName();
@@ -60,7 +63,7 @@ unsigned int ClapTrap::getAttackDamage() const {
 	return this->_AttackDamage;
 }
 
-// SETTERS for the three private attributes:
+// SETTERS for the three private, moddifiable attributes:
 void ClapTrap::setHitPoints(unsigned int hit_points) {
 	this->_HitPoints = hit_points;
 }
@@ -91,8 +94,8 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << amount << std::endl;
 	}
 	else {
-		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << std::endl;
 		this->_HitPoints = 0;
+		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << std::endl;
 	}
 }
 
@@ -108,4 +111,11 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
+void ClapTrap::printStatus() const {
+	
+	std::cout	<< "ClapTrap " << BOLD(this->_Name) << " currently has: "
+				<< this->_HitPoints << " Hit Points, " 
+				<< this->_EnergyPoints << " Energy Points, and "
+				<< this->_AttackDamage << " Attack Damage." << std::endl;
+}
 

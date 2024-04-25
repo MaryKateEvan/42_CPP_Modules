@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 00:20:45 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 01:50:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,40 @@
 int main() {
 
 	ClapTrap A("Wall-e");
-	ClapTrap B("lorenzo");
-
+	ClapTrap B("Siri");
 	
-	A.setAttackDamage(5);
+	// PART A: TESTING THE ATTACK
+	
+	unsigned int damageForAttack = 1;
+	std::cout << "\033[31m" << BOLD_UNDERLINE("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
+	
+	std::cout << UNDERLINE("\nState before the attack:") << std::endl;
+	A.printStatus();
+	B.printStatus();
+	
+	std::cout << UNDERLINE("\nThe attack:") << std::endl;
+	A.setAttackDamage(damageForAttack);
 	A.attack(B.getName());
-	// A loses 1 energy point. So if A had 0 energy points, he can not attack.
-
-	
 	B.takeDamage(A.getAttackDamage());
-	//If B has 5 or more hit points -> B loses 5 hit points.
-	B.beRepaired(3); //from 5 hit points, now he has 8
-	// AND loses 1 energy point for the repair.
+
+	std::cout << UNDERLINE("\nState after the attack:") << std::endl;
+	A.printStatus();
+	B.printStatus();
+
+	// PART B: TESTING THE REPAIR
 	
+	unsigned int amountToRepair = 3;
+	std::cout << "\033[36m" << BOLD_UNDERLINE("\nTEST FOR THE REPAIR:") << "\033[0m" << std::endl;
+
+	std::cout << UNDERLINE("\nState before the repair:") << std::endl;
+	B.printStatus();
+
+	std::cout << UNDERLINE("\nThe repair:") << std::endl;
+	B.beRepaired(amountToRepair);
+	
+	std::cout << UNDERLINE("\nState after the repair:") << std::endl;
+	B.printStatus();
+	std::cout << std::endl;
+
 	return 0;
 }
