@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 21:52:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 21:56:29 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,12 @@ class ClapTrap {
 		ClapTrap& operator=(ClapTrap const & src);	// Assignment operator overload
 
 		//Getters for the private attributes:
+		std::string getName() const;
+		int getHitPoints() const;
+		int getEnergyPoints() const;
+		int getAttackDamage() const;
 
+		// The required member functions:
 		void attack(const std::string& target);
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
