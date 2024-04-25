@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 01:46:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 02:52:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ Fixed::Fixed(Fixed const & to_copy) {
 	*this = to_copy;
 }
 
-// Int Parameter constructor, that converts the num passed as parameter 
-// to the corresponding fixed-point value.
+// Int Parameter constructor, that converts the "num" to fixed-point value.
 Fixed::Fixed(const int num) {
 
 	std::cout << "Int constructor called" << std::endl;
@@ -37,8 +36,7 @@ Fixed::Fixed(const int num) {
 	// Same as: num * (2 ^ _fractBits)
 }
 
-// Float Parameter constructor, that converts the float_num passed as
-// parameter to the corresponding fixed-point value.
+// Float Parameter constructor, that converts the "float_num" to fixed-point value.
 Fixed::Fixed(const float float_num) {
 
 	std::cout << "Float constructor called" << std::endl;
@@ -86,12 +84,12 @@ float Fixed::toFloat() const {
 // Converts the fixed-point value to an integer value
 int Fixed::toInt() const {
 	
-	return this->_fixedPointValue >> this->_fractBits; // 8 to the right, since we want integer so we can ignore the 8 fractional bits.
+	return this->_fixedPointValue >> this->_fractBits;
 	// Same as: _fixedPointValue / (2 ^ _fractBits)
 }
 
 // Insertion Operator Overload, that inserts a floating-point respresentation of
-// the fixed-point number into the output stream object passed as parameter
+// the fixed-point number into the output stream "out" passed as parameter
 std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 	
 	out << i.toFloat();
@@ -179,4 +177,30 @@ Fixed Fixed::operator/(Fixed const & y) {
 	return (Fixed(this->toFloat() / y.toFloat()));
 }
 
+/*
+*	3) INCREMENT/DECREMENT OPERATORS OVERLOAD
+*	
+*/ 
 
+// By convention, PRE-increment/decrement operators return a reference to the object 
+// itself (Fixed&) which allows to chain multiple pre-increment/decrement operations together.
+
+Fixed & Fixed::operator++() {
+
+	
+}
+
+Fixed & Fixed::operator--() {
+
+	
+}
+
+Fixed Fixed::operator++(int) { //the `(int)` is just a "dummy parameter" to distinguish between the pre- and post- operators
+	
+	
+}
+
+Fixed Fixed::operator--(int) {
+
+	
+}

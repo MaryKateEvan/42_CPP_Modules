@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 01:25:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 02:54:27 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ class Fixed {
 		Fixed operator/(Fixed const & y);
 
 		// Increment/Decrement operators overload:
+		Fixed & operator++();	// Pre-increment
+		Fixed & operator--();	// Pre-decrement
+		Fixed operator++(int);	// Post-increment
+		Fixed operator--(int);	// Post-decrement
 };
 
 std::ostream & operator<<(std::ostream & out, Fixed const & i);
