@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 04:02:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 05:57:46 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 20:59:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,10 @@
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 #define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 
-#define IN_GREEN(text) "\033[32m" << text << "\033[0m"
-#define IN_RED(text) "\033[31m" << text << "\033[0m"
-#define IN_YELLOW(text) "\033[33m" << text << "\033[0m"
-#define IN_BLUE(text) "\033[34m" << text << "\033[0m"
-#define IN_PURPLE(text) "\033[35m" << text << "\033[0m"
-#define IN_CYAN(text) "\033[36m" << text << "\033[0m"
-
 int main() {
 
 	// THE TEST FROM THE SUBJECT PDF:
+	std::cout << BOLD("\nPART A: SUBJECT'S PDF TEST\n") << std::endl;
 	{
 	Fixed a;
 	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
@@ -42,12 +36,11 @@ int main() {
 	}
 
 	// ADDITIONAL TESTS:
+	std::cout << BOLD("\nPART B: ADDITIONAL TESTS\n") << std::endl;
 	{
 	Fixed a(10.5f); 		// for integer constructor
 	Fixed const b(2);		// for float constructor
-	Fixed c(a);				// for copy constructor
 	
-	std::cout << std::endl;
 	std::cout << UNDERLINE("Arithmetic operations on Fixed Objects:") << std::endl;
 	std::cout << "a + b = " << (a + b) << std::endl;
 	std::cout << "a - b = " << (a - b) << std::endl;
