@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 03:28:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 03:59:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,32 +115,32 @@ float power(float base, int exponent) {
 *	@returns: the result of the comparison which can be true or false.
 */ 
 
-bool Fixed::operator>(Fixed const & b) {
+bool Fixed::operator>(Fixed const & b) const {
 
 	return (this->_fixedPointValue > b.getRawBits());
 }
 
-bool Fixed::operator<(Fixed const & b) {
+bool Fixed::operator<(Fixed const & b) const {
 
 	return (this->_fixedPointValue < b.getRawBits());
 }
 
-bool Fixed::operator>=(Fixed const & b) {
+bool Fixed::operator>=(Fixed const & b) const {
 
 	return (this->_fixedPointValue >= b.getRawBits());
 }
 
-bool Fixed::operator<=(Fixed const & b) {
+bool Fixed::operator<=(Fixed const & b) const {
 
 	return (this->_fixedPointValue <= b.getRawBits());
 }
 
-bool Fixed::operator==(Fixed const & b) {
+bool Fixed::operator==(Fixed const & b) const {
 
 	return (this->_fixedPointValue == b.getRawBits());
 }
 
-bool Fixed::operator!=(Fixed const & b) {
+bool Fixed::operator!=(Fixed const & b) const {
 
 	return (this->_fixedPointValue != b.getRawBits());
 }
@@ -157,22 +157,22 @@ bool Fixed::operator!=(Fixed const & b) {
 *	@returns: a new "Fixed" object, constructed with the above result, converted to fixedPointValue.
 */ 
 
-Fixed Fixed::operator+(Fixed const & y) {
+Fixed Fixed::operator+(Fixed const & y) const {
 	
 	return (Fixed(this->toFloat() + y.toFloat()));
 }
 
-Fixed Fixed::operator-(Fixed const & y) {
+Fixed Fixed::operator-(Fixed const & y) const {
 	
 	return (Fixed(this->toFloat() - y.toFloat()));
 }
 
-Fixed Fixed::operator*(Fixed const & y) {
+Fixed Fixed::operator*(Fixed const & y) const {
 	
 	return (Fixed(this->toFloat() * y.toFloat()));
 }
 
-Fixed Fixed::operator/(Fixed const & y) {
+Fixed Fixed::operator/(Fixed const & y) const {
 	
 	return (Fixed(this->toFloat() / y.toFloat()));
 }
@@ -219,4 +219,41 @@ Fixed Fixed::operator--(int) {
 	
 	(this->_fixedPointValue)--;
 	return originalState;
+}
+
+/*
+*	4) PUBLIC OVERLOADED MEMBER FUNCTIONS:
+
+*/
+
+Fixed & Fixed::min(Fixed & a, Fixed & b) {
+
+	if (b < a)
+		return b;
+	else
+		return a;
+}
+
+const Fixed & Fixed::min(Fixed const & a, Fixed const & b) {
+	
+	if (b < a)
+		return b;
+	else
+		return a;
+}
+
+Fixed & Fixed::max(Fixed & a, Fixed & b) {
+
+	if (b > a)
+		return b;
+	else
+		return a;
+}
+
+static const Fixed & min(Fixed const & a, Fixed const & b) {
+
+	if (b > a)
+		return b;
+	else
+		return a;
 }
