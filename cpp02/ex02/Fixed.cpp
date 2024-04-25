@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 02:52:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 03:28:38 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ bool Fixed::operator!=(Fixed const & b) {
 *	parameter constructor, who creates a new object with the converted _fixedPointValue.
 *	@param b: the instance whose the float representation of _fixedPointValue we want 
 *			  to do the arithmetic operation with.
-*	@returns: a new "Fixed" object, constructed with the result converted to fixedPointValue.
+*	@returns: a new "Fixed" object, constructed with the above result, converted to fixedPointValue.
 */ 
 
 Fixed Fixed::operator+(Fixed const & y) {
@@ -179,28 +179,44 @@ Fixed Fixed::operator/(Fixed const & y) {
 
 /*
 *	3) INCREMENT/DECREMENT OPERATORS OVERLOAD
-*	
+*	  A. PRE-increment/decrement: these operators modify the object's state and return
+*		 a reference (by convention) to the modified object, which allow to chain multiple
+*		 pre-increment/decrement operations together.
+*	  B. POST-increment/decrement: these operators also modify the object's state but return
+*		 the object's original unmodified value before the operation. Their return type is
+*		 not a reference because they return a copy of the original value.
+*		 Note: the `(int)` is just a "dummy parameter" to distinguish the post- from the
+*			   pre-in/decrement operators.
 */ 
 
-// By convention, PRE-increment/decrement operators return a reference to the object 
-// itself (Fixed&) which allows to chain multiple pre-increment/decrement operations together.
-
+// Pre-increment operator (++x)
 Fixed & Fixed::operator++() {
 
-	
+	(this->_fixedPointValue)++;
+	return (*this);
 }
 
+// Pre-decrement operator (--x)
 Fixed & Fixed::operator--() {
 
-	
+	(this->_fixedPointValue)--;
+	return (*this);
 }
 
-Fixed Fixed::operator++(int) { //the `(int)` is just a "dummy parameter" to distinguish between the pre- and post- operators
+// Post-increment operator (x++)
+Fixed Fixed::operator++(int) { //
 	
+	Fixed originalState = Fixed(*this);
 	
+	(this->_fixedPointValue)++;
+	return originalState;
 }
 
+// Post decrement operator (x--)
 Fixed Fixed::operator--(int) {
 
+	Fixed originalState = Fixed(*this);
 	
+	(this->_fixedPointValue)--;
+	return originalState;
 }
