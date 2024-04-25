@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 03:59:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 04:08:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ class Fixed {
 		Fixed operator++(int);	// Post-increment
 		Fixed operator--(int);	// Post-decrement
 
-		// Min/Max Member Functions:
+		// Min/Max Overload Functions:
 		static Fixed & min(Fixed & a, Fixed & b);
 		static const Fixed & min(Fixed const & a, Fixed const & b);
 		static Fixed & max(Fixed & a, Fixed & b);
-		static const Fixed & min(Fixed const & a, Fixed const & b);
+		static const Fixed & max(Fixed const & a, Fixed const & b);
 };
 
 std::ostream & operator<<(std::ostream & out, Fixed const & i);

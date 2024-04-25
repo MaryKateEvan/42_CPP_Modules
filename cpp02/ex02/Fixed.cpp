@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 03:59:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 04:10:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ Fixed Fixed::operator--(int) {
 
 /*
 *	4) PUBLIC OVERLOADED MEMBER FUNCTIONS:
-
+*	
 */
 
 Fixed & Fixed::min(Fixed & a, Fixed & b) {
@@ -250,7 +250,7 @@ Fixed & Fixed::max(Fixed & a, Fixed & b) {
 		return a;
 }
 
-static const Fixed & min(Fixed const & a, Fixed const & b) {
+const Fixed & Fixed::max(Fixed const & a, Fixed const & b) {
 
 	if (b > a)
 		return b;

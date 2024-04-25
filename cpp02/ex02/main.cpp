@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 04:02:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 03:29:34 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 04:02:51 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main() {
 	
 	std::cout << b << std::endl;
 	
-	// std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 	
 	return 0;
 }
