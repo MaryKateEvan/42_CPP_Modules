@@ -6,17 +6,18 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 22:02:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:09:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap() : _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {};
+ClapTrap::ClapTrap() {};
 
-// Parameter constructor to assign the name taken as parameter:
-ClapTrap::ClapTrap(std::string name) : _Name(name) {};
+// Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
+ClapTrap::ClapTrap(std::string name)
+	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {};
 
 // Copy constructor
 ClapTrap::ClapTrap(ClapTrap const & to_copy) {
