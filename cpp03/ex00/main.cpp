@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 01:50:50 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:25:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 	
 	// PART A: TESTING THE ATTACK
 	
-	unsigned int damageForAttack = 1;
+	unsigned int damageForAttack = 9;
 	std::cout << "\033[31m" << BOLD_UNDERLINE("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
 	std::cout << UNDERLINE("\nState before the attack:") << std::endl;

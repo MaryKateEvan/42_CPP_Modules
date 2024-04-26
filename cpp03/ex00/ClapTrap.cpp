@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 01:16:34 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:24:39 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ ClapTrap::ClapTrap(std::string name)
 // Copy constructor
 ClapTrap::ClapTrap(ClapTrap const & to_copy) {
 
-	// std::cout << "Copy constructor called" << std::endl;
+	std::cout << "Copy constructor called" << std::endl;
 	*this = to_copy; //assignment operator overload called
 }
 
@@ -74,8 +74,12 @@ void ClapTrap::setAttackDamage(unsigned int damage) {
 	this->_AttackDamage = damage;
 }
 
-// The FOUR required member functions:
+// THE THREE REQUIRED MEMBER FUNCTIONS:
 
+/*
+*	1) Member function that performs an "attack" of _AttackDamage points to the opponent "target", and
+*	costs 1 Energy Point to the attacker (current ClapTrap object). If 0 Energy Points, no attack performed.
+*/
 void ClapTrap::attack(const std::string& target) {
 
 	if (this->_EnergyPoints >= 1) {
@@ -87,6 +91,10 @@ void ClapTrap::attack(const std::string& target) {
 	}
 }
 
+/*
+*	2) Member function that reduces the current object's Hit Points according to the attack that is receiving. 
+*	If the attack leads to 0 Hit Point, the current "ClapTrap" has been defeated.
+*/
 void ClapTrap::takeDamage(unsigned int amount) {
 
 	if (this->_HitPoints >= amount) {
@@ -94,11 +102,15 @@ void ClapTrap::takeDamage(unsigned int amount) {
 		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << amount << std::endl;
 	}
 	else {
+		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << " and has been defeated!" << std::endl;
 		this->_HitPoints = 0;
-		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << std::endl;
 	}
 }
 
+/*
+*	3) Member function that recovers "amount" Hit Points to the current ClapTrap; an action that costs 1 Energy Point 
+*	to the ClapTrap ans so is performed only if the ClapTrap has at least 1 Energy Point.
+*/
 void ClapTrap::beRepaired(unsigned int amount) {
 
 	if (this->_EnergyPoints >= 1) {
@@ -111,6 +123,10 @@ void ClapTrap::beRepaired(unsigned int amount) {
 	}
 }
 
+/*
+*	Additional Member Function that prints the current state of Hit Points, Energy Points and Attack Damage, 
+*	of the the currentClapTrap object.
+*/
 void ClapTrap::printStatus() const {
 	
 	std::cout	<< "ClapTrap " << BOLD(this->_Name) << " currently has: "
