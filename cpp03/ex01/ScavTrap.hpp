@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:32:35 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 04:43:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class ScavTrap : public ClapTrap {
 		void attack(const std::string& target);
 		void printStatus() const;
 
-		// Non-inherited, specific only to the ScavTrap:
+		// Non-inherited, specific only to the ScavTrap class:
 		void guardGate();
 };
 

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:36:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 04:54:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ ScavTrap& ScavTrap::operator=(ScavTrap const & src) {
 
 /*
 *	Member function that performs an "attack" of _AttackDamage points to the opponent "target", and
-*	costs 1 Energy Point to the attacker (current ScavTrap object). If 0 Energy Points, no attack performed.
+*	costs 1 Energy Point to the attacker (current ScavTrap object). 
+*	-	If hit points are 0 (which means no life remaining), the ScavTrap is dead and nothing can be done.
+*	-	If ScavTrap has 0 Energy Points, no attack is performed.
 */
 void ScavTrap::attack(const std::string& target) {
 
@@ -85,7 +87,7 @@ void ScavTrap::attack(const std::string& target) {
 
 /*
 *	Additional Member Function that prints the current state of Hit Points, Energy Points
-*	and Attack Damage, of the the currentScavTrap object.
+*	and Attack Damage, of the the current ScavTrap object.
 */
 void ScavTrap::printStatus() const {
 	
@@ -93,5 +95,13 @@ void ScavTrap::printStatus() const {
 				<< this->_HitPoints << " Hit Points, " 
 				<< this->_EnergyPoints << " Energy Points, and "
 				<< this->_AttackDamage << " Attack Damage." << std::endl;
+}
+
+/*
+*	Non-inherited member function, specific only for the ScavTrap Class.
+*/
+void ScavTrap::guardGate() {
+
+	std::cout << "ScavTrap " << BOLD(this->_Name) << " is now in " << "\033[33m" << "Gate Keeper Mode." << "\033[0m" << std::endl;
 }
 
