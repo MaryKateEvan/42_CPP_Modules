@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 06:43:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 07:30:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class DiamondTrap : public ScavTrap, public FragTrap {
 		void printStatus() const;
 
 		// Non-inherited, specific only to the DiamondTrap class:
-		void guardGate();
+		void whoAmI();
 };
 
 #endif //DIAMONDTRAP_HPP

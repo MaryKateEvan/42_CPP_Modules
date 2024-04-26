@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
+/*   DiamondTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,52 +10,52 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "DiamondTrap.hpp"
 
 // Default constructor
-ScavTrap::ScavTrap() : ClapTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap() {
 
-	this->_Name = "unknown ScavTrap";
+	this->_Name = "unknown DiamondTrap";
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 50;
 	this->_AttackDamage = 20;
 	
-	std::cout << "Constructor for ScavTrap called" << std::endl;
+	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
-ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name) {
 
 	this->_HitPoints = 100;
 	this->_EnergyPoints = 50;
 	this->_AttackDamage = 20;
 
-	std::cout << "Constructor for ScavTrap called" << std::endl;
+	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
 
 // Additional Parameter Constructor, if the user wants to assign all attributes directly:
-ScavTrap::ScavTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
+DiamondTrap::DiamondTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
 	: ClapTrap(name, hitPoints, energyPoints, attackdamage) {
 		
-	std::cout << "Constructor for ScavTrap called" << std::endl;
+	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
 
 // Copy constructor
-ScavTrap::ScavTrap(ScavTrap const & to_copy) : ClapTrap(to_copy) {
+DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy) {
 
-	std::cout << "Copy constructor for ScavTrap called" << std::endl;
+	std::cout << "Copy constructor for DiamondTrap called" << std::endl;
 }
 
 // Destructor
-ScavTrap::~ScavTrap () {
+DiamondTrap::~DiamondTrap () {
 
-	std::cout << "Destructor for ScavTrap called" << std::endl;
+	std::cout << "Destructor for DiamondTrap called" << std::endl;
 }
 
 // Copy assignment Operator overload
-ScavTrap& ScavTrap::operator=(ScavTrap const & src) {
+DiamondTrap& DiamondTrap::operator=(DiamondTrap const & src) {
 
-	std::cout << "Copy assignment operator for ScavTrap called" << std::endl;
+	std::cout << "Copy assignment operator for DiamondTrap called" << std::endl;
 
 	if (this != &src) {
 		ClapTrap::operator=(src);
@@ -63,49 +63,29 @@ ScavTrap& ScavTrap::operator=(ScavTrap const & src) {
 	return *this;
 }
 
-/*
-*	Member function that performs an "attack" of _AttackDamage points to the opponent "target", and
-*	costs 1 Energy Point to the attacker (current ScavTrap object). 
-*	-	If hit points are 0 (which means no life remaining), the ScavTrap is dead and nothing can be done.
-*	-	If ScavTrap has 0 Energy Points, no attack is performed.
-*/
-void ScavTrap::attack(const std::string& target) {
+void DiamondTrap::attack(const std::string& target) {
 
-	if (this->_HitPoints == 0) {
-		std::cout << "ScavTrap " << this->_Name << " has been defeated and powered-off. No attack can be made." << std::endl;
-		return ;
-	}
-	if (this->_EnergyPoints >= 1) {
-		(this->_EnergyPoints)--;
-		std::cout << "ScavTrap " << this->_Name << BOLD(" attacks ") << target << ", causing " << this->_AttackDamage << " points of damage!" << std::endl;
-	}
-	else {
-		std::cout << "ScavTrap " << this->_Name << " doesn't have enough energy points to attack " << target << std::endl;
-	}
+	ScavTrap::attack(target);
 }
 
 /*
 *	Additional Member Function that prints the current state of Hit Points, Energy Points
-*	and Attack Damage, of the the current ScavTrap object.
+*	and Attack Damage, of the the current DiamondTrap object.
 */
-void ScavTrap::printStatus() const {
+void DiamondTrap::printStatus() const {
 	
-	std::cout	<< "ScavTrap " << BOLD(this->_Name) << " currently has: "
+	std::cout	<< "DiamondTrap " << BOLD(this->_Name) << " currently has: "
 				<< this->_HitPoints << " Hit Points, " 
 				<< this->_EnergyPoints << " Energy Points, and "
 				<< this->_AttackDamage << " Attack Damage." << std::endl;
 }
 
 /*
-*	Non-inherited member function, specific only for the ScavTrap Class.
+*	Non-inherited member function, specific only for the DiamondTrap Class.
 */
-void ScavTrap::guardGate() {
+void DiamondTrap::whoAmI() {
 
-	if (this->_HitPoints != 0) {
-		std::cout << "ScavTrap " << BOLD(this->_Name) << " is now in " << "\033[33m" << "Gate Keeper Mode." << "\033[0m" << std::endl;
-	}
-	else {
-		std::cout << "ScavTrap " << BOLD(this->_Name) << " is dead so can not be sent to Gate Keeping." << std::endl;
-	}
+	std::cout << "DiamondTrap name: " << this->_Name << std::endl;
+	std::cout << "ClapTrap name: " << ClapTrap::getName() << std::endl;
 }
 
