@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:54:53 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 22:38:18 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:03:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,12 @@ Point & Point::operator=(Point const & src) {
 
 // Getter for the private attribute x:
 const Fixed Point::getX() const {
+
 	return this->_x;
 }
 
 // Getter for the private attribute y:
 const Fixed Point::getY() const {
+
 	return this->_y;
 }

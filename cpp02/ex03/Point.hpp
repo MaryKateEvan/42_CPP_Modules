@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:54:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 21:23:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:06:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,19 @@ class Point {
 
 	private:
 
-		const Fixed  _x;
-		const Fixed  _y;
+		Fixed const _x;
+		Fixed const _y;
 
 	public:
 
+		// Canonical Form elements:
 		Point();								// default constructor
 		Point(Point const & to_copy);			// copy constructor
-		Point(const float x, const float y);
 		~Point();								// destructor
-
 		Point & operator=(Point const & src);	// Copy assignment operator overload
+
+		// Additional constructor, required by the subject:
+		Point(const float x, const float y);
 
 		// Getters for the x and y:
 		const Fixed getX() const;

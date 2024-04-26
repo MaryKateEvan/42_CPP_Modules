@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 04:02:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 23:49:29 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:19:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 int main() {
 
-	// The vertexes of the triangle:
+	// The vertices of the triangle:
 	Point A(0.0f ,0.0f);
 	Point B(6.0f, 0.0f);
 	Point C(0.0f, 8.0f);
@@ -28,7 +28,7 @@ int main() {
 	Point t1(2.0f, 4.0f);
 	Point t2(1.0f, 6.0f);
 	Point t3(4.0f, 2.0f);
-	// ii) close to the vertexes:
+	// ii) close to the vertices:
 	Point t4(0.1f, 0.1f);
 	Point t5(5.9f, 0.1f);
 	Point t6(0.05f, 7.9f);
@@ -39,15 +39,15 @@ int main() {
 	Point f1(-2.0f, 4.0f);
 	Point f2(7.0f, 2.0f);
 	Point f3(2.0f, 8.0f);
-	// ii) close to the vertexes:
+	// ii) close to the vertices:
 	Point f4(-0.1f, 0.1f);
 	Point f5(6.1f, -0.1f);
 	Point f6(8.2f, 0.1f);
 
 	//! Change here the fourth argument with the point you want to check:
-	bool result = bsp(A, B, C, f1);
+	bool result = bsp(A, B, C, f6);
 
-	// /* The three vertexes, as the fourth argument, should also return false: */
+	// /* The three vertices, as the fourth argument, should also return false: */
 	// bool result = bsp(A, B, C, A);
 	// bool result = bsp(A, B, C, B);
 	// bool result = bsp(A, B, C, C);

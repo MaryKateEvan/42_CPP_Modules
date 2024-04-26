@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:54:51 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 23:34:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:19:38 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ bool bsp( Point const a, Point const b, Point const c, Point const point) {
 	Fixed pointX = point.getX();
 	Fixed pointY = point.getY();
 
-	// Coordinates of the three vertexes of the triange:
+	// Coordinates of the three vertices of the triange:
 	Fixed aX = a.getX();
 	Fixed aY = a.getY();
 	Fixed bX = b.getX();
@@ -30,12 +30,12 @@ bool bsp( Point const a, Point const b, Point const c, Point const point) {
 	Fixed one(1);
 
 	// the barycentric coordinates formula:
-	Fixed denominator = (bY - cY) * (aX - cX) + (cX - bX) * (aY - cY);
-	Fixed num1 = ((bY - cY) * (pointX - cX) + (cX - bX) * (pointY - cY)) / denominator;
-	Fixed num2 = ((cY - aY) * (pointX - cX) + (aX - cX) * (pointY - cY)) / denominator;
+	Fixed denom = (bY - cY) * (aX - cX) + (cX - bX) * (aY - cY);
+	Fixed num1 = ((bY - cY) * (pointX - cX) + (cX - bX) * (pointY - cY)) / denom;
+	Fixed num2 = ((cY - aY) * (pointX - cX) + (aX - cX) * (pointY - cY)) / denom;
 	Fixed num3 = one - num1 - num2;
 
 	return ((zero < num1 && num1 < one) && (zero < num2 && num2 < one) && (zero < num3 && num3 < one));
-	// if i wanted the vertexes and edges to return also true, it would have to be everywhere in
-	// the return statement "or equal to". like <=, >= etc...
+	// if i wanted the vertices and edges to return also true, it would have to be everywhere in
+	// the return statement "or equal to" (<=).
 }
