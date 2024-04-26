@@ -6,18 +6,29 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 02:24:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:48:25 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap() {};
+ClapTrap::ClapTrap()
+	: _Name("unknown"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+		
+	std::cout << "Constructor called" << std::endl;
+};
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
 ClapTrap::ClapTrap(std::string name)
 	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+		
+	std::cout << "Constructor called" << std::endl;
+};
+
+// Additional Parameter Constructor, if the user wants to assign all attributes directly:
+ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
+	: _Name(name), _HitPoints(hitPoints), _EnergyPoints(energyPoints), _AttackDamage(attackdamage) {
 		
 	std::cout << "Constructor called" << std::endl;
 };
@@ -99,10 +110,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 	if (this->_HitPoints >= amount) {
 		this->_HitPoints -= amount;
-		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << amount << std::endl;
+		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << amount << " hit points." << std::endl;
 	}
 	else {
-		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << " and has been defeated!" << std::endl;
+		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << this->_HitPoints << " hit points and has been defeated!" << std::endl;
 		this->_HitPoints = 0;
 	}
 }

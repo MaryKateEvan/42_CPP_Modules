@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 00:59:43 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:36:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class ClapTrap {
 	public:
 
 		ClapTrap(std::string name);
+		ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage);
+		
 		ClapTrap();									// default constructor
 		ClapTrap(ClapTrap const & to_copy);			// copy constructor
 		~ClapTrap();								// destructor

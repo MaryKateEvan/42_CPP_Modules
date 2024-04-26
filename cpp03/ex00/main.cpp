@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 02:25:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:49:58 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 int main() {
 
+	/* Combination 1*/
 	ClapTrap A("Wall-e");
 	ClapTrap B("Siri");
+	// /* Combination 2 */
+	// ClapTrap A("Wall-e", 20, 10, 5);
+	// ClapTrap B("Siri", 15, 4, 3);
 	
 	// PART A: TESTING THE ATTACK
 	
