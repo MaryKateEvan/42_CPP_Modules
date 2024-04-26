@@ -6,14 +6,14 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 02:40:29 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:30:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 // Default constructor
-Fixed::Fixed() : _fpnv(0) {
+Fixed::Fixed() : _fixedPointValue(0) {
 
 	std::cout << "Default constructor called" << std::endl;
 }
@@ -37,23 +37,23 @@ Fixed & Fixed::operator=(Fixed const & src) {
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src)
-		this->_fpnv = src.getRawBits();
+		this->_fixedPointValue = src.getRawBits();
 
 	return *this;
 }
 
-// Getter for the private attribute _fpnv
+// Getter for the private attribute _fixedPointValue
 int Fixed::getRawBits(void) const {
 
 	std::cout << "getRawBits member function called" << std::endl;
 
-	return this->_fpnv;
+	return this->_fixedPointValue;
 }
 
-// Setter for the private attribute _fpnv
+// Setter for the private attribute _fixedPointValue
 void Fixed::setRawBits(int const raw) {
 
 	std::cout << "setRawBits member function called" << std::endl;
 
-	this->_fpnv = raw;
+	this->_fixedPointValue = raw;
 }

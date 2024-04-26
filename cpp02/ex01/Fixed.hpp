@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/24 21:16:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:34:54 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Fixed {
 
 	private:
 
-		int _fpnv; //for "Fixed-Point Number Value"
+		int _fixedPointValue; //for "Fixed-Point Number Value"
 		static const int _fractBits = 8;
 
 	public:
