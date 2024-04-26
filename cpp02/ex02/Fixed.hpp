@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:40:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 04:52:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:52:38 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,5 @@ class Fixed {
 };
 
 std::ostream & operator<<(std::ostream & out, Fixed const & i);
-
-
 
 #endif //FIXED_HPP

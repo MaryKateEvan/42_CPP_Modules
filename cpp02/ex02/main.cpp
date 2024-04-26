@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 04:02:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 20:59:57 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:57:48 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ int main() {
 	// ADDITIONAL TESTS:
 	std::cout << BOLD("\nPART B: ADDITIONAL TESTS\n") << std::endl;
 	{
-	Fixed a(10.5f); 		// for integer constructor
-	Fixed const b(2);		// for float constructor
+	Fixed a(10.5f); 		// for float constructor
+	Fixed const b(2);		// for integer constructor
 	
 	std::cout << UNDERLINE("Arithmetic operations on Fixed Objects:") << std::endl;
 	std::cout << "a + b = " << (a + b) << std::endl;

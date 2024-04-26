@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 00:48:46 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:55:48 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,7 +227,6 @@ Fixed Fixed::operator--(int) {
 *	not to individual objects. Thus, they can be used to compare different objects of the 
 *	class and return the reference of the one with the maximum or minimum _fixedPointValue.
 */
-
 
 Fixed & Fixed::min(Fixed & a, Fixed & b) {
 
