@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 01:42:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/25 05:13:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 00:49:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ std::ostream & operator<<(std::ostream & out, Fixed const & i) {
 
 float power(float base, int exponent) {
 	
-	float result = 1.0F;
+	float result = 1.0f;
 
 	for (int i = 0; i < exponent; ++i) {
 		result = result * base;
