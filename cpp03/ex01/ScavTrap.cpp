@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:22:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 04:36:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,7 @@ ScavTrap& ScavTrap::operator=(ScavTrap const & src) {
 	std::cout << "Copy assignment operator for ScavTrap called" << std::endl;
 
 	if (this != &src) {
-		this->_Name = src.getName();
-		this->_HitPoints = src.getHitPoints();
-		this->_EnergyPoints = src.getEnergyPoints();
-		this->_AttackDamage = src.getAttackDamage();
+		ClapTrap::operator=(src);
 	}
 	return *this;
 }
