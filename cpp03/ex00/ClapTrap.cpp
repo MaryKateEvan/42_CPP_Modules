@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 02:48:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 02:53:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void ClapTrap::setAttackDamage(unsigned int damage) {
 }
 
 // THE THREE REQUIRED MEMBER FUNCTIONS:
-
 /*
 *	1) Member function that performs an "attack" of _AttackDamage points to the opponent "target", and
 *	costs 1 Energy Point to the attacker (current ClapTrap object). If 0 Energy Points, no attack performed.
@@ -135,8 +134,8 @@ void ClapTrap::beRepaired(unsigned int amount) {
 }
 
 /*
-*	Additional Member Function that prints the current state of Hit Points, Energy Points and Attack Damage, 
-*	of the the currentClapTrap object.
+*	Additional Member Function that prints the current state of Hit Points, Energy Points
+*	and Attack Damage, of the the currentClapTrap object.
 */
 void ClapTrap::printStatus() const {
 	
