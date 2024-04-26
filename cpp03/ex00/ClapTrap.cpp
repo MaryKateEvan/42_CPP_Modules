@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 02:53:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 04:17:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ void ClapTrap::setAttackDamage(unsigned int damage) {
 */
 void ClapTrap::attack(const std::string& target) {
 
+	if (this->_HitPoints == 0) {
+		std::cout << "ClapTrap " << this->_Name << " has been defeated and powered-off. No action can be made." << std::endl;
+		return ;
+	}
 	if (this->_EnergyPoints >= 1) {
 		(this->_EnergyPoints)--;
 		std::cout << "ClapTrap " << this->_Name << BOLD(" attacks ") << target << ", causing " << this->_AttackDamage << " points of damage!" << std::endl;
@@ -123,6 +127,10 @@ void ClapTrap::takeDamage(unsigned int amount) {
 */
 void ClapTrap::beRepaired(unsigned int amount) {
 
+	if (this->_HitPoints == 0) {
+		std::cout << "ClapTrap " << this->_Name << " has been defeated and powered-off. No action can be made." << std::endl;
+		return ;
+	}
 	if (this->_EnergyPoints >= 1) {
 		(this->_EnergyPoints)--;
 		this->_HitPoints += amount;

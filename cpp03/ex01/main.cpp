@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 05:01:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 05:29:33 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int main() {
 	ScavTrap B("Terminator");
 	// /* Combination 2 */
 	// ClapTrap A("Wall-e", 20, 10, 5);
-	// ClapTrap B("Terminator", 15, 4, 3);
+	// ScavTrap B("Terminator", 15, 4, 3);
 	
 	// PART A: TESTING THE ATTACK
 	
-	unsigned int damageForAttack = 9;
+	unsigned int damageForAttack = 25;
+	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[31m" << BOLD("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
 	std::cout << UNDERLINE("\nState before the attack:") << std::endl;
@@ -43,6 +44,7 @@ int main() {
 	// PART B: TESTING THE REPAIR
 	
 	unsigned int amountToRepair = 3;
+	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[36m" << BOLD("\nTEST FOR THE REPAIR:") << "\033[0m" << std::endl;
 
 	std::cout << UNDERLINE("\nState before the repair:") << std::endl;
@@ -55,8 +57,10 @@ int main() {
 	B.printStatus();
 
 	// PART C: GATE KEEPER MODE
-	std::cout << "\033[33m" << BOLD("\nGATE KEEPER MODE:") << "\033[0m" << std::endl;
+	std::cout << "__________________________________________________________________________________________" << std::endl;
+	std::cout << "\033[33m" << BOLD("\nGATE KEEPER MODE:\n") << "\033[0m" << std::endl;
 	B.guardGate();
+	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << std::endl;
 
 	return 0;

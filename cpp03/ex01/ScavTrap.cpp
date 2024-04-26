@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 05:09:18 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 05:28:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ void ScavTrap::printStatus() const {
 */
 void ScavTrap::guardGate() {
 
-	std::cout << "ScavTrap " << BOLD(this->_Name) << " is now in " << "\033[33m" << "Gate Keeper Mode." << "\033[0m" << std::endl;
+	if (this->_HitPoints != 0) {
+		std::cout << "ScavTrap " << BOLD(this->_Name) << " is now in " << "\033[33m" << "Gate Keeper Mode." << "\033[0m" << std::endl;
+	}
+	else {
+		std::cout << "ScavTrap " << BOLD(this->_Name) << " is dead so can not be sent to Gate Keeping." << std::endl;
+	}
 }
 
