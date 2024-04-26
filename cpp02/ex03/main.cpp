@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/24 04:02:47 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 00:19:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 01:08:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int main() {
 	// B. Points that should return FALSE:
 	// -----------------------------------
 	// i) obviously outside:
-	Point f1(-2.0f, 4.0f);
+	Point f1(-2.0f, -4.0f);
 	Point f2(7.0f, 2.0f);
 	Point f3(2.0f, 8.0f);
 	// ii) close to the vertices:
@@ -45,7 +45,7 @@ int main() {
 	Point f6(8.2f, 0.1f);
 
 	//! Change here the fourth argument with the point you want to check:
-	bool result = bsp(A, B, C, f6);
+	bool result = bsp(A, B, C, t1);
 
 	// /* The three vertices, as the fourth argument, should also return false: */
 	// bool result = bsp(A, B, C, A);

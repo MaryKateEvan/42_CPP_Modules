@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 20:54:51 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 00:19:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 01:06:42 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ bool bsp( Point const a, Point const b, Point const c, Point const point) {
 
 	return ((zero < num1 && num1 < one) && (zero < num2 && num2 < one) && (zero < num3 && num3 < one));
 	// if i wanted the vertices and edges to return also true, it would have to be everywhere in
-	// the return statement "or equal to" (<=).
+	// the return statement "or equal to" (<=) instead of "<".
 }
