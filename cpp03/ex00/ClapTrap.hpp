@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 02:36:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 03:12:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ class ClapTrap {
 		ClapTrap(std::string name);
 		ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage);
 		
+		// Orthodox Canonical form elements:
 		ClapTrap();									// default constructor
 		ClapTrap(ClapTrap const & to_copy);			// copy constructor
 		~ClapTrap();								// destructor
-
 		ClapTrap& operator=(ClapTrap const & src);	// Assignment operator overload
 
 		//Getters for the private attributes:
