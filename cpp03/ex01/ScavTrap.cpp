@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:54:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/26 05:09:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,9 @@ ScavTrap::ScavTrap(std::string name, unsigned int hitPoints, unsigned int energy
 };
 
 // Copy constructor
-ScavTrap::ScavTrap(ScavTrap const & to_copy) {
+ScavTrap::ScavTrap(ScavTrap const & to_copy) : ClapTrap(to_copy) {
 
 	std::cout << "Copy constructor for ScavTrap called" << std::endl;
-	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor
