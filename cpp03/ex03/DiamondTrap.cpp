@@ -34,7 +34,6 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
 }
 
-
 // Copy constructor
 DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy), ScavTrap(to_copy), FragTrap(to_copy) {
 
@@ -59,7 +58,6 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const & src) {
 		ScavTrap::operator=(src);
 		FragTrap::operator=(src);
 		this->_Name = src.getName();
-		this->ClapTrap::_Name = src.ClapTrap::_Name;
 	}
 	return *this;
 }
