@@ -9,7 +9,7 @@ CLEAR	 =	\033[0m
 
 OBJ_DIR  =	./objs
 
-SRC		 =	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
+SRC		 =	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 
 OBJ		 =	$(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 

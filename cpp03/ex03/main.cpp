@@ -6,20 +6,24 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 06:38:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 18:09:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main() {
 
 	/* Combination 1*/
-	ClapTrap A("Wall-e");
-	ScavTrap B("Terminator");
-	FragTrap C("Alexa");
+	// ClapTrap A("Wall-e");
+	DiamondTrap A("Wall-e");
+	// ScavTrap B("Terminator");
+	DiamondTrap B("Terminator");
+	// FragTrap C("Alexa");
+	DiamondTrap C("Alexa");
 	// /* Combination 2 */
 	// ClapTrap A("Wall-e", 40, 10, 5);
 	// ScavTrap B("Terminator", 15, 4, 3);
@@ -81,6 +85,12 @@ int main() {
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[32m" << BOLD("\nFRAGTRAP'S HIGH FIVE:\n") << "\033[0m" << std::endl;
 	C.highFivesGuys();
+	std::cout << std::endl;
+
+	// PART E: DiamondTrap's WhoAmI()
+	std::cout << "__________________________________________________________________________________________" << std::endl;
+	std::cout << "\033[35m" << BOLD("\nDIAMONDTRAP WONDERS WHO IT IS:\n") << "\033[0m" << std::endl;
+	A.whoAmI();
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << std::endl;
 
