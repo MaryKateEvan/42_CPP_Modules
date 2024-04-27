@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 06:11:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:16:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ FragTrap::FragTrap() : ClapTrap() {
 	this->_AttackDamage = 30;
 	
 	std::cout << "Constructor for FragTrap called" << std::endl;
-};
+}
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
 FragTrap::FragTrap(std::string name) : ClapTrap(name) {
@@ -31,14 +31,14 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name) {
 	this->_AttackDamage = 30;
 
 	std::cout << "Constructor for FragTrap called" << std::endl;
-};
+}
 
 // Additional Parameter Constructor, if the user wants to assign all attributes directly:
 FragTrap::FragTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
 	: ClapTrap(name, hitPoints, energyPoints, attackdamage) {
 		
 	std::cout << "Constructor for FragTrap called" << std::endl;
-};
+}
 
 // Copy constructor
 FragTrap::FragTrap(FragTrap const & to_copy) : ClapTrap(to_copy) {

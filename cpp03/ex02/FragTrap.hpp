@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 06:03:32 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:01:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class FragTrap : public ClapTrap {
 
 	public:
 
-		FragTrap(std::string name);
-		FragTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage);
+		FragTrap(std::string name); //the constructor required from the subject
+		FragTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage); //additional constructor for user needs
 		
 		// Orthodox Canonical form elements:
 		FragTrap();									// default constructor

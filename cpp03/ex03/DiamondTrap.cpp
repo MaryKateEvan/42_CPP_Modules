@@ -21,7 +21,7 @@ DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap("unknown_cl
 	this->_EnergyPoints = tmp.getEnergyPoints();
 	
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
-};
+}
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
@@ -32,7 +32,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	this->_EnergyPoints = tmp.getEnergyPoints();
 
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
-};
+}
 
 
 // Copy constructor

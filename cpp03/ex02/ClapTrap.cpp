@@ -6,32 +6,30 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 20:37:31 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:16:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap()
-	: _Name("unknown"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+ClapTrap::ClapTrap() : _Name("unknown"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
 		
 	std::cout << "Constructor for ClapTrap called" << std::endl;
-};
+}
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
-ClapTrap::ClapTrap(std::string name)
-	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
 		
 	std::cout << "Constructor for ClapTrap called" << std::endl;
-};
+}
 
 // Additional Parameter Constructor, if the user wants to assign all attributes directly:
 ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
 	: _Name(name), _HitPoints(hitPoints), _EnergyPoints(energyPoints), _AttackDamage(attackdamage) {
 		
 	std::cout << "Constructor for ClapTrap called" << std::endl;
-};
+}
 
 // Copy constructor
 ClapTrap::ClapTrap(ClapTrap const & to_copy) {

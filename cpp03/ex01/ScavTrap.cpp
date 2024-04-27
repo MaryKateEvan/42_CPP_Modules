@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 20:45:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:16:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ScavTrap::ScavTrap() : ClapTrap() {
 	this->_AttackDamage = 20;
 	
 	std::cout << "Constructor for ScavTrap called" << std::endl;
-};
+}
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -31,14 +31,14 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 	this->_AttackDamage = 20;
 
 	std::cout << "Constructor for ScavTrap called" << std::endl;
-};
+}
 
 // Additional Parameter Constructor, if the user wants to assign all attributes directly:
 ScavTrap::ScavTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
 	: ClapTrap(name, hitPoints, energyPoints, attackdamage) {
 		
 	std::cout << "Constructor for ScavTrap called" << std::endl;
-};
+}
 
 // Copy constructor
 ScavTrap::ScavTrap(ScavTrap const & to_copy) : ClapTrap(to_copy) {

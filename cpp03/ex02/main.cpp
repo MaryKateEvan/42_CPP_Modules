@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 06:25:27 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 21:10:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int main() {
 	// FragTrap C("Alexa", 80, 42, 20);
 	
 	// PART A: TESTING THE ATTACK
-	unsigned int damageForAttack = 25;
+	A.setAttackDamage(25); // We set an AttackDamage because initially it is 0.
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[31m" << BOLD("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
@@ -36,7 +36,6 @@ int main() {
 	C.printStatus();
 	
 	std::cout << "\033[31m" << UNDERLINE("\nFirst attack:") << "\033[0m" << std::endl;
-	A.setAttackDamage(damageForAttack);
 	A.attack(B.getName());
 	B.takeDamage(A.getAttackDamage());
 
@@ -55,7 +54,6 @@ int main() {
 	C.printStatus();
 
 	// PART B: TESTING THE REPAIR
-	unsigned int amountToRepair = 3;
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[36m" << BOLD("\nTEST FOR THE REPAIR:") << "\033[0m" << std::endl;
 
@@ -64,8 +62,8 @@ int main() {
 	C.printStatus();
 
 	std::cout << "\033[36m" << UNDERLINE("\nThe repair:") << "\033[0m" << std::endl;
-	B.beRepaired(amountToRepair);
-	C.beRepaired(amountToRepair);
+	B.beRepaired(3);
+	C.beRepaired(8);
 	
 	std::cout << UNDERLINE("\nState after the repair:") << std::endl;
 	B.printStatus();
