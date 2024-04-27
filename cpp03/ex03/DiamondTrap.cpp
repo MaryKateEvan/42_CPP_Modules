@@ -40,7 +40,7 @@ DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy), ScavT
 
 	std::cout << "Copy constructor for DiamondTrap called" << std::endl;
 	this->_Name = to_copy.getName();
-	ClapTrap::_Name = to_copy._Name + "_clap_name"; //! remember to verify this.
+	// ClapTrap::_Name = to_copy._Name + "_clap_name"; -> I don't need this cause it has already been made in the Diamond object that's I'm copying from.
 }
 
 // Destructor

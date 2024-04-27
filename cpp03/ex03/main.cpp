@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 19:17:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:56:42 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,11 @@
 
 int main() {
 
-	/* Combination 1*/
-	// ClapTrap A("Wall-e");
 	DiamondTrap A("Wall-e");
-	// ScavTrap B("Terminator");
 	DiamondTrap B("Terminator");
-	// FragTrap C("Alexa");
-	DiamondTrap C("Alexa");
-	// /* Combination 2 */
-	// ClapTrap A("Wall-e", 40, 10, 5);
-	// ScavTrap B("Terminator", 15, 4, 3);
-	// FragTrap C("Alexa", 80, 42, 20);
+	DiamondTrap C(A);
 	
 	// PART A: TESTING THE ATTACK
-	// unsigned int damageForAttack = 25;
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[31m" << BOLD("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
@@ -58,7 +49,6 @@ int main() {
 	C.printStatus();
 
 	// PART B: TESTING THE REPAIR
-	unsigned int amountToRepair = 3;
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[36m" << BOLD("\nTEST FOR THE REPAIR:") << "\033[0m" << std::endl;
 
@@ -67,8 +57,8 @@ int main() {
 	C.printStatus();
 
 	std::cout << "\033[36m" << UNDERLINE("\nThe repair:") << "\033[0m" << std::endl;
-	B.beRepaired(amountToRepair);
-	C.beRepaired(amountToRepair);
+	B.beRepaired(10);
+	C.beRepaired(3);
 	
 	std::cout << UNDERLINE("\nState after the repair:") << std::endl;
 	B.printStatus();
