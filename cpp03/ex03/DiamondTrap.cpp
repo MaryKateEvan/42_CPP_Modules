@@ -13,9 +13,9 @@
 #include "DiamondTrap.hpp"
 
 // Default constructor
-DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap(), FragTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap("unknown_clap_name"), FragTrap("unknown_clap_name") {
 
-	this->_Name = "unknown_DiamondTrap";
+	this->_Name = "unknown";
 
 	ScavTrap tmp;
 	this->_EnergyPoints = tmp.getEnergyPoints();

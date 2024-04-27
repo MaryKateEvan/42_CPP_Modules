@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 19:56:42 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:03:40 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main() {
 
 	DiamondTrap A("Wall-e");
 	DiamondTrap B("Terminator");
-	DiamondTrap C(A);
+	DiamondTrap C("Alexa");
 	
 	// PART A: TESTING THE ATTACK
 	std::cout << "__________________________________________________________________________________________" << std::endl;
