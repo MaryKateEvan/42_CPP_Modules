@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 05:20:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:35:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int main() {
 	// ClapTrap B("Siri", 15, 4, 3);
 	
 	// PART A: TESTING THE ATTACK
-	
-	unsigned int damageForAttack = 9;
+	A.setAttackDamage(5); //Because initially it is set to 0 by the constructor
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[31m" << BOLD("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
@@ -31,7 +30,7 @@ int main() {
 	A.printStatus();
 	B.printStatus();
 	
-	std::cout << "\033[31m" << UNDERLINE("\nThe attack:") << "\033[0m" << std::endl;	A.setAttackDamage(damageForAttack);
+	std::cout << "\033[31m" << UNDERLINE("\nThe attack:") << "\033[0m" << std::endl;
 	A.attack(B.getName());
 	B.takeDamage(A.getAttackDamage());
 
@@ -40,8 +39,6 @@ int main() {
 	B.printStatus();
 
 	// PART B: TESTING THE REPAIR
-	
-	unsigned int amountToRepair = 3;
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[36m" << BOLD("\nTEST FOR THE REPAIR:") << "\033[0m" << std::endl;
 
@@ -49,7 +46,7 @@ int main() {
 	B.printStatus();
 
 	std::cout << "\033[36m" << UNDERLINE("\nThe repair:") << "\033[0m" << std::endl;
-	B.beRepaired(amountToRepair);
+	B.beRepaired(3);
 	
 	std::cout << UNDERLINE("\nState after the repair:") << std::endl;
 	B.printStatus();

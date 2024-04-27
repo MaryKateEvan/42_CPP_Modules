@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 03:15:31 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:27:04 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ class ClapTrap {
 	
 	public:
 
-		ClapTrap(std::string name);
-		ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage);
+		ClapTrap(std::string name);	// constructor required from the subject
+		ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage); // additional constructor for user needs
 		
 		// Orthodox Canonical form elements:
 		ClapTrap();									// default constructor
@@ -56,7 +56,7 @@ class ClapTrap {
 		void takeDamage(unsigned int amount);
 		void beRepaired(unsigned int amount);
 
-		void printStatus() const;
+		void printStatus() const; //additional function to print the current state of the attributes
 };
 
 #endif //CLAPTRAP_HPP

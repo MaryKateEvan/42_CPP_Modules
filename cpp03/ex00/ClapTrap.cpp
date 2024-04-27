@@ -6,32 +6,30 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:17:45 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:32:33 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 // Default constructor
-ClapTrap::ClapTrap()
-	: _Name("unknown"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+ClapTrap::ClapTrap() : _Name("unknown"), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
 		
 	std::cout << "Constructor called" << std::endl;
-};
+}
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
-ClapTrap::ClapTrap(std::string name)
-	: _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
+ClapTrap::ClapTrap(std::string name) : _Name(name), _HitPoints(10), _EnergyPoints(10), _AttackDamage(0) {
 		
 	std::cout << "Constructor called" << std::endl;
-};
+}
 
 // Additional Parameter Constructor, if the user wants to assign all attributes directly:
 ClapTrap::ClapTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
 	: _Name(name), _HitPoints(hitPoints), _EnergyPoints(energyPoints), _AttackDamage(attackdamage) {
 		
 	std::cout << "Constructor called" << std::endl;
-};
+}
 
 // Copy constructor
 ClapTrap::ClapTrap(ClapTrap const & to_copy) {
@@ -49,7 +47,7 @@ ClapTrap::~ClapTrap () {
 // Copy assignment Operator overload
 ClapTrap& ClapTrap::operator=(ClapTrap const & src) {
 
-	// std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src) {
 		this->_Name = src.getName();
@@ -74,7 +72,7 @@ unsigned int ClapTrap::getAttackDamage() const {
 	return this->_AttackDamage;
 }
 
-// SETTERS for the three private, moddifiable attributes:
+// SETTERS for the three private, modifiable attributes:
 void ClapTrap::setHitPoints(unsigned int hit_points) {
 	this->_HitPoints = hit_points;
 }
@@ -84,6 +82,8 @@ void ClapTrap::setEnergyPoints(unsigned int energy_points) {
 void ClapTrap::setAttackDamage(unsigned int damage) {
 	this->_AttackDamage = damage;
 }
+// the _Name is only initialized once from the constructor in the beginning, so there's no need for a setter.
+
 
 // THE THREE REQUIRED MEMBER FUNCTIONS:
 /*
@@ -111,7 +111,7 @@ void ClapTrap::attack(const std::string& target) {
 */
 void ClapTrap::takeDamage(unsigned int amount) {
 
-	if (this->_HitPoints >= amount) {
+	if (this->_HitPoints > amount) {
 		this->_HitPoints -= amount;
 		std::cout << "ClapTrap " << this->_Name << BOLD(" takes damage ") << "of " << amount << " hit points." << std::endl;
 	}
@@ -123,7 +123,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 
 /*
 *	3) Member function that recovers "amount" Hit Points to the current ClapTrap; an action that costs 1 Energy Point 
-*	to the ClapTrap ans so is performed only if the ClapTrap has at least 1 Energy Point.
+*	to the ClapTrap and so is performed only if the ClapTrap has at least 1 Energy Point.
 */
 void ClapTrap::beRepaired(unsigned int amount) {
 
@@ -143,7 +143,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
 
 /*
 *	Additional Member Function that prints the current state of Hit Points, Energy Points
-*	and Attack Damage, of the the currentClapTrap object.
+*	and Attack Damage, of the the current ClapTrap object.
 */
 void ClapTrap::printStatus() const {
 	
@@ -152,4 +152,3 @@ void ClapTrap::printStatus() const {
 				<< this->_EnergyPoints << " Energy Points, and "
 				<< this->_AttackDamage << " Attack Damage." << std::endl;
 }
-
