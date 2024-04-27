@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 05:28:57 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:45:25 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ ScavTrap& ScavTrap::operator=(ScavTrap const & src) {
 }
 
 /*
-*	Member function that performs an "attack" of _AttackDamage points to the opponent "target", and
-*	costs 1 Energy Point to the attacker (current ScavTrap object). 
+*	Member function (differentiated from the one from ClapTrap) that performs an "attack" of _AttackDamage points 
+*	to the opponent "target", and costs 1 Energy Point to the attacker (current ScavTrap object). 
 *	-	If hit points are 0 (which means no life remaining), the ScavTrap is dead and nothing can be done.
 *	-	If ScavTrap has 0 Energy Points, no attack is performed.
 */

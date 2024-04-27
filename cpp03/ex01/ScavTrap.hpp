@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 04:43:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 20:43:24 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ class ScavTrap : public ClapTrap {
 
 	public:
 
-		ScavTrap(std::string name);
-		ScavTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage);
+		ScavTrap(std::string name); //the required from subject constructor
+		ScavTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage); //additional constructor if the user wants to initialize all at once
 		
 		// Orthodox Canonical form elements:
 		ScavTrap();									// default constructor
