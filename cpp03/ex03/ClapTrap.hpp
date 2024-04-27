@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/26 07:23:29 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 05:32:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ class ClapTrap {
 		// Orthodox Canonical form elements:
 		ClapTrap();									// default constructor
 		ClapTrap(ClapTrap const & to_copy);			// copy constructor
-		virtual ~ClapTrap();						// destructor. (polymorphic, so that base classes can override it, when it's not needed)
+		virtual ~ClapTrap();						// destructor. (virtual, so that derived classes can override it, when it's not needed)
 		ClapTrap& operator=(ClapTrap const & src);	// Assignment operator overload
 
 		//Getters for the private attributes:

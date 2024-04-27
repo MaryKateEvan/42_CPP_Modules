@@ -13,37 +13,32 @@
 #include "DiamondTrap.hpp"
 
 // Default constructor
-DiamondTrap::DiamondTrap() : ClapTrap() {
+DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap(), FragTrap() {
 
-	this->_Name = "unknown DiamondTrap";
-	this->_HitPoints = 100;
-	this->_EnergyPoints = 50;
-	this->_AttackDamage = 20;
+	this->_Name = "unknown_DiamondTrap";
+	this->_HitPoints = FragTrap::_HitPoints;
+	this->_EnergyPoints = ScavTrap::_EnergyPoints;
+	this->_AttackDamage = FragTrap::_AttackDamage;
 	
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
 
 // Parameter constructor to assign the name taken as parameter, and initialize the other three attributes.
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 
-	this->_HitPoints = 100;
-	this->_EnergyPoints = 50;
-	this->_AttackDamage = 20;
+	this->_Name = name;
+	this->_HitPoints = FragTrap::_HitPoints;
+	this->_EnergyPoints = ScavTrap::_EnergyPoints;
+	this->_AttackDamage = FragTrap::_AttackDamage;
 
-	std::cout << "Constructor for DiamondTrap called" << std::endl;
-};
-
-// Additional Parameter Constructor, if the user wants to assign all attributes directly:
-DiamondTrap::DiamondTrap(std::string name, unsigned int hitPoints, unsigned int energyPoints, unsigned int attackdamage) 
-	: ClapTrap(name, hitPoints, energyPoints, attackdamage) {
-		
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
 
 // Copy constructor
-DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy) {
+DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy), ScavTrap(to_copy), FragTrap(to_copy) {
 
 	std::cout << "Copy constructor for DiamondTrap called" << std::endl;
+	this->_Name = to_copy.getName();
 }
 
 // Destructor
@@ -58,10 +53,24 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const & src) {
 	std::cout << "Copy assignment operator for DiamondTrap called" << std::endl;
 
 	if (this != &src) {
-		ClapTrap::operator=(src);
+		// ClapTrap::operator=(src); //maybe I don't need this one, since it's called form the below two
+		ScavTrap::operator=(src);
+		FragTrap::operator=(src);
+		this->_Name = src.getName();
 	}
 	return *this;
 }
+
+// Getter for the private attribute _Name
+std::string DiamondTrap::getName() const {
+	return this->_Name;
+}
+
+// Setter for the private attribute _Name
+void DiamondTrap::setName(std::string name) {
+	this->_Name = name;
+}
+
 
 void DiamondTrap::attack(const std::string& target) {
 
