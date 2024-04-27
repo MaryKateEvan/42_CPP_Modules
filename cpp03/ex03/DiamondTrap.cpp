@@ -16,9 +16,9 @@
 DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap(), FragTrap() {
 
 	this->_Name = "unknown_DiamondTrap";
-	this->_HitPoints = FragTrap::_HitPoints;
-	this->_EnergyPoints = ScavTrap::_EnergyPoints;
-	this->_AttackDamage = FragTrap::_AttackDamage;
+
+	ScavTrap tmp;
+	this->_EnergyPoints = tmp.getEnergyPoints();
 	
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
@@ -27,12 +27,13 @@ DiamondTrap::DiamondTrap() : ClapTrap("unknown_clap_name"), ScavTrap(), FragTrap
 DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), ScavTrap(name), FragTrap(name) {
 
 	this->_Name = name;
-	this->_HitPoints = FragTrap::_HitPoints;
-	this->_EnergyPoints = ScavTrap::_EnergyPoints;
-	this->_AttackDamage = FragTrap::_AttackDamage;
+
+	ScavTrap tmp;
+	this->_EnergyPoints = tmp.getEnergyPoints();
 
 	std::cout << "Constructor for DiamondTrap called" << std::endl;
 };
+
 
 // Copy constructor
 DiamondTrap::DiamondTrap(DiamondTrap const & to_copy) : ClapTrap(to_copy), ScavTrap(to_copy), FragTrap(to_copy) {
@@ -58,6 +59,7 @@ DiamondTrap& DiamondTrap::operator=(DiamondTrap const & src) {
 		ScavTrap::operator=(src);
 		FragTrap::operator=(src);
 		this->_Name = src.getName();
+		this->ClapTrap::_Name = src.ClapTrap::_Name;
 	}
 	return *this;
 }

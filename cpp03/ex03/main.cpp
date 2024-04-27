@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:53:02 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/27 18:09:59 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/27 19:17:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main() {
 	// FragTrap C("Alexa", 80, 42, 20);
 	
 	// PART A: TESTING THE ATTACK
-	unsigned int damageForAttack = 25;
+	// unsigned int damageForAttack = 25;
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[31m" << BOLD("\nTEST FOR THE ATTACK:") << "\033[0m" << std::endl;
 	
@@ -40,7 +40,6 @@ int main() {
 	C.printStatus();
 	
 	std::cout << "\033[31m" << UNDERLINE("\nFirst attack:") << "\033[0m" << std::endl;
-	A.setAttackDamage(damageForAttack);
 	A.attack(B.getName());
 	B.takeDamage(A.getAttackDamage());
 
@@ -91,6 +90,8 @@ int main() {
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << "\033[35m" << BOLD("\nDIAMONDTRAP WONDERS WHO IT IS:\n") << "\033[0m" << std::endl;
 	A.whoAmI();
+	std::cout << std::endl;
+	C.whoAmI();
 	std::cout << "__________________________________________________________________________________________" << std::endl;
 	std::cout << std::endl;
 
