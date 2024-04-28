@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 22:25:28 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 23:20:54 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 
-class AMateria {
+class ICharacter; //to inform the compiler that there is implementation for this class
+
+class AMateria { // The parent class of Ice and Cure.
 
 	protected:
 

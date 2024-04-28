@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ICharacter.hpp                                     :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 23:25:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 23:44:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ICHARACTER_HPP
-# define ICHARACTER_HPP
+#ifndef ICE_HPP
+# define ICE_HPP
 
 # include <iostream>
 # include <string>
 
 # include "AMateria.hpp"
+# include "ICharacter.hpp"
 
-class AMateria;
-
-class ICharacter {
+class Ice : public AMateria { // publicly inherits from AMateria.
 
 	public:
 
-		virtual ~ICharacter() {}
-		virtual std::string const & getName() const = 0;
-		virtual void equip(AMateria* m) = 0;
-		virtual void unequip(int idx) = 0;
-		virtual void use(int idx, ICharacter& target) = 0;
+		// Orthodox Canonical form elements:
+		Ice();									// default constructor
+		Ice(Ice const & to_copy);				// copy constructor
+		~Ice();									// destructor
+		Ice& operator=(Ice const & src);		// Assignment operator overload
+		
+		// THe methods that the base class AMateria asks implementation for:
+		AMateria* clone() const;
+		void use(ICharacter& target);
 };
 
-#endif //ICHARACTER_HPP
+#endif //ICE_HPP
