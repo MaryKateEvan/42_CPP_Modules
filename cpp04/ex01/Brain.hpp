@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 09:32:06 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:36:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ class Brain {
 		Brain(Brain const & to_copy);			// copy constructor
 		~Brain();								// destructor
 		Brain& operator=(Brain const & src);	// Assignment operator overload
+
+		void setIdea();
+		std::string getIdea() const;
 };
 
 #endif //BRAIN_HPP

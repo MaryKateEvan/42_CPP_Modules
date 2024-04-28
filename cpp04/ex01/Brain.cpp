@@ -12,7 +12,7 @@
 
 #include "Brain.hpp"
 
-#define Brain_MSG(text) "\033[0;33m" << text << " for Brain called" << "\033[0m"
+#define Brain_MSG(text) "🧠 \033[0;33m" << text << " for Brain called" << "\033[0m"
 
 // Default constructor
 Brain::Brain() {

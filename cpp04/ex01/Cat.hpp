@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:36:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 15:40:21 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,14 @@
 # include <string>
 
 # include "Animal.hpp"
+# include "Brain.hpp"
 
 class Cat : public Animal {
 
+	private:
+
+		Brain* _catBrain;
+	
 	public:
 
 		// Orthodox Canonical form elements:
