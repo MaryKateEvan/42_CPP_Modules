@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:37:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:10:00 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ Cat::Cat() : Animal() {
 Cat::Cat(Cat const & to_copy) : Animal(to_copy) {
 
 	std::cout << CAT_MSG("Copy constructor") << std::endl;
-	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor

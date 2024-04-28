@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:37:14 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:11:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ WrongCat::WrongCat() : WrongAnimal() {
 WrongCat::WrongCat(WrongCat const & to_copy) : WrongAnimal(to_copy) {
 
 	std::cout << WrongCat_MSG("Copy constructor") << std::endl;
-	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor
