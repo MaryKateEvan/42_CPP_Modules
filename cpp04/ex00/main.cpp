@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 05:30:39 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:35:42 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:38:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,29 @@
 #include "Dog.hpp"
 #include "Cat.hpp"
 
-# define BOLD(text) "\033[1m" << text << "\033[0m"
-# define UNDERLINE(text) "\033[4m" << text << "\033[0m"
-# define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
-
 int main() {
 
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << meta->getType() << " " << std::endl;
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	// Initialization of all three types:
+	const Animal* a = new Animal();
+	const Animal* b = new Dog();
+	const Animal* c = new Cat();
+	
+	// testing the inherited getType member function:
+	std::cout << std::endl;
+	std::cout << "Object a is of type: " << UNDERLINE(a->getType()) << std::endl;
+	std::cout << "Object b is of type: " << UNDERLINE(b->getType()) << std::endl;
+	std::cout << "Object c is of type: " << UNDERLINE(c->getType()) << std::endl;
+	std::cout << std::endl;
+	
+	// testing the overriden makeSound method:
+	a->makeSound();
+	b->makeSound();
+	c->makeSound();
+	std::cout << std::endl;
 
-	delete i;
-	delete j;
-	delete meta;
+	delete c;
+	delete b;
+	delete a;
 	
 	return 0;
 }
