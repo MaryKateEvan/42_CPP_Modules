@@ -6,36 +6,38 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:07:52 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 07:21:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
+#define CAT_MSG(text) "🐈 \033[31m" << text << " for Cat called" << "\033[0m"
+
 // Default constructor
 Cat::Cat() : Animal() {
 		
-	std::cout << "Default constructor for Cat called" << std::endl;
+	std::cout << CAT_MSG("Default constructor") << std::endl;
 	this->setType();
 }
 
 // Copy constructor
 Cat::Cat(Cat const & to_copy) : Animal(to_copy) {
 
-	std::cout << "Copy constructor for Cat called" << std::endl;
+	std::cout << CAT_MSG("Copy constructor") << std::endl;
 	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor
 Cat::~Cat () {
 
-	std::cout << "Destructor for Cat called" << std::endl;
+	std::cout << CAT_MSG("destructor") << std::endl;
 }
 
 // Copy assignment Operator overload
 Cat& Cat::operator=(Cat const & src) {
 
-	std::cout << "Copy assignment operator for Cat called" << std::endl;
+	std::cout << CAT_MSG("Copy assignment operator") << std::endl;
 
 	if (this != &src) {
 		Animal::operator=(src);
@@ -50,7 +52,7 @@ void Cat::setType() {
 }
 
 // Cat implementation of the virtual method.
-void Cat::makeSound() {
+void Cat::makeSound() const {
 
-	std::cout << "Meow... meeeeeow..." << std::endl;
+	std::cout << "🔊: 🐈 \033[31m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
 }

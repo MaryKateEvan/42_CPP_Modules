@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:23:02 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:34:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Animal {
 		// Orthodox Canonical form elements:
 		Animal();								// default constructor
 		Animal(Animal const & to_copy);			// copy constructor
-		~Animal();								// destructor
+		virtual ~Animal();						// destructor
 		Animal& operator=(Animal const & src);	// Assignment operator overload
 
 		virtual void setType();

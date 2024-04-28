@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:02:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:27:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Dog : public Animal {
 
 		// Functions that override the ones from the base class Animal:
 		void setType();
-		void makeSound();
+		void makeSound() const;
 };
 
 #endif //DOG_HPP
