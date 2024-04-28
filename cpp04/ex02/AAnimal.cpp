@@ -19,7 +19,6 @@ AAnimal::AAnimal() {
 		
 	std::cout << AANIMAL_MSG("Default constructor") << std::endl;
 	this->type = "Animal";
-	std::cout << "Hello from AAnimal constructor here" << std::endl;
 }
 
 // Copy constructor
