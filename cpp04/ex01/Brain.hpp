@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 17:20:27 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:04:19 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Brain {
 		~Brain();								// destructor
 		Brain& operator=(Brain const & src);	// Assignment operator overload
 
-		void newIdea(std::string & idea);
+		void newIdea(std::string const & idea);
 		void printCollectedIdeas() const;
 };
 

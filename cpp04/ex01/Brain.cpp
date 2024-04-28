@@ -49,7 +49,7 @@ Brain& Brain::operator=(Brain const & src) {
 /*
 *	Adds a new string "idea" in the first available (empty) element of the array ideas[100]. So maximum capacity is 100 strings.
 */
-void Brain::newIdea(std::string & idea) {
+void Brain::newIdea(std::string const & idea) {
 
 	for (int i = 0; i < 100; i++) {
 		if (this->ideas[i].empty() == true) {
@@ -63,7 +63,7 @@ void Brain::printCollectedIdeas() const {
 
 	for (int i = 0; i < 100; i++) {
 		if (this->ideas[i].empty() == false) {
-			std::cout << "Idea no." << i + 1 << ": " << this->ideas[i] << std::endl;
+			std::cout << "   💭 \033[1m" << "Idea no." << i + 1 << "\033[0m" << ": " << this->ideas[i] << std::endl;
 		}
 	}
 }

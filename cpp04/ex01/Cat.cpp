@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 17:39:35 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 18:13:51 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@ void Cat::makeSound() const {
 /*
 *	Adds a new idea in the Cat's Brain, which can fit up to 100 ideas!
 */
-void Cat::hasNewIdea(std::string & new_idea) {
+void Cat::hasNewIdea(std::string const & new_idea) {
 
 	this->_catBrain->newIdea(new_idea);
+}
+
+void Cat::printAllIdeas() const {
+	
+	std::cout << "🐈 \033[35m" << UNDERLINE("I'm a cat and can't stop thinking:") << "\033[0m" << std::endl;
+	this->_catBrain->printCollectedIdeas();
 }

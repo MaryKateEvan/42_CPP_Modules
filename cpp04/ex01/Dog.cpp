@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 17:40:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:25:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Dog::Dog(Dog const & to_copy) : Animal(to_copy) {
 // Destructor
 Dog::~Dog () {
 
-	delete _dogBrain; // calls teh destructor of Brain
+	delete _dogBrain; // calls the destructor of Brain
 	std::cout << DOG_MSG("destructor") << std::endl;
 }
 
@@ -57,7 +57,13 @@ void Dog::makeSound() const {
 /*
 *	Adds a new idea in the Dog's Brain, which can fit up to 100 ideas!
 */
-void Dog::hasNewIdea(std::string & new_idea) {
+void Dog::hasNewIdea(std::string const & new_idea) {
 
 	this->_dogBrain->newIdea(new_idea);
+}
+
+void Dog::printAllIdeas() const {
+	
+	std::cout << "🐶 \033[36m" << UNDERLINE("I'm a dog and can't stop thinking:") << "\033[0m" << std::endl;
+	this->_dogBrain->printCollectedIdeas();
 }
