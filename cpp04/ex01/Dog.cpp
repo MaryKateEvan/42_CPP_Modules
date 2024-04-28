@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 16:04:58 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 17:40:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ Dog& Dog::operator=(Dog const & src) {
 
 	if (this != &src) {
 		Animal::operator=(src);
+		*_dogBrain = *(src._dogBrain); //for "deep copy"
 	}
 	return *this;
 }
@@ -51,4 +52,12 @@ Dog& Dog::operator=(Dog const & src) {
 void Dog::makeSound() const {
 
 	std::cout << "🔊: 🐶 \033[36m" << BOLD("Woof! Woof!!! Baaaark") << "\033[0m 🔊" << std::endl;
+}
+
+/*
+*	Adds a new idea in the Dog's Brain, which can fit up to 100 ideas!
+*/
+void Dog::hasNewIdea(std::string & new_idea) {
+
+	this->_dogBrain->newIdea(new_idea);
 }

@@ -1,4 +1,4 @@
-NAME	 =	dogs_vs_cats
+NAME	 =	pets_with_brains
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
