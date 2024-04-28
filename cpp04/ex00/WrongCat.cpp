@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 09:11:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:15:04 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ WrongCat& WrongCat::operator=(WrongCat const & src) {
 // WrongCat's implementation of the method makeSound(), but not overriden since it's not virtual in the WrongAnimal class, so it will never be printed
 void WrongCat::makeSound() const {
 
-	std::cout << "🔊: 🐈 \033[35m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
+	std::cout << "🔊: 🐈 \033[35m" << BOLD("Meeeeeow from wrong cat...") << "\033[0m 🔊" << std::endl;
 }
