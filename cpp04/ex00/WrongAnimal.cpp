@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 07:58:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:08:24 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ std::string WrongAnimal::getType() const {
 // Virtual so that the implementation of the derived classes has priority.
 void WrongAnimal::makeSound() const {
 
-	std::cout << "🔊: \033[90m" << BOLD("WrongWrongAnimal here making wrong sound!!") << "\033[0m 🔊 " << std::endl;
+	std::cout << "🔊: \033[90m" << BOLD("WrongAnimal here making weird sound!! ❌") << "\033[0m 🔊 " << std::endl;
 }

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:00:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:12:15 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,12 @@ WrongCat& WrongCat::operator=(WrongCat const & src) {
 	return *this;
 }
 
-// WrongCat implementation of the virtual method.
 void WrongCat::setType() {
 
 	this->type = "WrongCat";
 }
 
-// WrongCat implementation of the virtual method.
+// WrongCat's implementation of the method makeSound(), but not overriden since it's not virtual in the WrongAnimal class, so it will never be printed
 void WrongCat::makeSound() const {
 
 	std::cout << "🔊: 🐈 \033[31m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
