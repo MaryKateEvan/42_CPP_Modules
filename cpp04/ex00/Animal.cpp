@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 05:29:48 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 05:43:04 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 // Default constructor
 Animal::Animal() {
 		
-	std::cout << "Constructor for Animal called" << std::endl;
+	std::cout << "Default constructor for Animal called" << std::endl;
 }
 
 // Copy constructor
@@ -34,10 +34,27 @@ Animal::~Animal () {
 // Copy assignment Operator overload
 Animal& Animal::operator=(Animal const & src) {
 
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignment operator for Animal called" << std::endl;
 
 	if (this != &src) {
 		this->type = src.type; //it's protected so i can take it directly. I don't need a getter
 	}
 	return *this;
+}
+
+// Virtual function (method) so the implementation of the derived classes has priority in them.
+void Animal::setType() {
+
+	this->type = "Animal";
+}
+
+std::string Animal::getType() {
+
+	return this->type;
+}
+
+// Virtual so that the implementation of the derived classes has priority.
+void Animal::makeSound() {
+
+	std::cout << "Animal here making random sound!!" << std::endl;
 }
