@@ -6,13 +6,13 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 07:21:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:17:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 
-#define CAT_MSG(text) "🐈 \033[31m" << text << " for Cat called" << "\033[0m"
+#define CAT_MSG(text) "🐈 \033[35m" << text << " for Cat called" << "\033[0m"
 
 // Default constructor
 Cat::Cat() : Animal() {
@@ -54,5 +54,5 @@ void Cat::setType() {
 // Cat implementation of the virtual method.
 void Cat::makeSound() const {
 
-	std::cout << "🔊: 🐈 \033[31m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
+	std::cout << "🔊: 🐈 \033[35m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
 }

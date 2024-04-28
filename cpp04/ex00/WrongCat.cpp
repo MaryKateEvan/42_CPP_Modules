@@ -6,13 +6,13 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:12:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:17:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "WrongCat.hpp"
 
-#define WrongCat_MSG(text) "🐈 \033[31m" << text << " for WrongCat called" << "\033[0m"
+#define WrongCat_MSG(text) "🐈 \033[35m" << text << " for WrongCat called" << "\033[0m"
 
 // Default constructor
 WrongCat::WrongCat() : WrongAnimal() {
@@ -53,5 +53,5 @@ void WrongCat::setType() {
 // WrongCat's implementation of the method makeSound(), but not overriden since it's not virtual in the WrongAnimal class, so it will never be printed
 void WrongCat::makeSound() const {
 
-	std::cout << "🔊: 🐈 \033[31m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
+	std::cout << "🔊: 🐈 \033[35m" << BOLD("Meow... meeeeeow...") << "\033[0m 🔊" << std::endl;
 }
