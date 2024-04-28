@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 05:41:50 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:23:02 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ class Animal {
 		Animal& operator=(Animal const & src);	// Assignment operator overload
 
 		virtual void setType();
-		std::string getType();
+		std::string getType() const;
 
-		virtual void makeSound();
+		virtual void makeSound() const;
 };
 
 #endif //ANIMAL_HPP

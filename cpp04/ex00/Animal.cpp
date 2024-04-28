@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 05:53:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:23:10 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void Animal::setType() {
 	this->type = "Animal";
 }
 
-std::string Animal::getType() {
+std::string Animal::getType() const {
 
 	return this->type;
 }
 
 // Virtual so that the implementation of the derived classes has priority.
-void Animal::makeSound() {
+void Animal::makeSound() const {
 
 	std::cout << "Animal here making random sound!!" << std::endl;
 }
