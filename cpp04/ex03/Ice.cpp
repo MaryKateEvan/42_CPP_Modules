@@ -25,7 +25,7 @@ Ice::~Ice () {}
 Ice& Ice::operator=(Ice const & src) {
 
 	if (this != &src) {
-		this->_type = src._type; //? Is there a point doing that since it's alway gonna be ice?
+		//? No point to change the type since ice must stay "ice" and cure "cure".
 	}
 	return *this;
 }
@@ -40,5 +40,5 @@ AMateria* Ice::clone() const {
 void Ice::use(ICharacter& target) {
 
 	// Message expected: Ice: "* shoots an ice bolt at <name> *"
-	std::cout << "Ice: * shoots an ice bolt at " << "target_name?" << "*" << std::endl;
+	std::cout << "Ice: * shoots an ice bolt at " << "target_name *" << std::endl;
 }

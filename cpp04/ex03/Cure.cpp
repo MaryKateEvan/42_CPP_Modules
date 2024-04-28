@@ -25,7 +25,7 @@ Cure::~Cure () {}
 Cure& Cure::operator=(Cure const & src) {
 
 	if (this != &src) {
-		this->_type = src._type; //? Is there a point doing that since it's alway gonna be Cure?
+		//? No point to change the type since ice must stay "ice" and cure "cure".
 	}
 	return *this;
 }
