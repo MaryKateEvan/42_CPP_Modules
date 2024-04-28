@@ -1,36 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.hpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:02:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:04:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DOG_HPP
-# define DOG_HPP
+#ifndef CAT_HPP
+# define CAT_HPP
 
 # include <iostream>
 # include <string>
 
 # include "Animal.hpp"
 
-class Dog : public Animal {
+class Cat : public Animal {
 
 	public:
 
 		// Orthodox Canonical form elements:
-		Dog();								// default constructor
-		Dog(Dog const & to_copy);			// copy constructor
-		~Dog();								// destructor
-		Dog& operator=(Dog const & src);	// Assignment operator overload
+		Cat();								// default constructor
+		Cat(Cat const & to_copy);			// copy constructor
+		~Cat();								// destructor
+		Cat& operator=(Cat const & src);	// Assignment operator overload
 
 		// Functions that override the ones from the base class Animal:
 		void setType();
 		void makeSound();
 };
 
-#endif //DOG_HPP
+#endif //CAT_HPP

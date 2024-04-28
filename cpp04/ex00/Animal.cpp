@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 05:43:04 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 05:53:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 Animal::Animal() {
 		
 	std::cout << "Default constructor for Animal called" << std::endl;
+	this->setType();
 }
 
 // Copy constructor

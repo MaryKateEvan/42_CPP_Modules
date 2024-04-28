@@ -1,41 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 06:02:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 06:07:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
 // Default constructor
-Dog::Dog() : Animal() {
+Cat::Cat() : Animal() {
 		
-	std::cout << "Default constructor for Dog called" << std::endl;
+	std::cout << "Default constructor for Cat called" << std::endl;
 	this->setType();
 }
 
 // Copy constructor
-Dog::Dog(Dog const & to_copy) : Animal(to_copy) {
+Cat::Cat(Cat const & to_copy) : Animal(to_copy) {
 
-	std::cout << "Copy constructor for Dog called" << std::endl;
+	std::cout << "Copy constructor for Cat called" << std::endl;
 	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor
-Dog::~Dog () {
+Cat::~Cat () {
 
-	std::cout << "Destructor for Dog called" << std::endl;
+	std::cout << "Destructor for Cat called" << std::endl;
 }
 
 // Copy assignment Operator overload
-Dog& Dog::operator=(Dog const & src) {
+Cat& Cat::operator=(Cat const & src) {
 
-	std::cout << "Copy assignment operator for Dog called" << std::endl;
+	std::cout << "Copy assignment operator for Cat called" << std::endl;
 
 	if (this != &src) {
 		Animal::operator=(src);
@@ -43,14 +43,14 @@ Dog& Dog::operator=(Dog const & src) {
 	return *this;
 }
 
-// Dog implementation of the virtual method.
-void Dog::setType() {
+// Cat implementation of the virtual method.
+void Cat::setType() {
 
-	this->type = "Dog";
+	this->type = "Cat";
 }
 
-// Dog implementation of the virtual method.
-void Dog::makeSound() {
+// Cat implementation of the virtual method.
+void Cat::makeSound() {
 
-	std::cout << "Woof! Woof!!! Baaaark" << std::endl;
+	std::cout << "Meow... meeeeeow..." << std::endl;
 }
