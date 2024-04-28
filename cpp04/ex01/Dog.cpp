@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 19:42:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 20:43:13 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ Dog& Dog::operator=(Dog const & src) {
 
 	if (this != &src) {
 		Animal::operator=(src);
-		*_dogBrain = *(src._dogBrain); //for "deep copy"
+		*_dogBrain = *(src._dogBrain); //for "deep copy" we dereference the pointers and copy the contents
+		// for shallow copy, we would simply copy the pointer itself: _dogBrain = src._dogBrain
 	}
 	return *this;
 }
