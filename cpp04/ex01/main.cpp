@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 05:30:39 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 19:26:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 20:02:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 int main() {
 
 	// PART A: SUBTYPE POLYMORPHISM OF THE makeSound()
+	{
 	std::cout << BOLD_UNDERLINE("\nTEST 1: SUBTYPE POLYMORPHISM\n") << std::endl;
 	const Animal* j = new Dog();
 	const Animal* i = new Cat();
@@ -36,8 +37,10 @@ int main() {
 
 	delete i;
 	delete j;
+	}
 
 	// PART B: THE REQUEST FORM THE SUBJECT WHILE LOOP
+	{
 	std::cout << BOLD_UNDERLINE("\nTEST 2: THE REQUESTED FROM THE SUBJECT WHILE LOOP:\n") << std::endl;
 
 	Animal* animals[8];
@@ -54,16 +57,7 @@ int main() {
 	for (int i = 0; i < 8; i++) {
 		delete animals[i];
 	}
-
-	// // PART B: TESTING THE CONSTRUCTION OF THE BRAIN CLASS:
-	// {
-	// std::cout << BOLD_UNDERLINE("\nTEST 3: BRAIN 🧠 CONSTRUCTION\n") << std::endl;
-
-	// Brain brain1;
-	// Brain brain2(brain1);
-	// Brain brain3;
-	// brain3 = brain1;
-	// }
+	}
 
 	// PART C: ADDING IDEAS TO OUT PETS' BRAINS
 	{
@@ -73,7 +67,7 @@ int main() {
 	Cat *cat = new Cat();
 
 	cat->hasNewIdea("Maybe I'll nap here all day.");
-	cat->hasNewIdea("Hooman better not forget my evening treat, or there will be consequences");
+	cat->hasNewIdea("Hooman better not forget my evening treat, or there will be consequences!");
 	cat->hasNewIdea("Oh, what's that intriguing rustling sound? Time for a stealthy investigation.");
 
 	dog->hasNewIdea("Is that the sound of the door? Must be hooman! Yay, playtime!");
@@ -89,9 +83,31 @@ int main() {
 	delete cat;
 	delete dog;
 	}
+
+	// PART D: TESTING THE CREATION OF DEEP COPIES
+	std::cout << BOLD_UNDERLINE("\n4. TESTING THE CREATION OF DEEP COPIES 🧠\n") << std::endl;
+	{
+	Dog *first_dog = new Dog();
+	first_dog->hasNewIdea("Sleeping time!");
+	std::cout << "Ideas of first Dog: " << std::endl;
+	first_dog->printAllIdeas();
+
+	std::cout << "Creation of a Copy Dog from First Dog" << std::endl;
+	Dog *copy_dog = new Dog(*first_dog); // Copy constructor call for creation of a deep copy
+	std::cout << "Copy Dog's ideas initially, after the copy: " << std::endl;
+	copy_dog->printAllIdeas();
 	
-
-
+	std::cout << "copy_dog has a new idea " << std::endl;
+	copy_dog->hasNewIdea("Time for walk!");
+	std::cout << "Copied Dog's Brain after the addition of the Idea: " << std::endl;
+	copy_dog->printAllIdeas();
+	
+	std::cout << "First Dog's Brain stay the same: " << std::endl;
+	first_dog->printAllIdeas(); //if it was a shallow copy, first dog's brain would have also been modified from the addition of the idea.
+	
+	delete first_dog;
+	delete copy_dog;
+	}
 	
 	return 0;
 }
