@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 07:21:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:37:29 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 Dog::Dog() : Animal() {
 		
 	std::cout << DOG_MSG("Default constructor") << std::endl;
-	this->setType();
+	this->type = "Dog";
 }
 
 // Copy constructor
@@ -43,12 +43,6 @@ Dog& Dog::operator=(Dog const & src) {
 		Animal::operator=(src);
 	}
 	return *this;
-}
-
-// Dog implementation of the virtual method.
-void Dog::setType() {
-
-	this->type = "Dog";
 }
 
 // Dog implementation of the virtual method.

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:17:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:37:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 Cat::Cat() : Animal() {
 		
 	std::cout << CAT_MSG("Default constructor") << std::endl;
-	this->setType();
+	this->type = "Cat";
 }
 
 // Copy constructor
@@ -43,12 +43,6 @@ Cat& Cat::operator=(Cat const & src) {
 		Animal::operator=(src);
 	}
 	return *this;
-}
-
-// Cat implementation of the virtual method.
-void Cat::setType() {
-
-	this->type = "Cat";
 }
 
 // Cat implementation of the virtual method.

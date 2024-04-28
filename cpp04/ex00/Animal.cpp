@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 07:20:33 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/28 08:36:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 Animal::Animal() {
 		
 	std::cout << ANIMAL_MSG("Default constructor") << std::endl;
-	this->setType();
+	this->type = "Animal";
 }
 
 // Copy constructor
@@ -43,12 +43,6 @@ Animal& Animal::operator=(Animal const & src) {
 		this->type = src.type; //it's protected so i can take it directly. I don't need a getter
 	}
 	return *this;
-}
-
-// Virtual function (method) so the implementation of the derived classes has priority in them.
-void Animal::setType() {
-
-	this->type = "Animal";
 }
 
 std::string Animal::getType() const {
