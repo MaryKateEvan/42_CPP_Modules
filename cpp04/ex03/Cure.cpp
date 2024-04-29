@@ -31,7 +31,7 @@ Cure& Cure::operator=(Cure const & src) {
 }
 
 // The pure virtual function for which Cure MUST provide implementation:
-AMateria* Cure::clone() const {
+Cure* Cure::clone() const {
 
 	// Subject: "the member function clone() returns a new instance of the same type":
 	return (new Cure(*this)); //call of the copy constructor
@@ -39,6 +39,7 @@ AMateria* Cure::clone() const {
 
 void Cure::use(ICharacter& target) {
 
+	(void)target;
 	// Message expected: Cure: "* heals <name>’s wounds *"
 	std::cout << "Cure: * heals " << "target_name's wounds *" << std::endl;
 }

@@ -31,7 +31,7 @@ Ice& Ice::operator=(Ice const & src) {
 }
 
 // The pure virtual function for which Ice MUST provide implementation:
-AMateria* Ice::clone() const {
+Ice* Ice::clone() const {
 
 	// Subject: "the member function clone() returns a new instance of the same type":
 	return (new Ice(*this)); //call of the copy constructor
@@ -39,6 +39,7 @@ AMateria* Ice::clone() const {
 
 void Ice::use(ICharacter& target) {
 
+	(void)target;
 	// Message expected: Ice: "* shoots an ice bolt at <name> *"
 	std::cout << "Ice: * shoots an ice bolt at " << "target_name *" << std::endl;
 }

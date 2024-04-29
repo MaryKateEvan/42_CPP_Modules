@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.cpp                                         :+:      :+:    :+:   */
+/*   MateriaSource.cpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/25 21:39:07 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 08:36:57 by mevangel         ###   ########.fr       */
+/*   Created: 2024/04/29 03:31:56 by mevangel          #+#    #+#             */
+/*   Updated: 2024/04/29 03:33:56 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ MateriaSource& MateriaSource::operator=(MateriaSource const & src) {
 }
 
 /*
-*	Copies the Materia passes as a parameter and stores it in memory so it can be cloned later.
+*	Copies the Materia passed as a parameter and stores it in memory so it can be cloned later.
 */
 void MateriaSource::learnMateria(AMateria* new_mat) {
 
@@ -71,6 +71,7 @@ void MateriaSource::learnMateria(AMateria* new_mat) {
 			return ;
 		}
 	}
+	// if there was no space left in memory:
 	delete new_mat; //we delete the dynamically allocated AMateria object, because it can not be used
 	std::cout << "No more space left in the memory of MateriaSource." << std::endl;
 }
@@ -89,3 +90,4 @@ AMateria* MateriaSource::createMateria(std::string const & type) {
 	std::cout << "Unknown type of Materia: " << type << ". Can not be created." << std::endl;
 	return 0;
 }
+

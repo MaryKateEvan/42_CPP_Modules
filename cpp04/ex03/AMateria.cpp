@@ -12,36 +12,22 @@
 
 #include "AMateria.hpp"
 
-#define AMATERIA_MSG(text) "\033[90m" << text << " for AMateria called" << "\033[0m"
-
 // Default constructor
-AMateria::AMateria() : _type("undefined") {
-		
-	// std::cout << AMATERIA_MSG("Default constructor") << std::endl;
-}
+AMateria::AMateria() : _type("undefined") {}
 
-AMateria::AMateria(std::string const & type) : _type(type) {
-
-	// std::cout << AMATERIA_MSG("String Parameter constructor") << std::endl;
-}
+AMateria::AMateria(std::string const & type) : _type(type) {}
 
 // Copy constructor
 AMateria::AMateria(AMateria const & to_copy) {
 
-	// std::cout << AMATERIA_MSG("Copy constructor") << std::endl;
-	*this = to_copy; //assignment operator overload called
+	*this = to_copy;
 }
 
 // Destructor
-AMateria::~AMateria () {
-
-	// std::cout << AMATERIA_MSG("destructor") << std::endl;
-}
+AMateria::~AMateria () {}
 
 // Copy assignment Operator overload
 AMateria& AMateria::operator=(AMateria const & src) {
-
-	// std::cout << AMATERIA_MSG("Copy assignment operator") << std::endl;
 
 	if (this != &src) {
 		this->_type = src._type; //it's protected so i can take it directly. I don't need a getter
@@ -56,6 +42,7 @@ std::string const & AMateria::getType() const {
 
 void AMateria::use(ICharacter& target) {
 
+	(void)target;
 	// not reached because the derived classes provide implementation for this
 	// so their will have priority since it's a virtual funciton in out abstract class AMateria
 }

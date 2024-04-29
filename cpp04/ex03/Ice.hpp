@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 23:51:48 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 03:19:06 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class Ice : public AMateria { // publicly inherits from AMateria.
 		Ice& operator=(Ice const & src);		// Assignment operator overload
 		
 		// The methods that the base class AMateria asks implementation for:
-		AMateria* clone() const;
+		Ice* clone() const;
 		void use(ICharacter& target);
 };
 
