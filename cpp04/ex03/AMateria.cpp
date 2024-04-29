@@ -15,7 +15,7 @@
 #define AMATERIA_MSG(text) "\033[90m" << text << " for AMateria called" << "\033[0m"
 
 // Default constructor
-AMateria::AMateria() : _type("none") {
+AMateria::AMateria() : _type("undefined") {
 		
 	// std::cout << AMATERIA_MSG("Default constructor") << std::endl;
 }

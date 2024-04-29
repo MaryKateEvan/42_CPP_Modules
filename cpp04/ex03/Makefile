@@ -9,7 +9,7 @@ CLEAR	 =	\033[0m
 
 OBJ_DIR  =	./objs
 
-SRC		 =	main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp
+SRC		 =	main.cpp AMateria.cpp Cure.cpp Ice.cpp Character.cpp
 
 OBJ		 =	$(addprefix $(OBJ_DIR)/, $(SRC:%.cpp=%.o))
 

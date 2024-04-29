@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/28 23:25:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 00:07:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include "AMateria.hpp"
 
-class AMateria;
+// class AMateria;
 
 class ICharacter {
 
