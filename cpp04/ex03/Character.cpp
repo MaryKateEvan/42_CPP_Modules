@@ -21,7 +21,7 @@ Character::Character() : _Name("unknown") {
 }
 
 //string parameter constructor that assigns the passed name to the private attribute of the class
-Character::Character(std::string name) : _Name(name) {
+Character::Character(std::string const & name) : _Name(name) {
 
 	for (int i = 0; i < 4; i++)
 		this->_Inventory[i] = NULL;
@@ -70,20 +70,40 @@ Character& Character::operator=(Character const & src) {
 
 std::string const & Character::getName() const {
 
-
+	return this->_Name;
 }
 
+/*
+*	Receives a dynamically allocated object Materia that places in the first available 
+*	spot in the Inventory. If the Inventory is full it discards the Materia
+*/
 void Character::equip(AMateria* m) {
 
-
+	if (m == NULL)
+		return ;
+	for (int i = 0; i < 4; i++) {
+		if (this->_Inventory[i] == NULL) { // --> empty place in _Inventory, available to place the new Materia
+			this->_Inventory[i] = m;
+			return ;
+		}
+	}
+	delete m;
+	std::cout << "No space left in the Inventory" << std::endl;
 }
 
 void Character::unequip(int idx) {
 
-
+	
 }
 
+/*
+*	"The use(int, ICharacter&) member function will have to use the Materia at the
+*	slot[idx], and pass the target parameter to the AMateria::use function."
+*/
 void Character::use(int idx, ICharacter& target) {
 
-
+	if (0 <= idx && idx < 4 && _Inventory[idx])
+		_Inventory[idx]->use(target);
+	else
+		std::cout << "idx " << idx << " is out of range or there's nothing there" << std::endl;
 }

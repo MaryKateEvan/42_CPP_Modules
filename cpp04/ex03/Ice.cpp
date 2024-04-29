@@ -39,7 +39,6 @@ Ice* Ice::clone() const {
 
 void Ice::use(ICharacter& target) {
 
-	(void)target;
 	// Message expected: Ice: "* shoots an ice bolt at <name> *"
-	std::cout << "Ice: * shoots an ice bolt at " << "target_name *" << std::endl;
+	std::cout << "* shoots an ice bolt at " << target.getName() << " *" << std::endl;
 }

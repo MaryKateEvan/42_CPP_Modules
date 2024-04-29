@@ -39,7 +39,6 @@ Cure* Cure::clone() const {
 
 void Cure::use(ICharacter& target) {
 
-	(void)target;
 	// Message expected: Cure: "* heals <name>’s wounds *"
-	std::cout << "Cure: * heals " << "target_name's wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }
