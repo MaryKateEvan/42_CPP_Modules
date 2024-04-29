@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 21:37:48 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/29 03:44:19 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 07:30:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,15 @@ class MateriaSource : public IMateriaSource { // publicly inherits from the inte
 
 	private:
 
-		AMateria* memory[4]; // "The MateriaSource can know at most 4 Materias"
+		AMateria* memory[4]; // "The MateriaSource can learn/remember at most 4 Materias"
 	
 	public:
 
 		// Orthodox Canonical form elements:
-		MateriaSource();									// default constructor
-		MateriaSource(MateriaSource const & to_copy);				// copy constructor
-		~MateriaSource();								// destructor
-		MateriaSource& operator=(MateriaSource const & src);		// Assignment operator overload
+		MateriaSource();										// default constructor
+		MateriaSource(MateriaSource const & to_copy);			// copy constructor
+		~MateriaSource();										// destructor
+		MateriaSource& operator=(MateriaSource const & src);	// Assignment operator overload
 		
 		// The pure virtual funtions from IMateriaSource that this class must provide implementation for
 		void learnMateria(AMateria* new_mat);

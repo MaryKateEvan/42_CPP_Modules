@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:31:56 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/29 04:00:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 07:03:02 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@ void MateriaSource::learnMateria(AMateria* new_mat) {
 	if (new_mat == NULL)
 		return ;
 	for (int i = 0; i < 4; i++) {
-		if (this->memory[i] == NULL) { // --> empty place in memory, available to place the new Materia
+		if (!this->memory[i]) { // --> empty place in memory, available to place the new Materia
 			this->memory[i] = new_mat;
+			std::cout << "Materia " << new_mat->getType() << " is now in the memory." << std::endl;
 			return ;
 		}
 	}
@@ -84,7 +85,7 @@ void MateriaSource::learnMateria(AMateria* new_mat) {
 AMateria* MateriaSource::createMateria(std::string const & type) {
 
 	for (int i = 0; i < 4; i++) {
-		if (this->memory[i] != NULL && this->memory[i]->getType() == type)
+		if (this->memory[i] != NULL && (this->memory[i]->getType()) == type)
 			return (this->memory[i]->clone());
 	}
 	std::cout << "Unknown type of Materia: " << type << ". Can not be created." << std::endl;

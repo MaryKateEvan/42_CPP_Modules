@@ -25,7 +25,7 @@ Ice::~Ice () {}
 Ice& Ice::operator=(Ice const & src) {
 
 	if (this != &src) {
-		//? No point to change the type since ice must stay "ice" and cure "cure".
+		AMateria::operator=(src);
 	}
 	return *this;
 }

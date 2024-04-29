@@ -44,5 +44,5 @@ void AMateria::use(ICharacter& target) {
 
 	(void)target;
 	// not reached because the derived classes provide implementation for this
-	// so their will have priority since it's a virtual funciton in out abstract class AMateria
+	// so they will have priority since it's a virtual function in out abstract class AMateria
 }

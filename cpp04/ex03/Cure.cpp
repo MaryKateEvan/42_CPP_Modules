@@ -25,7 +25,7 @@ Cure::~Cure () {}
 Cure& Cure::operator=(Cure const & src) {
 
 	if (this != &src) {
-		//? No point to change the type since ice must stay "ice" and cure "cure".
+		AMateria::operator=(src);
 	}
 	return *this;
 }
@@ -40,5 +40,5 @@ Cure* Cure::clone() const {
 void Cure::use(ICharacter& target) {
 
 	// Message expected: Cure: "* heals <name>’s wounds *"
-	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
+	std::cout << "* heals " << target.getName() << "s wounds *" << std::endl;
 }

@@ -66,7 +66,7 @@ Character& Character::operator=(Character const & src) {
 }
 
 
-// THE PURE VIRTUAL FUNCTIONS THAT THE INTERFACE ICHARACTER EXPECTS CHARACTER TO HAVE:
+// THE PURE VIRTUAL FUNCTIONS THAT THE INTERFACE ICHARACTER EXPECTS THE CLASS CHARACTER TO PROVIDE:
 
 std::string const & Character::getName() const {
 
@@ -84,6 +84,7 @@ void Character::equip(AMateria* m) {
 	for (int i = 0; i < 4; i++) {
 		if (this->_Inventory[i] == NULL) { // --> empty place in _Inventory, available to place the new Materia
 			this->_Inventory[i] = m;
+			std::cout << "Materia " << m->getType() << " is now equipped." << std::endl;
 			return ;
 		}
 	}
@@ -93,7 +94,13 @@ void Character::equip(AMateria* m) {
 
 void Character::unequip(int idx) {
 
-	
+	if (0 <= idx && idx < 4 && _Inventory[idx]) {
+		std::cout << "Materia " << this->_Inventory[idx]->getType() << " with index " << idx << " is now unequipped." << std::endl;
+		delete this->_Inventory[idx];
+		this->_Inventory[idx] = NULL;
+	}
+	else
+		std::cout << "idx " << idx << " is out of range or there's nothing there" << std::endl;
 }
 
 /*

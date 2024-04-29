@@ -29,14 +29,14 @@ class AAnimal {
 	public:
 
 		// Orthodox Canonical form elements:
-		AAnimal();	//moved to the protected section so that AAnimal can not be instantiable
+		AAnimal();									//default constructor
 		AAnimal(AAnimal const & to_copy);			// copy constructor
-		virtual ~AAnimal();						// destructor
+		virtual ~AAnimal();							// destructor
 		AAnimal& operator=(AAnimal const & src);	// Assignment operator overload
 
 		std::string getType() const;
 
-		virtual void makeSound() const = 0;//So now it is a pure virtual method! -> All the derived functions must provide implemetation for it, but this abstract class doesn't have to.
+		virtual void makeSound() const = 0; // So now it is a pure virtual method! -> All the derived functions must provide implemetation for it, but this abstract class doesn't have to.
 };
 
 #endif //AAnimal_HPP
