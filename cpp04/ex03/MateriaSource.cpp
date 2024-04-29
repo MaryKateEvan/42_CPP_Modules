@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 03:31:56 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/29 03:33:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 04:00:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void MateriaSource::learnMateria(AMateria* new_mat) {
 
 
 /*
-*	Returns a new Materia (that's why the clone) which is a copy of a previously learned Materia
-*	If the type is unknown it returns zero, which means that the Materia could not be created.
+*	Returns a new dynamically allocated Materia (that's why the clone) which is a copy of a previously learned 
+*	Materia. If the type is unknown it returns zero, which means that the Materia could not be created.
 */
 AMateria* MateriaSource::createMateria(std::string const & type) {
 

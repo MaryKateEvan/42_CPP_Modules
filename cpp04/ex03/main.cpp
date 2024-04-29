@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 05:30:39 by mevangel          #+#    #+#             */
-/*   Updated: 2024/04/29 03:50:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/04/29 03:57:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int main() {
 	tmp = src->createMateria("ice");
 	// me->equip(tmp);
 	tmp = src->createMateria("cure");
-	if (!tmp)
-		return 0;;
 	// me->equip(tmp);
 	// ICharacter* bob = new Character("bob");
 	// me->use(0, *bob);
@@ -35,6 +33,7 @@ int main() {
 	// delete bob;
 	// delete me;
 	delete src;
+	delete tmp;
 	
 	return 0;
 }
