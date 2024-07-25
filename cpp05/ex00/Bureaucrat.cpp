@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/25 05:11:02 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:44:25 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ std::string Bureaucrat::getName() const {
 	return this->_Name;
 }
 
-std::string Bureaucrat::getGrade() const {
+short Bureaucrat::getGrade() const {
 	return this->_Grade;
 }
+

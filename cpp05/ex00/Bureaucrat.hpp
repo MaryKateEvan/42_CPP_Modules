@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/25 04:45:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/25 05:43:41 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Bureaucrat {
 
 	private:
 
-		const std::string _Name;
-		unsigned short _Grade;
+		std::string _Name;
+		short _Grade;
 	
 	public:
 
@@ -36,12 +36,12 @@ class Bureaucrat {
 		Bureaucrat& operator=(Bureaucrat const & src);	// Assignment operator overload
 
 		// Getters for the two private vaariables:
-		getName();
-		getGrade();
+		std::string getName() const;
+		short getGrade() const;
 
 		//In order to change the grade:
-		incrementGrade();
-		decrementGrade();
+		void incrementGrade();
+		void decrementGrade();
 };
 
 #endif //BUREAUCRAT_HPP
