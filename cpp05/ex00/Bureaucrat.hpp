@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/25 05:43:41 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/25 22:58:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <string>
+# include <stdexcept>
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -24,7 +25,7 @@ class Bureaucrat {
 
 	private:
 
-		std::string _Name;
+		const std::string _Name;
 		short _Grade;
 	
 	public:
@@ -35,6 +36,9 @@ class Bureaucrat {
 		~Bureaucrat();									// destructor
 		Bureaucrat& operator=(Bureaucrat const & src);	// Assignment operator overload
 
+		// Parameter constructor
+		Bureaucrat(std::string name, short grade);
+		
 		// Getters for the two private vaariables:
 		std::string getName() const;
 		short getGrade() const;

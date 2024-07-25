@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/25 05:44:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/25 23:10:19 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,19 @@
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _Name("unknown") {
-		
+
 	std::cout << "Constructor called" << std::endl;
 }
 
-// Copy constructor
-Bureaucrat::Bureaucrat(Bureaucrat const & to_copy) {
+// Parameter constructor
+Bureaucrat::Bureaucrat(std::string name, short grade) : _Name(name), _Grade(grade) {
+
+	std::cout << "Parameter constructor called" << std::endl;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const & to_copy) : _Name(to_copy.getName()), _Grade(to_copy.getGrade()) {
 
 	std::cout << "Copy constructor called" << std::endl;
-	*this = to_copy; //assignment operator overload called
 }
 
 // Destructor
@@ -37,7 +41,8 @@ Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src) {
 	std::cout << "Copy assignment operator called" << std::endl;
 
 	if (this != &src) {
-		this->_Name = src.getName();
+		// this->_Name = src.getName(); //can't do that since the _Name is const
+		this->_Grade = src.getGrade();
 	}
 	return *this;
 }
