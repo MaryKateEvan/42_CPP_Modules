@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 11:08:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:22:11 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
+# define GRAY(text) "\033[90m" << text << "\033[0m"
+# define RED(text) "\033[31m" << text << "\033[0m"
 
 class Bureaucrat {
 
@@ -27,6 +29,7 @@ class Bureaucrat {
 
 		const std::string _Name;
 		short _Grade;
+		void checkGradeRange(short grade) const;
 	
 	public:
 
@@ -52,13 +55,13 @@ class Bureaucrat {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
-
 		class GradeTooLowException : public std::exception {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
 };
 
+// Insertion operator overload
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & b);
 
 #endif //BUREAUCRAT_HPP
