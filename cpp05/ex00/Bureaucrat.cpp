@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 12:25:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:03:19 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ Bureaucrat::Bureaucrat() : _Name("unknown"), _Grade(150) {
 // Parameter constructor
 Bureaucrat::Bureaucrat(std::string name, short grade) : _Name(name), _Grade(grade) {
 
-	std::cout << GRAY("🔨 Parameter constructor called") << std::endl;
+	std::cout << GRAY("🔨 Parameter constructor for " << name << " called") << std::endl;
 	checkGradeRange(grade);
 }
 
