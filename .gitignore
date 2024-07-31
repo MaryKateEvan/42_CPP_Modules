@@ -1,5 +1,6 @@
 .vscode/
 .dist
+*/.dist
 test.cpp
 a.out
 */a.out
@@ -8,3 +9,10 @@ a.out
 */*/megaphone
 */*/*/objs
 */*/*.txt
+
+*/*/bureaucrat
+
+
+canonical_format/
+cpp05/ex00/main_before.cpp
+git_history.txt

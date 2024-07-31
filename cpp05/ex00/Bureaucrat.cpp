@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 13:03:19 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:31:19 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Bureaucrat::~Bureaucrat () {
 // Copy assignment Operator overload
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Copy assignment operator called") << std::endl;
+	std::cout << GRAY("⚙️⚙️ Assignment operator called") << std::endl;
 
 	if (this != &src) {
 		// this->_Name = src.getName(); // I can't do that since the _Name is const
@@ -57,6 +57,7 @@ short Bureaucrat::getGrade() const {
 	return this->_Grade;
 }
 
+// Function to check the range of the bureaucrat's grade and throw the proper exception
 void Bureaucrat::checkGradeRange(short grade) const {
 	if (grade < 1)
 		throw GradeTooHighException();
@@ -69,7 +70,6 @@ void Bureaucrat::incrementGrade() {
 	this->_Grade--;
 	checkGradeRange(this->_Grade);
 }
-
 void Bureaucrat::decrementGrade() {
 	this->_Grade++;
 	checkGradeRange(this->_Grade);
@@ -86,6 +86,6 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 // Insertion operator overload
 std::ostream & operator<<(std::ostream & out, Bureaucrat const & b) {
 	
-	out << "Bureaucrat " << BOLD(b.getName()) << " has grade " << BOLD(b.getGrade()) << std::endl;
+	out << BOLD(b.getName()) << ": bureaucrat grade " << BOLD(b.getGrade()) << std::endl;
 	return out;
 }

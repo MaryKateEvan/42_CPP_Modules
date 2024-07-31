@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 13:43:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/31 16:04:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ static void test2() {
 	Bureaucrat s("Stefan", 5);
 
 	std::cout << UNDERLINE("Initial state of our bureaucrats: ") << std::endl;
-	std::cout << a << mk << t << s;
+	std::cout << mk << t << s;
 	
 	mk.incrementGrade();
 	t.decrementGrade();
 	s = a; //for assignment operator call
 	s.incrementGrade();
 	std::cout << UNDERLINE("State after the grade modifications: ") << std::endl;
-	std::cout << a << mk << t << s;
+	std::cout << mk << t << s;
 }
 
 static void test3() {

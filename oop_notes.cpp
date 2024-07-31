@@ -762,10 +762,106 @@ Sample::~Sample(void) {
 }
 
 
+//! EXCEPTIONS
+
+#include <stdexcept>
+
+void test1()
+{
+	try
+	{
+		// I do some stuff here
+		if (/*there is an error*/)
+		{
+			throw std::exception();
+		}
+		else
+		{
+			// I do whatever i wanted
+		}
+	}
+	// catch(const std::exception& e) //the autofilled version
+	// {
+	// 	std::cerr << e.what() << '\n';
+	// }
+	
+	catch (std::exception e) // Zaz's version from the intra video
+	{
+		// I handle the error here
+	}
+}
+
+void test4() {
+
+	class PEBKACEException : public std::exception{
+		public:
+			virtual const char* what() const throw() {
+				return ("Problem exists between keyboard and chair");
+			}
+	};
+
+try {
+	test3(); //any function that i'm calling something that could fail
+}
+catch (PEBKACEException& e) { //"specific catch"
+	// control code
+}
+catch (std::exception& e) { //"generic catch"
+	// control for exceptions that are like std::exception
+}
+catch (out_of_range& e)
+{
+
+}
+
+//! throwing exceptions is "resource-consuming" so we shouldn't "overuse" it!
+// examples of system functions that might return exceptions: new, open(), osstring
 
 
+// the example from the youtube video that helped more:
+#include <iostream>
 
+// class custom_exception_here : public std::exception {
 
+// 	virtual const char* what() const noexcept {
+// 		return "Custom Exception";
+// 	}
+// };
+
+int main() {
+
+	std::string word = "four";
+
+	try {
+		// std::cout << word.at() << std::endl;
+		// int *array = new int[9999999999999999];
+		// delete [] array;
+		// we can throw our own exceptions even, like:
+		// throw std::exception();
+		// or something more specific if we want:
+		// throw std::runtime_error("problem encountered");
+		// throw custom_exception_here();
+		throw 4.25;
+	}
+	// 1st scenario that catches everything:
+	// catch (...) {
+	// 	std::cout << "Exception thrown!" << std::endl;
+	// }
+	// 2nd scenario specifically for one exception:
+	catch (std::out_of_range& e) {
+		std::cout << "Exception: " << e.what() << std::endl;
+	}
+	catch (std::exception& e) {
+		std::cout << "Second catch: " << e.what() << std::endl;
+	}
+	catch (int code) {
+		std::cout << "Error code: " << code << std::endl;
+	}
+	catch (...) {
+		std::cout << "Default catch case!" << std::endl;	
+	}
+	return 0;
+}
 
 
 
