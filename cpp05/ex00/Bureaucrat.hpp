@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/25 22:58:01 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/07/31 11:08:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,13 +39,26 @@ class Bureaucrat {
 		// Parameter constructor
 		Bureaucrat(std::string name, short grade);
 		
-		// Getters for the two private vaariables:
+		// Getters for the two private variables:
 		std::string getName() const;
 		short getGrade() const;
 
-		//In order to change the grade:
+		// In order to change the grade:
 		void incrementGrade();
 		void decrementGrade();
+
+		// custom excpetion classes, as subclasses of the Bureaucrat
+		class GradeTooHighException : public std::exception {
+			public:
+				virtual const char* what() const throw(); //override of the what() method
+		};
+
+		class GradeTooLowException : public std::exception {
+			public:
+				virtual const char* what() const throw(); //override of the what() method
+		};
 };
+
+std::ostream & operator<<(std::ostream & out, Bureaucrat const & b);
 
 #endif //BUREAUCRAT_HPP
