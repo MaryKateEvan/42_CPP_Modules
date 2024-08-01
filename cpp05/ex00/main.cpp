@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 16:04:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/01 16:27:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void handleExceptions(RunTest testCase) {
 static void test1() {
 
 	Bureaucrat a;
-	Bureaucrat mk("Mary Kate", 42);	//valid
+	Bureaucrat mk("Mary Kate", 42);
 	Bureaucrat t("Tom", 100);
 	Bureaucrat copy(mk); //for copy constructor call
 
@@ -43,7 +43,7 @@ static void test1() {
 static void test2() {
 
 	Bureaucrat a;
-	Bureaucrat mk("Mary Kate", 42);	//valid
+	Bureaucrat mk("Mary Kate", 42);
 	Bureaucrat t("Tom", 100);
 	Bureaucrat s("Stefan", 5);
 
@@ -67,38 +67,39 @@ static void test3() {
 
 static void test4() {
 	
-	Bureaucrat a("Anna", 1); // too high
+	Bureaucrat a("Anna", 1); // after increment too high
 	a.incrementGrade();
 	std::cout << a;
 }
 
 static void test5() {
 
-	Bureaucrat a("Katerina", 150); // too low
+	Bureaucrat a("Katerina", 150); // after decrement too low
 	a.decrementGrade();
 	std::cout << a;
 }
 
 int main() {
 	
-	std::cout << BOLD("\nTEST 1: Constructing bureaucrats with valid grades") << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 1️⃣ : Constructing bureaucrats with valid grades")) << std::endl;
+	std::cout << CYAN("----------------------------------------------------") << std::endl;
 	handleExceptions(test1);
 
-	std::cout << BOLD("\nTEST 2: Modifying the grades") << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 2️⃣ : Modifying the grades")) << std::endl;
+	std::cout << CYAN("----------------------------------------------------") << std::endl;
 	handleExceptions(test2);
 
-	std::cout << BOLD("\nTEST 3: Constructing bureaucrats with ") << BOLD_UNDERLINE("invalid") << BOLD(" grades") << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 3️⃣ : Constructing bureaucrats with ")) 
+				<< CYAN(BOLD_UNDERLINE("invalid")) << CYAN(BOLD(" grades")) << std::endl;
+	std::cout << CYAN("----------------------------------------------------") << std::endl;
 	handleExceptions(test3);
 
-	std::cout << BOLD("\nTEST 4: Increment Grade to out of range ") << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 4️⃣ : Increment Grade to out of range ")) << std::endl;
+	std::cout << CYAN("----------------------------------------------------") << std::endl;
 	handleExceptions(test4);
 
-	std::cout << BOLD("\nTEST 5: Decrement Grade to out of range ") << std::endl;
-	std::cout << "----------------------------------------------------" << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 5️⃣ : Decrement Grade to out of range ")) << std::endl;
+	std::cout << CYAN("----------------------------------------------------") << std::endl;
 	handleExceptions(test5);
 
 	return 0;
