@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/01 16:27:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/01 18:22:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,24 @@ static void test5() {
 int main() {
 	
 	std::cout << CYAN(BOLD("\nTEST 1️⃣ : Constructing bureaucrats with valid grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------") << std::endl;
 	handleExceptions(test1);
 
 	std::cout << CYAN(BOLD("\nTEST 2️⃣ : Modifying the grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------") << std::endl;
 	handleExceptions(test2);
 
 	std::cout << CYAN(BOLD("\nTEST 3️⃣ : Constructing bureaucrats with ")) 
 				<< CYAN(BOLD_UNDERLINE("invalid")) << CYAN(BOLD(" grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------") << std::endl;
 	handleExceptions(test3);
 
 	std::cout << CYAN(BOLD("\nTEST 4️⃣ : Increment Grade to out of range ")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------") << std::endl;
 	handleExceptions(test4);
 
 	std::cout << CYAN(BOLD("\nTEST 5️⃣ : Decrement Grade to out of range ")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------") << std::endl;
 	handleExceptions(test5);
 
 	return 0;
