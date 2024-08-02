@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/02 15:26:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/02 16:05:02 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,25 @@ void Form::checkGradeRange(short grade) const {
 
 // Override of the what method in the two custom exceptions:
 const char* Form::GradeTooHighException::what() const throw() {
-	return "Grade too high!";
+	return "Form grade too high!";
 }
 const char* Form::GradeTooLowException::what() const throw() {
-	return "Grade too low!";
+	return "Form grade too low!";
+}
+
+//member function asked from the Subject:
+void Form::beSigned(Bureaucrat & b) {
+	
+	if (b.getGrade() <= this->_gradeToSign)
+	{
+		this->_isSigned = true;
+		b.signForm(this->_name);
+	}
+	else
+	{
+		std::cout << "✖️ " << b.getName() << " could not sign " << this->_name << " because of his low grade." << std::endl;
+		throw Form::GradeTooLowException();
+	}
 }
 
 // Insertion operator overload

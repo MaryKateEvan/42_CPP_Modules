@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:31:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/02 15:28:11 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:54:54 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+
+# include "Bureaucrat.hpp"
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -61,6 +63,10 @@ class Form {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
+
+		//member function asked from the Subject:
+		void beSigned(Bureaucrat & b);
+		
 };
 
 // Insertion operator overload

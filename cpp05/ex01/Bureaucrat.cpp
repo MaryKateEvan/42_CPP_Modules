@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/07/31 16:31:19 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/02 15:59:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,16 @@ void Bureaucrat::decrementGrade() {
 
 // Override of the what method in the two custom exceptions:
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return "Grade too high!";
+	return "Bureaucrat grade too high!";
 }
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return "Grade too low!";
+	return "Bureaucrat grade too low!";
+}
+
+//additional member function required in ex01:
+void Bureaucrat::signForm(std::string formName) const {
+	
+	std::cout << "🖋️" << _Name << " signed " << formName << std::endl;
 }
 
 // Insertion operator overload
