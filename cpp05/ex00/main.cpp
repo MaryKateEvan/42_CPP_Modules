@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/01 18:22:50 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/17 23:05:31 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void test1() {
 	Bureaucrat t("Tom", 100);
 	Bureaucrat copy(mk); //for copy constructor call
 
-	std::cout << a << mk << copy;
+	std::cout << a << mk << t << copy;
 }
 
 static void test2() {
