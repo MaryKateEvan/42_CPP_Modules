@@ -76,10 +76,13 @@ void AForm::checkGradeRange(short grade) const {
 
 // Override of the what method in the two custom exceptions:
 const char* AForm::GradeTooHighException::what() const throw() {
-	return "AForm grade too high!";
+	return "Form grade too high!";
 }
 const char* AForm::GradeTooLowException::what() const throw() {
-	return "AForm grade too low!";
+	return "Form grade too low!";
+}
+const char* AForm::FormNotSignedException::what() const throw() {
+	return "Form is NOT signed yet to be executed!";
 }
 
 //member function asked from the Subject:
@@ -87,7 +90,7 @@ void AForm::beSigned(Bureaucrat & b) {
 	
 	if (this->_isSigned == true)
 	{
-		std::cout << RED("❗ This Aform is already signed!") << std::endl;
+		std::cout << RED("❗ This form is already signed!") << std::endl;
 		std::cout << RED("   So no need for " << b.getName() << " to sign it again.") << std::endl;
 		return ;
 	}

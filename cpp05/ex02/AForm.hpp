@@ -57,6 +57,10 @@ class AForm {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
+		class FormNotSignedException : public std::exception {
+			public:
+				virtual const char* what() const throw(); //override of the what() method
+		};
 
 		void beSigned(Bureaucrat & b);
 
