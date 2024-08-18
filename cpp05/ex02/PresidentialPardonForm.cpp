@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 19:37:21 by mevangel         ###   ########.fr       */
+/*   Created: 2024/08/18 19:58:08 by mevangel          #+#    #+#             */
+/*   Updated: 2024/08/18 21:25:21 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm
 	return *this;
 }
 
-// GETTERS for the private attributes:
+// GETTER for the private attribute:
 std::string PresidentialPardonForm::getTarget() const {
 	return this->_target;
+}
+
+// Execute the form
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
+
+	checkIfCanBeExecuted(executor);
+	std::cout << GREEN("📜 " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
 }

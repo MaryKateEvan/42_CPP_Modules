@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 19:50:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:40:59 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ RobotomyRequestForm& RobotomyRequestForm::operator=(RobotomyRequestForm const & 
 	return *this;
 }
 
-// GETTERS for the private attribute:
+// GETTER for the private attribute:
 std::string RobotomyRequestForm::getTarget() const {
 	return this->_target;
+}
+
+// Execute the form
+void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
+
+	checkIfCanBeExecuted(executor);
+	// std::cout << GREEN("📜 " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
 }

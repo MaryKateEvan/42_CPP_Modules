@@ -9,7 +9,7 @@ CLEAR	 =	\033[0m
 
 OBJ_DIR  =	./objs
 
-SRC		 =	main.cpp Bureaucrat.cpp Form.cpp \
+SRC		 =	main.cpp Bureaucrat.cpp AForm.cpp \
 			ShrubberyCreationForm.cpp RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp
 

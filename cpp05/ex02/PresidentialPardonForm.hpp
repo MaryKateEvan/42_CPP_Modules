@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/18 19:06:58 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 19:40:27 by mevangel         ###   ########.fr       */
+/*   Created: 2024/08/18 19:58:24 by mevangel          #+#    #+#             */
+/*   Updated: 2024/08/18 20:46:08 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# include <fstream>
 
 # include "AForm.hpp"
 
@@ -41,12 +42,6 @@ class PresidentialPardonForm : public AForm {
 
 		// Execute the form
 		void execute(Bureaucrat const & executor) const;
-
-		// // custom exception class
-		// class FileNotOpenedException : public std::exception {
-		// 	public:
-		// 		virtual const char* what() const throw(); //override of the what() method
-		// };
 };
 
 #endif // PRESIDENTIALPARDONFORM_HPP

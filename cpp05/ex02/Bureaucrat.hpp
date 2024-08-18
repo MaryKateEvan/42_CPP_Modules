@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 18:55:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:33:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ class Bureaucrat {
 		bool signForm(AForm & f) const;
 
 		//new function asked in ex02:
-		bool executeForm(AForm const & form) const;
+		bool executeForm(AForm & f) const;
 };
 
 // Insertion operator overload

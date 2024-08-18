@@ -64,6 +64,9 @@ class AForm {
 
 		void beSigned(Bureaucrat & b);
 
+		// function for the derived classes to check if the form can be executed
+		void checkIfCanBeExecuted(Bureaucrat const & executor) const;
+
 		// Pure virtual function (making AForm an abstract class)
 		virtual void execute(Bureaucrat const & executor) const = 0; //means that the derived classes MUST provide implementation for this function
 };

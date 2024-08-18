@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 18:55:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:50:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ bool Bureaucrat::signForm(AForm & f) const {
 	
 	if (this->_Grade <= f.getGradeToSign())
 	{
+		
 		std::cout << "🖋️  " << GREEN(_Name << " signed " << f.getName()) << std::endl;
 		return true;
 	}
@@ -98,11 +99,12 @@ bool Bureaucrat::signForm(AForm & f) const {
 	}
 }
 
-bool Bureaucrat::executeForm(AForm const & f) const {
+bool Bureaucrat::executeForm(AForm & f) const {
 	
 	if (this->_Grade <= f.getGradeToExecute())
 	{
-		std::cout << "⚙️  " << YELLOW(_Name << " executed " << f.getName()) << std::endl;
+		f.execute(*this);
+		std::cout << "🚀  " << YELLOW(_Name << " executed " << f.getName()) << std::endl;
 		return true;
 	}
 	else

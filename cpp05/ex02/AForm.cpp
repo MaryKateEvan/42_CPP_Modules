@@ -22,7 +22,7 @@ AForm::AForm() : _name("undetermined"), _isSigned(false), _gradeToSign(150), _gr
 AForm::AForm(std::string name, short gradeToSign, short gradeToExecute)
 	: _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 
-	std::cout << GRAY("🔨 Parameter constructor for " << name << " called") << std::endl;
+	std::cout << GRAY("🔨 Parameter constructor for AForm called") << std::endl;
 	checkGradeRange(gradeToSign);
 	checkGradeRange(gradeToExecute);
 }
@@ -97,18 +97,28 @@ void AForm::beSigned(Bureaucrat & b) {
 	if (b.signForm(*this))
 		this->_isSigned = true;
 	else
-		throw AForm::GradeTooLowException();
+		throw GradeTooLowException();
+}
+
+void AForm::checkIfCanBeExecuted(Bureaucrat const & executor) const {
+
+	if (this->_isSigned == false) {
+		throw FormNotSignedException();
+	}
+	if (executor.getGrade() > this->_gradeToExecute) {
+		throw GradeTooLowException();
+	}
 }
 
 // Insertion operator overload
 std::ostream & operator<<(std::ostream & out, AForm const & b) {
 	
-	out << UNDERLINE("\nInAformation for Aform named \"") << BOLD_UNDERLINE(b.getName()) << UNDERLINE("\":") << std::endl;
+	out << UNDERLINE("\nInformation for form named \"") << BOLD_UNDERLINE(b.getName()) << UNDERLINE("\":") << std::endl;
 	out << "- Grade required to Sign it: " << b.getGradeToSign() << std::endl;
 	out << "- Grade required to Execute it: " << b.getGradeToExecute() << std::endl;
 	if (b.getIsSigned() == true)
-		out << "- This AForm is signed. ✅ \n" << std::endl;
+		out << "- This Form is signed. ✅ \n" << std::endl;
 	else
-		out << "- This AForm is NOT signed yet. ❌ \n" << std::endl;
+		out << "- This Form is NOT signed yet. ❌ \n" << std::endl;
 	return out;
 }

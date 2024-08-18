@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 19:37:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 21:40:33 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,14 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm co
 	return *this;
 }
 
-// GETTERS for the private attributes:
+// GETTER for the private attribute:
 std::string ShrubberyCreationForm::getTarget() const {
 	return this->_target;
+}
+
+// Execute the form
+void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
+
+	checkIfCanBeExecuted(executor);
+	// std::cout << GREEN("📜 " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
 }
