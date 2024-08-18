@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 00:19:41 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 01:36:36 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ class Bureaucrat {
 		};
 		
 		//new member function required in ex01:
-		// bool signForm(Form & f) const;
 		void signForm(Form & f) const;
 };
 

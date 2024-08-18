@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:31:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 00:47:48 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 01:40:46 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ class Form {
 		};
 
 		//member function asked from the Subject:
-		// void beSigned(Bureaucrat & b);
 		void beSigned(Bureaucrat const & b);
 };
 
