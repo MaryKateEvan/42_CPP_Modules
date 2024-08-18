@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/02 16:00:59 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 17:57:41 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 # include <string>
 # include <stdexcept>
 
-// # include "Form.hpp"
-
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 # define GRAY(text) "\033[90m" << text << "\033[0m"
 # define RED(text) "\033[31m" << text << "\033[0m"
 # define CYAN(text) "\033[1;96m" << text << "\033[0m"
+# define GREEN(text) "\033[1;92m" << text << "\033[0m"
+
+class Form;
 
 class Bureaucrat {
 
@@ -64,7 +65,7 @@ class Bureaucrat {
 		};
 		
 		//new member function required in ex01:
-		void signForm(std::string formName) const;
+		bool signForm(Form & f) const;
 };
 
 // Insertion operator overload

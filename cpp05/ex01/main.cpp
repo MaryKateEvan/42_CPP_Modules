@@ -6,11 +6,12 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/01 16:27:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 18:02:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 typedef void (*RunTest)();
 
@@ -25,6 +26,12 @@ static void handleExceptions(RunTest testCase) {
 	catch (const Bureaucrat::GradeTooLowException& e) {
 		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
 	}
+	catch (const Form::GradeTooHighException& e) {
+		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
+	}
+	catch (const Form::GradeTooLowException& e) {
+		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
+	}
 	catch (const std::exception& e) {
 		std::cout << RED("❗ Other exception found: ") << UNDERLINE(e.what()) << std::endl;
 	}
@@ -32,74 +39,84 @@ static void handleExceptions(RunTest testCase) {
 
 static void test1() {
 
-	Bureaucrat a;
 	Bureaucrat mk("Mary Kate", 42);
-	Bureaucrat t("Tom", 100);
-	Bureaucrat copy(mk); //for copy constructor call
+	Form f("Report", 100, 150);
 
-	std::cout << a << mk << copy;
+	std::cout << std::endl << mk << f ;
 }
 
 static void test2() {
 
-	Bureaucrat a;
-	Bureaucrat mk("Mary Kate", 42);
-	Bureaucrat t("Tom", 100);
-	Bureaucrat s("Stefan", 5);
-
-	std::cout << UNDERLINE("Initial state of our bureaucrats: ") << std::endl;
-	std::cout << mk << t << s;
+	Form f1("Form1", 100, 150); // valid
+	Form f2("Form2", 0, 150); // too high gradeToSign
+	Form f3("Form3", 100, 151); // too low gradeToExecute
+	Form f4("Form4", 0, 151); // both out of range
 	
-	mk.incrementGrade();
-	t.decrementGrade();
-	s = a; //for assignment operator call
-	s.incrementGrade();
-	std::cout << UNDERLINE("State after the grade modifications: ") << std::endl;
-	std::cout << mk << t << s;
+	std::cout << f1 << f2 << f3 << f4;
 }
 
 static void test3() {
 
-	Bureaucrat a("Bob", 151); // too low
-	Bureaucrat b("Elsa", 0); // too high
-	std::cout << a << b;
+	Bureaucrat mk("Mary Kate", 42);
+	Form f("Report", 100, 150);
+
+	std::cout << std::endl << mk << f;
+
+	f.beSigned(mk);
+	
+	std::cout << f;
 }
 
 static void test4() {
+
+	Bureaucrat a("Anna", 101);
+	Form f("Manuscript", 100, 150);
+
+	std::cout << std::endl << a << f;
+
+	f.beSigned(a);
 	
-	Bureaucrat a("Anna", 1); // after increment too high
-	a.incrementGrade();
-	std::cout << a;
+	std::cout << f;
 }
 
 static void test5() {
 
-	Bureaucrat a("Katerina", 150); // after decrement too low
-	a.decrementGrade();
-	std::cout << a;
+	Bureaucrat mk("Mary Kate", 42);
+	Form f("Report", 100, 150);
+
+	std::cout << std::endl << mk << std::endl;
+	f.beSigned(mk);
+	std::cout << f;
+
+	// New bureaucrat to try sign the same form:
+	Bureaucrat b("Bob", 1);
+	std::cout << std::endl << b << std::endl;
+	
+	f.beSigned(b);
+	
+	std::cout << f;
 }
 
 int main() {
 	
-	std::cout << CYAN(BOLD("\nTEST 1️⃣ : Constructing bureaucrats with valid grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 1️⃣ : Bureaucrats and Forms with valid grades")) << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	handleExceptions(test1);
 
-	std::cout << CYAN(BOLD("\nTEST 2️⃣ : Modifying the grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 2️⃣ : Invalid Form Grades")) << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	handleExceptions(test2);
 
-	std::cout << CYAN(BOLD("\nTEST 3️⃣ : Constructing bureaucrats with ")) 
-				<< CYAN(BOLD_UNDERLINE("invalid")) << CYAN(BOLD(" grades")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 3️⃣ : Bureaucrat can sign the Form ")) << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	handleExceptions(test3);
 
-	std::cout << CYAN(BOLD("\nTEST 4️⃣ : Increment Grade to out of range ")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 4️⃣ : Bureaucrat can NOT sign the Form ")) << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	handleExceptions(test4);
 
-	std::cout << CYAN(BOLD("\nTEST 5️⃣ : Decrement Grade to out of range ")) << std::endl;
-	std::cout << CYAN("----------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTEST 5️⃣ : Form is already Signed ")) << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	handleExceptions(test5);
 
 	return 0;

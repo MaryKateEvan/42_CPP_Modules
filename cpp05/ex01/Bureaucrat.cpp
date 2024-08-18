@@ -6,41 +6,42 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/02 15:59:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 17:57:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 // Default constructor
 Bureaucrat::Bureaucrat() : _Name("unknown"), _Grade(150) {
 
-	std::cout << GRAY("🔨 Default constructor called") << std::endl;
+	std::cout << GRAY("🔨 Default constructor for Bureaucrat called") << std::endl;
 }
 
 // Parameter constructor
 Bureaucrat::Bureaucrat(std::string name, short grade) : _Name(name), _Grade(grade) {
 
-	std::cout << GRAY("🔨 Parameter constructor for " << name << " called") << std::endl;
+	std::cout << GRAY("🔨 Parameter constructor for Bureaucrat " << name << " called") << std::endl;
 	checkGradeRange(grade);
 }
 
 // Copy constructor
 Bureaucrat::Bureaucrat(Bureaucrat const & to_copy) : _Name(to_copy._Name), _Grade(to_copy._Grade) {
 
-	std::cout << GRAY("🔨 Copy constructor called") << std::endl;
+	std::cout << GRAY("🔨 Copy constructor for Bureaucrat called") << std::endl;
 }
 
 // Destructor
 Bureaucrat::~Bureaucrat () {
 
-	std::cout << GRAY("🧹 Destructor called") << std::endl;
+	std::cout << GRAY("🧹 Destructor for Bureaucrat called") << std::endl;
 }
 
 // Copy assignment Operator overload
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator called") << std::endl;
+	std::cout << GRAY("⚙️⚙️ Assignment operator for Bureaucrat called") << std::endl;
 
 	if (this != &src) {
 		// this->_Name = src.getName(); // I can't do that since the _Name is const
@@ -84,9 +85,18 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 //additional member function required in ex01:
-void Bureaucrat::signForm(std::string formName) const {
+bool Bureaucrat::signForm(Form & f) const {
 	
-	std::cout << "🖋️" << _Name << " signed " << formName << std::endl;
+	if (this->_Grade <= f.getGradeToSign())
+	{
+		std::cout << "🖋️  " << GREEN(_Name << " signed " << f.getName()) << std::endl;
+		return true;
+	}
+	else
+	{
+		std::cout << "🚫 " << _Name << " could not sign " << f.getName() << " due to low grade.\n" << std::endl;
+		return false;
+	}
 }
 
 // Insertion operator overload

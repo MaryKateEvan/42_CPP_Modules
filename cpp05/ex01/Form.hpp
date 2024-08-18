@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:31:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/02 15:54:54 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 17:59:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@
 # include <stdexcept>
 
 # include "Bureaucrat.hpp"
-
-# define BOLD(text) "\033[1m" << text << "\033[0m"
-# define UNDERLINE(text) "\033[4m" << text << "\033[0m"
-# define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
-# define GRAY(text) "\033[90m" << text << "\033[0m"
-# define LGRAY(text) "\033[37m" << text << "\033[0m" // Often referred to as white in terminal settings
-# define RED(text) "\033[31m" << text << "\033[0m"
-# define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
 class Form {
 
@@ -54,7 +46,7 @@ class Form {
 		short getGradeToExecute() const;
 		bool getIsSigned() const;
 
-		// custom excpetion classes, as subclasses of the Form
+		// custom exception classes, as subclasses of the Form
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
