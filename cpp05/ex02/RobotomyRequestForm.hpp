@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+# define ROBOTOMYREQUESTFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -19,7 +19,7 @@
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm {
+class RobotomyRequestForm : public AForm {
 
 	private:
 	
@@ -28,13 +28,13 @@ class ShrubberyCreationForm : public AForm {
 	public:
 
 		// Orthodox Canonical Aform elements:
-		ShrubberyCreationForm();												// default constructor
-		ShrubberyCreationForm(ShrubberyCreationForm const & to_copy);			// copy constructor
-		~ShrubberyCreationForm();												// destructor
-		ShrubberyCreationForm& operator=(ShrubberyCreationForm const & src);	// Assignment operator overload
+		RobotomyRequestForm();												// default constructor
+		RobotomyRequestForm(RobotomyRequestForm const & to_copy);			// copy constructor
+		~RobotomyRequestForm();												// destructor
+		RobotomyRequestForm& operator=(RobotomyRequestForm const & src);	// Assignment operator overload
 
 		// Parameter constructor
-		ShrubberyCreationForm(std::string target);
+		RobotomyRequestForm(std::string target);
 		
 		// Getter for the private attribute:
 		std::string getTarget() const;
@@ -42,11 +42,6 @@ class ShrubberyCreationForm : public AForm {
 		// Execute the form
 		void execute(Bureaucrat const & executor) const;
 
-		// // custom exception class
-		// class FileNotOpenedException : public std::exception {
-		// 	public:
-		// 		virtual const char* what() const throw(); //override of the what() method
-		// };
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif // ROBOTOMYREQUESTFORM_HPP

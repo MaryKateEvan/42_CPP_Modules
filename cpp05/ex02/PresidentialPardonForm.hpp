@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -19,7 +19,7 @@
 
 # include "AForm.hpp"
 
-class ShrubberyCreationForm : public AForm {
+class PresidentialPardonForm : public AForm {
 
 	private:
 	
@@ -28,13 +28,13 @@ class ShrubberyCreationForm : public AForm {
 	public:
 
 		// Orthodox Canonical Aform elements:
-		ShrubberyCreationForm();												// default constructor
-		ShrubberyCreationForm(ShrubberyCreationForm const & to_copy);			// copy constructor
-		~ShrubberyCreationForm();												// destructor
-		ShrubberyCreationForm& operator=(ShrubberyCreationForm const & src);	// Assignment operator overload
+		PresidentialPardonForm();												// default constructor
+		PresidentialPardonForm(PresidentialPardonForm const & to_copy);			// copy constructor
+		~PresidentialPardonForm();												// destructor
+		PresidentialPardonForm& operator=(PresidentialPardonForm const & src);	// Assignment operator overload
 
 		// Parameter constructor
-		ShrubberyCreationForm(std::string target);
+		PresidentialPardonForm(std::string target);
 		
 		// Getter for the private attribute:
 		std::string getTarget() const;
@@ -49,4 +49,4 @@ class ShrubberyCreationForm : public AForm {
 		// };
 };
 
-#endif // SHRUBBERYCREATIONFORM_HPP
+#endif // PRESIDENTIALPARDONFORM_HPP
