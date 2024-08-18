@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -19,7 +19,9 @@
 
 # include "Bureaucrat.hpp"
 
-class Form {
+// Form Class becomes Abstract now ("AForm"), because of the pure virtual function `execute`
+// Now AForm can not be instantiated, but it can be used as a base class for other classes
+class AForm {
 
 	private:
 	
@@ -31,14 +33,14 @@ class Form {
 	
 	public:
 
-		// Orthodox Canonical form elements:
-		Form();								// default constructor
-		Form(Form const & to_copy);			// copy constructor
-		~Form();							// destructor
-		Form& operator=(Form const & src);	// Assignment operator overload
+		// Orthodox Canonical Aform elements:
+		AForm();								// default constructor
+		AForm(AForm const & to_copy);			// copy constructor
+		virtual ~AForm();						// virtual destructor, to ensure the derived classes' destructors are properly called
+		AForm& operator=(AForm const & src);	// Assignment operator overload
 
 		// Parameter constructor
-		Form(std::string name, short gradeToSign, short gradeToExecute);
+		AForm(std::string name, short gradeToSign, short gradeToExecute);
 		
 		// Getters for the two private variables:
 		std::string getName() const;
@@ -46,7 +48,7 @@ class Form {
 		short getGradeToExecute() const;
 		bool getIsSigned() const;
 
-		// custom exception classes, as subclasses of the Form
+		// custom exception classes, as subclasses of the AForm
 		class GradeTooHighException : public std::exception {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
@@ -58,9 +60,12 @@ class Form {
 
 		//member function asked from the Subject:
 		void beSigned(Bureaucrat & b);
+
+		// Pure virtual function (making AForm an abstract class)
+		virtual void execute(Bureaucrat const & executor) const = 0; //means that the derived classes MUST provide implementation for this function
 };
 
 // Insertion operator overload
-std::ostream & operator<<(std::ostream & out, Form const & b);
+std::ostream & operator<<(std::ostream & out, AForm const & b);
 
-#endif //FORM_HPP
+#endif //AFORM_HPP
