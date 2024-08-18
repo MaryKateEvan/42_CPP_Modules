@@ -58,7 +58,6 @@ class AForm {
 				virtual const char* what() const throw(); //override of the what() method
 		};
 
-		//member function asked from the Subject:
 		void beSigned(Bureaucrat & b);
 
 		// Pure virtual function (making AForm an abstract class)
