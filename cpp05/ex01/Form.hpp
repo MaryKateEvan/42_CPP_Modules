@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 16:31:31 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 18:20:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 00:47:48 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,14 @@ class Form {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
+		class AlreadySignedException : public std::exception {
+			public:
+				virtual const char* what() const throw(); //override of the what() method
+		};
 
 		//member function asked from the Subject:
-		void beSigned(Bureaucrat & b);
+		// void beSigned(Bureaucrat & b);
+		void beSigned(Bureaucrat const & b);
 };
 
 // Insertion operator overload

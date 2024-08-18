@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 17:57:05 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 00:57:35 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,17 +85,14 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 }
 
 //additional member function required in ex01:
-bool Bureaucrat::signForm(Form & f) const {
+void Bureaucrat::signForm(Form & f) const {
 	
-	if (this->_Grade <= f.getGradeToSign())
-	{
+	try {
+		f.beSigned(*this);
 		std::cout << "🖋️  " << GREEN(_Name << " signed " << f.getName()) << std::endl;
-		return true;
 	}
-	else
-	{
-		std::cout << "🚫 " << _Name << " could not sign " << f.getName() << " due to low grade.\n" << std::endl;
-		return false;
+	catch (const std::exception& e) {
+		std::cout << "🚫 " << RED(_Name << " could not sign " << f.getName() << " because " << e.what()) << std::endl;
 	}
 }
 
@@ -105,3 +102,19 @@ std::ostream & operator<<(std::ostream & out, Bureaucrat const & b) {
 	out << BOLD(b.getName()) << ": bureaucrat grade " << BOLD(b.getGrade()) << std::endl;
 	return out;
 }
+
+
+// the previous version of the signForm function in accordance with the previous beSigned of the Form:
+// bool Bureaucrat::signForm(Form & f) const {
+	
+// 	if (this->_Grade <= f.getGradeToSign())
+// 	{
+// 		std::cout << "🖋️  " << GREEN(_Name << " signed " << f.getName()) << std::endl;
+// 		return true;
+// 	}
+// 	else
+// 	{
+// 		std::cout << "🚫 " << _Name << " could not sign " << f.getName() << " due to low grade.\n" << std::endl;
+// 		return false;
+// 	}
+// }

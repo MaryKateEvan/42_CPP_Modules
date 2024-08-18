@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 18:02:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 00:43:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void test3() {
 
 	std::cout << std::endl << mk << f;
 
-	f.beSigned(mk);
+	mk.signForm(f);
 	
 	std::cout << f;
 }
@@ -74,7 +74,8 @@ static void test4() {
 
 	std::cout << std::endl << a << f;
 
-	f.beSigned(a);
+	a.signForm(f);
+	// f.beSigned(a);
 	
 	std::cout << f;
 }
@@ -85,14 +86,14 @@ static void test5() {
 	Form f("Report", 100, 150);
 
 	std::cout << std::endl << mk << std::endl;
-	f.beSigned(mk);
+	mk.signForm(f);
 	std::cout << f;
 
 	// New bureaucrat to try sign the same form:
 	Bureaucrat b("Bob", 1);
 	std::cout << std::endl << b << std::endl;
 	
-	f.beSigned(b);
+	b.signForm(f);
 	
 	std::cout << f;
 }

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 17:58:05 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 01:29:56 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,22 +76,21 @@ void Form::checkGradeRange(short grade) const {
 
 // Override of the what method in the two custom exceptions:
 const char* Form::GradeTooHighException::what() const throw() {
-	return "Form grade too high!";
+	return "grade is too high!";
 }
 const char* Form::GradeTooLowException::what() const throw() {
-	return "Form grade too low!";
+	return "grade is too low!";
+}
+const char* Form::AlreadySignedException::what() const throw() {
+	return "form is already signed!";
 }
 
 //member function asked from the Subject:
-void Form::beSigned(Bureaucrat & b) {
+void Form::beSigned(Bureaucrat const & b) {
 	
 	if (this->_isSigned == true)
-	{
-		std::cout << RED("❗ This form is already signed!") << std::endl;
-		std::cout << RED("   So no need for " << b.getName() << " to sign it again.") << std::endl;
-		return ;
-	}
-	if (b.signForm(*this))
+		throw Form::AlreadySignedException();
+	if (b.getGrade() <= this->_gradeToSign)
 		this->_isSigned = true;
 	else
 		throw Form::GradeTooLowException();
@@ -109,3 +108,18 @@ std::ostream & operator<<(std::ostream & out, Form const & b) {
 		out << "- This Form is NOT signed yet. ❌ \n" << std::endl;
 	return out;
 }
+
+// the previous version of the member function beSigned:
+// void Form::beSigned(Bureaucrat & b) {
+	
+// 	if (this->_isSigned == true)
+// 	{
+// 		std::cout << RED("❗ This form is already signed!") << std::endl;
+// 		std::cout << RED("   So no need for " << b.getName() << " to sign it again.") << std::endl;
+// 		return ;
+// 	}
+// 	if (b.signForm(*this))
+// 		this->_isSigned = true;
+// 	else
+// 		throw Form::GradeTooLowException();
+// }
