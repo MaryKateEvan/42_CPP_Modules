@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 18:48:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/18 18:55:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define RED(text) "\033[31m" << text << "\033[0m"
 # define CYAN(text) "\033[1;96m" << text << "\033[0m"
 # define GREEN(text) "\033[1;92m" << text << "\033[0m"
+# define YELLOW(text) "\033[1;93m" << text << "\033[0m"
 
 class AForm;
 
@@ -65,6 +66,9 @@ class Bureaucrat {
 		};
 
 		bool signForm(AForm & f) const;
+
+		//new function asked in ex02:
+		bool executeForm(AForm const & form) const;
 };
 
 // Insertion operator overload
