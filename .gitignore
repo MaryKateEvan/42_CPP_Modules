@@ -1,19 +1,22 @@
 .vscode/
 .dist
 */.dist
-test.cpp
 a.out
 */a.out
 */*/a.out
 */*/objs
-*/*/megaphone
 */*/*/objs
 */*/*.txt
+*/*subject.pdf
 
 # the executables of the exercises:
+*/*/megaphone
 */*/bureaucrat
+*/*/forms
+*/*/actual_forms
 
-
+# additional files i have locally
 canonical_format/
 cpp05/ex00/main_before.cpp
 git_history.txt
+test.cpp
