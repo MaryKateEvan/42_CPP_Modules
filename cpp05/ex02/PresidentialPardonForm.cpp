@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:58:08 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 21:25:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 03:02:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 PresidentialPardonForm::PresidentialPardonForm()
 	: AForm("Presidential Pardon Form", 25, 5), _target("default") {
 
-	std::cout << GRAY("🔨 Default constructor for PresidentialPardonForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Default constructor for PresidentialPardonForm called") << std::endl;
 }
 
 // Parameter constructor
 PresidentialPardonForm::PresidentialPardonForm(std::string target)
 	: AForm("Presidential Pardon Form", 25, 5), _target(target) {
 
-	std::cout << GRAY("🔨 Parameter constructor for PresidentialPardonForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Parameter constructor for PresidentialPardonForm called") << std::endl;
 }
 
 // Copy constructor
@@ -31,19 +33,22 @@ PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & to
 	: AForm(to_copy), // Calls the base class' copy constructor
 		_target(to_copy._target) { // Copies also the `target` from the object `to_copy`
 
-	std::cout << GRAY("🔨 Copy constructor for PresidentialPardonForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Copy constructor for PresidentialPardonForm called") << std::endl;
 }
 
 // Destructor
 PresidentialPardonForm::~PresidentialPardonForm () {
 
-	std::cout << GRAY("🧹 Destructor for PresidentialPardonForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🧹 Destructor for PresidentialPardonForm called") << std::endl;
 }
 
 // Copy assignment Operator overload
 PresidentialPardonForm& PresidentialPardonForm::operator=(PresidentialPardonForm const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator for PresidentialPardonForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("⚙️⚙️ Assignment operator for PresidentialPardonForm called") << std::endl;
 
 	if (this != &src) {
 		AForm::operator=(src); // Assigns the base class' part
@@ -61,5 +66,5 @@ std::string PresidentialPardonForm::getTarget() const {
 void PresidentialPardonForm::execute(Bureaucrat const & executor) const {
 
 	checkIfCanBeExecuted(executor);
-	std::cout << GREEN("📜 " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
+	std::cout << BOLD("🕊️  " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
 }

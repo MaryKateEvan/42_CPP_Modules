@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 21:40:33 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 03:02:15 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 ShrubberyCreationForm::ShrubberyCreationForm()
 	: AForm("Shrubbery Creation Form", 145, 137), _target("default") {
 
-	std::cout << GRAY("🔨 Default constructor for ShrubberyCreationForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Default constructor for ShrubberyCreationForm called") << std::endl;
 }
 
 // Parameter constructor
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
 	: AForm("Shrubbery Creation Form", 145, 137), _target(target) {
 
-	std::cout << GRAY("🔨 Parameter constructor for ShrubberyCreationForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Parameter constructor for ShrubberyCreationForm called") << std::endl;
 }
 
 // Copy constructor
@@ -31,19 +33,22 @@ ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & to_co
 	: AForm(to_copy), // Calls the base class' copy constructor
 		_target(to_copy._target) { // Copies also the `target` from the object `to_copy`
 
-	std::cout << GRAY("🔨 Copy constructor for ShrubberyCreationForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Copy constructor for ShrubberyCreationForm called") << std::endl;
 }
 
 // Destructor
 ShrubberyCreationForm::~ShrubberyCreationForm () {
 
-	std::cout << GRAY("🧹 Destructor for ShrubberyCreationForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🧹 Destructor for ShrubberyCreationForm called") << std::endl;
 }
 
 // Copy assignment Operator overload
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(ShrubberyCreationForm const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator for ShrubberyCreationForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("⚙️⚙️ Assignment operator for ShrubberyCreationForm called") << std::endl;
 
 	if (this != &src) {
 		AForm::operator=(src); // Assigns the base class' part

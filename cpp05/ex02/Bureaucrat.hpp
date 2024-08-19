@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 21:33:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 03:04:54 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,16 @@
 # include <string>
 # include <stdexcept>
 
+# define COMMENTS 0
+
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 # define GRAY(text) "\033[90m" << text << "\033[0m"
 # define RED(text) "\033[31m" << text << "\033[0m"
 # define CYAN(text) "\033[1;96m" << text << "\033[0m"
-# define GREEN(text) "\033[1;92m" << text << "\033[0m"
-# define YELLOW(text) "\033[1;93m" << text << "\033[0m"
+# define GREEN(text) "\033[32m" << text << "\033[0m"
+# define YELLOW(text) "\033[33m" << text << "\033[0m"
 
 class AForm;
 
@@ -65,10 +67,10 @@ class Bureaucrat {
 				virtual const char* what() const throw(); //override of the what() method
 		};
 
-		bool signForm(AForm & f) const;
+		void signForm(AForm & f) const;
 
 		//new function asked in ex02:
-		bool executeForm(AForm & f) const;
+		void executeForm(AForm & f) const;
 };
 
 // Insertion operator overload

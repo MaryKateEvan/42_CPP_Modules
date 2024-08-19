@@ -6,12 +6,14 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 21:51:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 03:27:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
 typedef void (*RunTest)();
@@ -40,86 +42,141 @@ static void handleExceptions(RunTest testCase) {
 
 static void test1() {
 
-	Bureaucrat mk("Mary Kate", 1);
-	PresidentialPardonForm PPF("Mr. President");
+	Bureaucrat mk("Mary Kate", 20);
+	ShrubberyCreationForm SCF("Home");
+	RobotomyRequestForm RRF("Wall-e");
+	PresidentialPardonForm PPF("Marvin");
+	
+	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
 
-	std::cout << std::endl << mk << PPF ;
+}
 
-	PPF.beSigned(mk);
-	mk.executeForm(PPF);
-	std::cout << PPF;
+static void test2() {
+
+	Bureaucrat mk("Mary Kate", 2);
+	ShrubberyCreationForm SCF("Home");
+	RobotomyRequestForm RRF("Wall-e");
+	PresidentialPardonForm PPF("Marvin");
+	
+	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+
+	mk.signForm(PPF);
+	mk.signForm(RRF);
+	mk.signForm(SCF);
+	std::cout << PPF << RRF << SCF << std::endl;
+
+	Bureaucrat b("Bob", 5);
+	Bureaucrat t("Tom", 42);
+	Bureaucrat c("Todd", 135);
+
+	std::cout << b << t << c << std::endl;
+
+	b.executeForm(PPF);
+	// t.executeForm(RRF);
+	// c.executeForm(SCF);
+	std::cout << std::endl;
+}
+
+static void test3() {
+
+	Bureaucrat mk("Mary Kate", 2);
+	ShrubberyCreationForm SCF("Home");
+	RobotomyRequestForm RRF("Wall-e");
+	PresidentialPardonForm PPF("Marvin");
+
+	mk.signForm(PPF);
+	mk.signForm(RRF);
+	mk.signForm(SCF);
+	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+
+	Bureaucrat b("Bob", 6);
+	Bureaucrat t("Tom", 50);
+	Bureaucrat c("Todd", 140);
+
+	std::cout << b << t << c << std::endl;
+
+	b.executeForm(PPF);
+	// t.executeForm(RRF);
+	// c.executeForm(SCF);
+	std::cout << std::endl;
 	
 }
 
-// static void test2() {
+static void test4() {
 
-// 	AForm f1("AForm1", 100, 150); // valid
-// 	AForm f2("AForm2", 0, 150); // too high gradeToSign
-// 	AForm f3("AForm3", 100, 151); // too low gradeToExecute
-// 	AForm f4("AForm4", 0, 151); // both out of range
+	Bureaucrat mk("Mary Kate", 60);
+	ShrubberyCreationForm SCF("Home");
+	RobotomyRequestForm RRF("Wall-e");
+	PresidentialPardonForm PPF("Marvin");
+
+	mk.signForm(PPF);
+	mk.signForm(SCF);
+	mk.signForm(RRF);
+
+	Bureaucrat b("Bob", 4);
+	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+	std::cout << b << std::endl;
+
+	b.executeForm(PPF);
+	b.executeForm(RRF);
+	b.executeForm(SCF);
+
+	std::cout << std::endl;
 	
-// 	std::cout << f1 << f2 << f3 << f4;
-// }
+}
 
-// static void test3() {
+static void test5() {
 
-// 	Bureaucrat mk("Mary Kate", 42);
-// 	AForm f("Report", 100, 150);
+	Bureaucrat mk("Mary Kate", 150);
+	ShrubberyCreationForm SCF("Home");
+	RobotomyRequestForm RRF("Wall-e");
+	PresidentialPardonForm PPF("Marvin");
 
-// 	std::cout << std::endl << mk << f;
+	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+	mk.signForm(PPF);
+	mk.signForm(RRF);
+	mk.signForm(SCF);
 
-// 	f.beSigned(mk);
+	Bureaucrat b("Bob", 6);
+	Bureaucrat t("Tom", 50);
+	Bureaucrat c("Todd", 140);
+
+	std::cout << std::endl << b << t << c << std::endl;
+
+	b.executeForm(PPF);
+	t.executeForm(RRF);
+	c.executeForm(SCF);
+	std::cout << std::endl;
 	
-// 	std::cout << f;
-// }
-
-// static void test4() {
-
-// 	Bureaucrat a("Anna", 101);
-// 	AForm f("Manuscript", 100, 150);
-
-// 	std::cout << std::endl << a << f;
-
-// 	f.beSigned(a);
-	
-// 	std::cout << f;
-// }
-
-// static void test5() {
-
-// 	Bureaucrat mk("Mary Kate", 42);
-// 	AForm f("Report", 100, 150);
-
-// 	std::cout << std::endl << mk << std::endl;
-// 	f.beSigned(mk);
-// 	std::cout << f;
-
-// 	// New bureaucrat to try sign the same Aform:
-// 	Bureaucrat b("Bob", 1);
-// 	std::cout << std::endl << b << std::endl;
-	
-// 	f.beSigned(b);
-	
-// 	std::cout << f;
-// }
+}
 
 int main() {
 	
-	std::cout << CYAN(BOLD("\nTEST 1️⃣ : Bureaucrats and Forms with valid grades")) << std::endl;
-	std::cout << CYAN("---------------------------------------------------------") << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("          TEST 1️⃣ : Instantiating Different Forms         ")) << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test1);
 
-	// std::cout << CYAN(BOLD("\nTEST 2️⃣ : Invalid AForm Grades")) << std::endl;
-	// std::cout << CYAN("---------------------------------------------------------") << std::endl;
-	// handleExceptions(test2);
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("       TEST 2️⃣ : Executing all three different forms         ")) << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	handleExceptions(test2);
 
-	// std::cout << CYAN(BOLD("\nTEST 3️⃣ : Bureaucrat can sign the AForm ")) << std::endl;
-	// std::cout << CYAN("---------------------------------------------------------") << std::endl;
-	// handleExceptions(test3);
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("     TEST 3️⃣ : Form can be signed but not executed       ")) << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	handleExceptions(test3);
 
-	// std::cout << CYAN(BOLD("\nTEST 4️⃣ : Bureaucrat can NOT sign the AForm ")) << std::endl;
-	// std::cout << CYAN("---------------------------------------------------------") << std::endl;
-	// handleExceptions(test4);
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("     TEST 4️⃣ : Trying to execute a non-signed form       ")) << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	handleExceptions(test4);
+
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("     TEST 5️⃣ : Form can not be signed neither executed       ")) << std::endl;
+	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	handleExceptions(test5);
+
 
 	// std::cout << CYAN(BOLD("\nTEST 5️⃣ : AForm is already Signed ")) << std::endl;
 	// std::cout << CYAN("---------------------------------------------------------") << std::endl;

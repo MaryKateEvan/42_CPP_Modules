@@ -15,14 +15,16 @@
 // Default constructor
 AForm::AForm() : _name("undetermined"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {
 
-	std::cout << GRAY("🔨 Default constructor for AForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Default constructor for AForm called") << std::endl;
 }
 
 // Parameter constructor
 AForm::AForm(std::string name, short gradeToSign, short gradeToExecute)
 	: _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 
-	std::cout << GRAY("🔨 Parameter constructor for AForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Parameter constructor for AForm called") << std::endl;
 	checkGradeRange(gradeToSign);
 	checkGradeRange(gradeToExecute);
 }
@@ -31,19 +33,22 @@ AForm::AForm(std::string name, short gradeToSign, short gradeToExecute)
 AForm::AForm(AForm const & to_copy) 
 	: _name(to_copy._name), _isSigned(false), _gradeToSign(to_copy._gradeToSign), _gradeToExecute(to_copy._gradeToExecute) {
 
-	std::cout << GRAY("🔨 Copy constructor for AForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Copy constructor for AForm called") << std::endl;
 }
 
 // Destructor
 AForm::~AForm () {
 
-	std::cout << GRAY("🧹 Destructor for AForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🧹 Destructor for AForm called") << std::endl;
 }
 
 // Copy assignment Operator overload
 AForm& AForm::operator=(AForm const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator for AForm called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("⚙️⚙️ Assignment operator for AForm called") << std::endl;
 
 	if (this != &src) {
 		// _name and grades can not be assigned since they are const
@@ -76,28 +81,26 @@ void AForm::checkGradeRange(short grade) const {
 
 // Override of the what method in the two custom exceptions:
 const char* AForm::GradeTooHighException::what() const throw() {
-	return "Form grade too high!";
+	return "grade is too high!";
 }
 const char* AForm::GradeTooLowException::what() const throw() {
-	return "Form grade too low!";
+	return "grade is too low!";
+}
+const char* AForm::AlreadySignedException::what() const throw() {
+	return "form is already signed!";
 }
 const char* AForm::FormNotSignedException::what() const throw() {
 	return "Form is NOT signed yet to be executed!";
 }
 
-//member function asked from the Subject:
-void AForm::beSigned(Bureaucrat & b) {
+void AForm::beSigned(Bureaucrat const & b) {
 	
 	if (this->_isSigned == true)
-	{
-		std::cout << RED("❗ This form is already signed!") << std::endl;
-		std::cout << RED("   So no need for " << b.getName() << " to sign it again.") << std::endl;
-		return ;
-	}
-	if (b.signForm(*this))
+		throw AForm::AlreadySignedException();
+	if (b.getGrade() <= this->_gradeToSign)
 		this->_isSigned = true;
 	else
-		throw GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
 void AForm::checkIfCanBeExecuted(Bureaucrat const & executor) const {
@@ -117,8 +120,8 @@ std::ostream & operator<<(std::ostream & out, AForm const & b) {
 	out << "- Grade required to Sign it: " << b.getGradeToSign() << std::endl;
 	out << "- Grade required to Execute it: " << b.getGradeToExecute() << std::endl;
 	if (b.getIsSigned() == true)
-		out << "- This Form is signed. ✅ \n" << std::endl;
+		out << "- This Form is signed. ✅" << std::endl;
 	else
-		out << "- This Form is NOT signed yet. ❌ \n" << std::endl;
+		out << "- This Form is NOT signed yet. ❌" << std::endl;
 	return out;
 }

@@ -57,12 +57,16 @@ class AForm {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
+		class AlreadySignedException : public std::exception {
+			public:
+				virtual const char* what() const throw(); //override of the what() method
+		};
 		class FormNotSignedException : public std::exception {
 			public:
 				virtual const char* what() const throw(); //override of the what() method
 		};
 
-		void beSigned(Bureaucrat & b);
+		void beSigned(Bureaucrat const & b);
 
 		// function for the derived classes to check if the form can be executed
 		void checkIfCanBeExecuted(Bureaucrat const & executor) const;
