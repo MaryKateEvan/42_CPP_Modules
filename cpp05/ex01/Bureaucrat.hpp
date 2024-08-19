@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:38:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 01:36:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:16:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+
+# define COMMENTS 1
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"

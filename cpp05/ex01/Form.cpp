@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 01:29:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:14:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 // Default constructor
 Form::Form() : _name("undetermined"), _isSigned(false), _gradeToSign(150), _gradeToExecute(150) {
 
-	std::cout << GRAY("🔨 Default constructor for Form called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Default constructor for Form called") << std::endl;
 }
 
 // Parameter constructor
 Form::Form(std::string name, short gradeToSign, short gradeToExecute)
 	: _name(name), _isSigned(false), _gradeToSign(gradeToSign), _gradeToExecute(gradeToExecute) {
 
-	std::cout << GRAY("🔨 Parameter constructor for " << name << " called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Parameter constructor for " << name << " called") << std::endl;
 	checkGradeRange(gradeToSign);
 	checkGradeRange(gradeToExecute);
 }
@@ -31,19 +33,22 @@ Form::Form(std::string name, short gradeToSign, short gradeToExecute)
 Form::Form(Form const & to_copy) 
 	: _name(to_copy._name), _isSigned(false), _gradeToSign(to_copy._gradeToSign), _gradeToExecute(to_copy._gradeToExecute) {
 
-	std::cout << GRAY("🔨 Copy constructor for Form called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Copy constructor for Form called") << std::endl;
 }
 
 // Destructor
 Form::~Form () {
 
-	std::cout << GRAY("🧹 Destructor for Form called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🧹 Destructor for Form called") << std::endl;
 }
 
 // Copy assignment Operator overload
 Form& Form::operator=(Form const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator for Form called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("⚙️⚙️ Assignment operator for Form called") << std::endl;
 
 	if (this != &src) {
 		// _name and grades can not be assigned since they are const
@@ -109,7 +114,7 @@ std::ostream & operator<<(std::ostream & out, Form const & b) {
 	return out;
 }
 
-// the previous version of the member function beSigned:
+// my previous version of the member function beSigned:
 // void Form::beSigned(Bureaucrat & b) {
 	
 // 	if (this->_isSigned == true)

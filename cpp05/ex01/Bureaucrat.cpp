@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 00:57:35 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:13:56 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,37 @@
 // Default constructor
 Bureaucrat::Bureaucrat() : _Name("unknown"), _Grade(150) {
 
-	std::cout << GRAY("🔨 Default constructor for Bureaucrat called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Default constructor for Bureaucrat called") << std::endl;
 }
 
 // Parameter constructor
 Bureaucrat::Bureaucrat(std::string name, short grade) : _Name(name), _Grade(grade) {
 
-	std::cout << GRAY("🔨 Parameter constructor for Bureaucrat " << name << " called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Parameter constructor for Bureaucrat " << name << " called") << std::endl;
 	checkGradeRange(grade);
 }
 
 // Copy constructor
 Bureaucrat::Bureaucrat(Bureaucrat const & to_copy) : _Name(to_copy._Name), _Grade(to_copy._Grade) {
 
-	std::cout << GRAY("🔨 Copy constructor for Bureaucrat called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🔨 Copy constructor for Bureaucrat called") << std::endl;
 }
 
 // Destructor
 Bureaucrat::~Bureaucrat () {
 
-	std::cout << GRAY("🧹 Destructor for Bureaucrat called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("🧹 Destructor for Bureaucrat called") << std::endl;
 }
 
 // Copy assignment Operator overload
 Bureaucrat& Bureaucrat::operator=(Bureaucrat const & src) {
 
-	std::cout << GRAY("⚙️⚙️ Assignment operator for Bureaucrat called") << std::endl;
+	if (COMMENTS)
+		std::cout << GRAY("⚙️⚙️ Assignment operator for Bureaucrat called") << std::endl;
 
 	if (this != &src) {
 		// this->_Name = src.getName(); // I can't do that since the _Name is const
