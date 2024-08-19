@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 03:27:18 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 03:50:28 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void test2() {
 	RobotomyRequestForm RRF("Wall-e");
 	PresidentialPardonForm PPF("Marvin");
 	
-	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+	std::cout << std::endl << mk << std::endl;
 
 	mk.signForm(PPF);
 	mk.signForm(RRF);
@@ -72,8 +72,8 @@ static void test2() {
 	std::cout << b << t << c << std::endl;
 
 	b.executeForm(PPF);
-	// t.executeForm(RRF);
-	// c.executeForm(SCF);
+	t.executeForm(RRF);
+	c.executeForm(SCF);
 	std::cout << std::endl;
 }
 
@@ -96,8 +96,8 @@ static void test3() {
 	std::cout << b << t << c << std::endl;
 
 	b.executeForm(PPF);
-	// t.executeForm(RRF);
-	// c.executeForm(SCF);
+	t.executeForm(RRF);
+	c.executeForm(SCF);
 	std::cout << std::endl;
 	
 }
@@ -137,9 +137,9 @@ static void test5() {
 	mk.signForm(RRF);
 	mk.signForm(SCF);
 
-	Bureaucrat b("Bob", 6);
-	Bureaucrat t("Tom", 50);
-	Bureaucrat c("Todd", 140);
+	Bureaucrat b("Bob", 5);
+	Bureaucrat t("Tom", 45);
+	Bureaucrat c("Todd", 137);
 
 	std::cout << std::endl << b << t << c << std::endl;
 
@@ -176,11 +176,6 @@ int main() {
 	std::cout << CYAN(BOLD("     TEST 5️⃣ : Form can not be signed neither executed       ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test5);
-
-
-	// std::cout << CYAN(BOLD("\nTEST 5️⃣ : AForm is already Signed ")) << std::endl;
-	// std::cout << CYAN("---------------------------------------------------------") << std::endl;
-	// handleExceptions(test5);
 
 	return 0;
 }
