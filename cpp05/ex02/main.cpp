@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 03:50:28 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:29:06 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,20 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
+#define DARK_GREY(text) "\033[1;30m" << text << "\033[0m" // Dark Grey color
+
 typedef void (*RunTest)();
+
+static void waitForEnter() {
+	
+	if (COMMENTS)
+		std::cout << DARK_GREY("\nPress " << BOLD("Enter")) << DARK_GREY(" to move to next test...");
+	else
+		std::cout << DARK_GREY("Press " << BOLD("Enter")) << DARK_GREY(" to move to next test...");
+	
+	std::cin.get();  // Waits for the user to press Enter
+}
+
 
 static void handleExceptions(RunTest testCase) {
 
@@ -109,7 +122,7 @@ static void test4() {
 	RobotomyRequestForm RRF("Wall-e");
 	PresidentialPardonForm PPF("Marvin");
 
-	mk.signForm(PPF);
+	// mk.signForm(PPF);
 	mk.signForm(SCF);
 	mk.signForm(RRF);
 
@@ -152,27 +165,31 @@ static void test5() {
 
 int main() {
 	
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("          TEST 1️⃣ : Instantiating Different Forms         ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test1);
+	waitForEnter();
 
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("       TEST 2️⃣ : Executing all three different forms         ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test2);
+	waitForEnter();
 
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("     TEST 3️⃣ : Form can be signed but not executed       ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test3);
+	waitForEnter();
 
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("     TEST 4️⃣ : Trying to execute a non-signed form       ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test4);
+	waitForEnter();
 
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("     TEST 5️⃣ : Form can not be signed neither executed       ")) << std::endl;
 	std::cout << CYAN("------------------------------------------------------------") << std::endl;
 	handleExceptions(test5);
