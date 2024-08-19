@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 03:02:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 00:04:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,23 @@ std::string ShrubberyCreationForm::getTarget() const {
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 
 	checkIfCanBeExecuted(executor);
-	// std::cout << GREEN("📜 " << _target << " has been pardoned by Zafod Beeblebrox.") << std::endl;
+
+	std::string outputFilename = this->_target + "_shrubbery";
+	std::ofstream out(outputFilename.c_str()); //c_str() converts a C++ string to a C string. (i had problem in linux without this)
+
+    out << "	    ccee88oo\n"
+        << "	  C8O8O8Q8PoOb o8oo\n"
+        << "	 dOB69QO8PdUOpugoO9bD\n"
+        << "	CgggbU8OU qOp qOdoUOdcb\n"
+        << "	    6OuU  /p u gcoUodpP\n"
+        << "	      \\\\//  /douUP\n"
+        << "	        \\\\////\n"
+        << "	         |||/\\\n"
+        << "	         |||\\/\n"
+        << "	         |||||\n"
+        << "	   .....//||||\\....\n";
+
+	out.close();
+
+	std::cout << BOLD("🌳  Shrubbery has been created in the file: " << outputFilename) << std::endl;
 }

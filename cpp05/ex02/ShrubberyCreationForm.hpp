@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:58 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/18 20:46:27 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:41:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# include <fstream>
 
 # include "AForm.hpp"
 

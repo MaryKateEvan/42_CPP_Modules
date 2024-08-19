@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 23:29:06 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/19 23:53:55 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,11 @@ static void test2() {
 	std::cout << b << t << c << std::endl;
 
 	b.executeForm(PPF);
+	std::cout << std::endl;
+	
 	t.executeForm(RRF);
+	std::cout << std::endl;
+	
 	c.executeForm(SCF);
 	std::cout << std::endl;
 }
