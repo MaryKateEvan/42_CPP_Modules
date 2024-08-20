@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 12:25:59 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:32:46 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,49 +22,29 @@ int main() {
 
 	Intern someRandomIntern; //calls default constructor
 
-	AForm* form1 = NULL;
-	AForm* form2 = NULL;
-	AForm* form3 = NULL;
-	AForm* form4 = NULL;
-
 	try {
 		std::cout << "\nAssigning our Intern to make a " << BOLD("\"shrubbery creation\"") << " form:" << std::endl;
-		form1 = someRandomIntern.makeForm("shrubbery creation", "plant");
+		AForm* form1 = someRandomIntern.makeForm("shrubbery creation", "plant");
 		std::cout << std::endl;
-	}
-	catch (const std::exception& e) {
-		std::cout << RED("❗ Exception found while creating form1: " << UNDERLINE(e.what())) << std::endl << std::endl;
-	}
+		delete form1;
 
-	try {
 		std::cout << "Assigning our Intern to make a " << BOLD("\"Robotomy Request\"") << " form:" << std::endl;
-		form2 = someRandomIntern.makeForm("Robotomy Request", "wall-e");
+		AForm* form2 = someRandomIntern.makeForm("Robotomy Request", "wall-e");
 		std::cout << std::endl;
-	}
-	catch (const std::exception& e) {
-		std::cout << RED("❗ Exception found while creating form2: " << UNDERLINE(e.what())) << std::endl << std::endl;
-	}
+		delete form2;
 
-	try {
 		std::cout << "Assigning our Intern to make a " << BOLD("\"PRESIDENTIAL PARDON\"") << " form:" << std::endl;
-		form3 = someRandomIntern.makeForm("PRESIDENTIAL PARDON", "Trump");
+		AForm* form3 = someRandomIntern.makeForm("PRESIDENTIAL PARDON", "Trump");
 		std::cout << std::endl;
+		delete form3;
+
+		std::cout << "Assigning our Intern to make an " << BOLD("\"unknown form\"") << " :" << std::endl;
+		AForm* form4 = someRandomIntern.makeForm("unknown form", "some target");
+		delete form4;
 	}
 	catch (const std::exception& e) {
-		std::cout << RED("❗ Exception found while creating form3: " << UNDERLINE(e.what())) << std::endl << std::endl;
+		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl << std::endl;
 	}
-
-	try {
-		std::cout << "Assigning our Intern to make an " << BOLD("\"unknown form\"") << " :" << std::endl;
-		form4 = someRandomIntern.makeForm("unknown form", "some target");
-	} catch (const std::exception& e) {
-		std::cout << RED("❗ Exception found while creating form4: " << UNDERLINE(e.what())) << std::endl << std::endl;
-	}
-
-	delete form1;
-	delete form2;
-	delete form3;
-	delete form4;
 
 	return 0;
 }
