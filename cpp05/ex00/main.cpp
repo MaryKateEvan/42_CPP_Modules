@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/17 23:05:31 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:42:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,8 @@ static void handleExceptions(RunTest testCase) {
 	try {
 		testCase();
 	}
-	catch (const Bureaucrat::GradeTooHighException& e) {
-		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
-	}
-	catch (const Bureaucrat::GradeTooLowException& e) {
-		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
-	}
 	catch (const std::exception& e) {
-		std::cout << RED("❗ Other exception found: ") << UNDERLINE(e.what()) << std::endl;
+		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
 	}
 }
 
