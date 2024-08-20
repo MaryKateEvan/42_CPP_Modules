@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:17:22 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 11:17:58 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:07:43 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,9 @@ Intern& Intern::operator=(Intern const & src) {
 	return *this;
 }
 
+// custom exception for wrong Form name given by user:
 const char* Intern::UnknownFormException::what() const throw() {
-	return "form is not recognized!";
+	return "form name is not recognized!";
 }
 
 // The three functions to create the 3 types of forms:
@@ -79,12 +80,18 @@ AForm* Intern::makeForm(const std::string& formName, const std::string& target) 
 		{"PRESIDENTIAL PARDON", &Intern::createPresidentialForm}
 	};
 
+	std::string lowerCaseFormName = formName; // Creates a copy of `formName`
+	for (std::string::size_type i = 0; i < lowerCaseFormName.length(); ++i) {
+		lowerCaseFormName[i] = std::tolower(lowerCaseFormName[i]); // Converts the copy to lowercase
+	}
+
 	for (int i = 0; i < 9; ++i) {
 		if (forms[i].name == formName) {
-			std::cout << GREEN("📄 Intern creates " << BOLD(formName)) << std::endl;
+			std::cout << GREEN("📄 Intern creates " << lowerCaseFormName) << std::endl;
 			return (this->*(forms[i].creationFunction))(target);
 		}
 	}
 
+	// if the form's name that the user gave is not one of the above 9, throw an exception
 	throw Intern::UnknownFormException();
 }
