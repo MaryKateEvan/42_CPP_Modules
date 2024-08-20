@@ -1,4 +1,4 @@
-NAME	 =	actual_forms
+NAME	 =	crazy_forms
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
