@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/20 09:17:22 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 10:26:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 11:17:58 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,45 @@ Intern& Intern::operator=(Intern const & src) {
 	return *this;
 }
 
-AForm* Intern::makeForm(std::string formName, std::string target) {}
+const char* Intern::UnknownFormException::what() const throw() {
+	return "form is not recognized!";
+}
+
+// The three functions to create the 3 types of forms:
+// They return a new, dynamically allocated, instance of the corresponding form.
+AForm* Intern::createShrubberyForm(const std::string& target) {
+	return new ShrubberyCreationForm(target);
+}
+AForm* Intern::createRobotomyForm(const std::string& target) {
+	return new RobotomyRequestForm(target);
+}
+AForm* Intern::createPresidentialForm(const std::string& target) {
+	return new PresidentialPardonForm(target);
+}
+
+// THE MAIN JOB OF THE INTERN:
+// Creates the form based on the formName and target, returning a pointer to the created 
+// form or handling the case where the form name is invalid by printing an error message.
+AForm* Intern::makeForm(const std::string& formName, const std::string& target) {
+
+	FormType forms[] = {
+		{"shrubbery creation", &Intern::createShrubberyForm},
+		{"Shrubbery Creation", &Intern::createShrubberyForm},
+		{"SHRUBBERY CREATION", &Intern::createShrubberyForm},
+		{"robotomy request", &Intern::createRobotomyForm},
+		{"Robotomy Request", &Intern::createRobotomyForm},
+		{"ROBOTOMY REQUEST", &Intern::createRobotomyForm},
+		{"presidential pardon", &Intern::createPresidentialForm},
+		{"Presidential Pardon", &Intern::createPresidentialForm},
+		{"PRESIDENTIAL PARDON", &Intern::createPresidentialForm}
+	};
+
+	for (int i = 0; i < 9; ++i) {
+		if (forms[i].name == formName) {
+			std::cout << GREEN("📄 Intern creates " << BOLD(formName)) << std::endl;
+			return (this->*(forms[i].creationFunction))(target);
+		}
+	}
+
+	throw Intern::UnknownFormException();
+}

@@ -90,7 +90,7 @@ const char* AForm::AlreadySignedException::what() const throw() {
 	return "form is already signed!";
 }
 const char* AForm::FormNotSignedException::what() const throw() {
-	return "Form is NOT signed yet to be executed!";
+	return "form is NOT signed yet to be executed!";
 }
 
 void AForm::beSigned(Bureaucrat const & b) {

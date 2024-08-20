@@ -1,4 +1,4 @@
-NAME	 =	interns_are_the_victims
+NAME	 =	interns_are_here
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
