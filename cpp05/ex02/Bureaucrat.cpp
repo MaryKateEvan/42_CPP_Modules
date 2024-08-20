@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:46:01 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 03:01:12 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 04:22:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,8 @@ void Bureaucrat::signForm(AForm & f) const {
 		std::cout << "🖋️  " << GREEN(_Name << " signed " << f.getName()) << std::endl;
 	}
 	catch (const std::exception& e) {
-		std::cout << "🚫 " << RED(_Name << " could not sign " << f.getName() << " because " << e.what()) << std::endl;
+		std::cout << "🚫🖋️  " << RED(_Name << " could not sign " << f.getName() << " because " << std::endl;
+		std::cout << "     " << UNDERLINE(e.what())) << std::endl;
 	}
 }
 
@@ -109,7 +110,8 @@ void Bureaucrat::executeForm(AForm & form) const {
 		std::cout << "🚀 " << YELLOW(_Name << " executed " << form.getName()) << std::endl;
 	}
 	catch (const std::exception& e) {
-		std::cout << "🚫 " << RED(_Name << " could not execute " << form.getName() << " because " << e.what()) << std::endl;
+		std::cout << "🚫🚀 " << RED(_Name << " could not execute " << form.getName() << " because " << std::endl;
+		std::cout << "     " << UNDERLINE(e.what())) << std::endl;
 	}
 }
 

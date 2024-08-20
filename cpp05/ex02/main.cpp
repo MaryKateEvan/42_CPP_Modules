@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/19 23:53:55 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 04:25:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static void test1() {
 
 static void test2() {
 
-	Bureaucrat mk("Mary Kate", 2);
+	Bureaucrat mk("Mary Kate", 24);
 	ShrubberyCreationForm SCF("Home");
 	RobotomyRequestForm RRF("Wall-e");
 	PresidentialPardonForm PPF("Marvin");
@@ -78,20 +78,21 @@ static void test2() {
 	mk.signForm(SCF);
 	std::cout << PPF << RRF << SCF << std::endl;
 
-	Bureaucrat b("Bob", 5);
-	Bureaucrat t("Tom", 42);
-	Bureaucrat c("Todd", 135);
+	Bureaucrat bob("Bob", 5);
+	Bureaucrat tom("Tom", 42);
+	Bureaucrat todd("Todd", 135);
 
-	std::cout << b << t << c << std::endl;
+	std::cout << bob << tom << todd << std::endl;
 
-	b.executeForm(PPF);
+	bob.executeForm(PPF);
 	std::cout << std::endl;
 	
-	t.executeForm(RRF);
+	tom.executeForm(RRF);
 	std::cout << std::endl;
 	
-	c.executeForm(SCF);
+	todd.executeForm(SCF);
 	std::cout << std::endl;
+
 }
 
 static void test3() {
@@ -122,7 +123,7 @@ static void test3() {
 static void test4() {
 
 	Bureaucrat mk("Mary Kate", 60);
-	ShrubberyCreationForm SCF("Home");
+	ShrubberyCreationForm SCF("Rose");
 	RobotomyRequestForm RRF("Wall-e");
 	PresidentialPardonForm PPF("Marvin");
 
@@ -135,30 +136,35 @@ static void test4() {
 	std::cout << b << std::endl;
 
 	b.executeForm(PPF);
-	b.executeForm(RRF);
-	b.executeForm(SCF);
+	std::cout << std::endl;
 
+	b.executeForm(RRF);
 	std::cout << std::endl;
 	
+	b.executeForm(SCF);
+	std::cout << std::endl;
 }
 
 static void test5() {
 
 	Bureaucrat mk("Mary Kate", 150);
-	ShrubberyCreationForm SCF("Home");
+	ShrubberyCreationForm SCF("Autumn");
 	RobotomyRequestForm RRF("Wall-e");
 	PresidentialPardonForm PPF("Marvin");
 
-	std::cout << std::endl << mk << PPF << RRF << SCF << std::endl;
+	std::cout << std::endl << mk << std::endl;
+
 	mk.signForm(PPF);
 	mk.signForm(RRF);
 	mk.signForm(SCF);
+	
+	std::cout << PPF << RRF << SCF << std::endl;
 
 	Bureaucrat b("Bob", 5);
 	Bureaucrat t("Tom", 45);
 	Bureaucrat c("Todd", 137);
 
-	std::cout << std::endl << b << t << c << std::endl;
+	std::cout << b << t << c << std::endl;
 
 	b.executeForm(PPF);
 	t.executeForm(RRF);

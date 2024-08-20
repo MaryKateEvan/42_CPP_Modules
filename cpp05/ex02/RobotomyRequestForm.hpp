@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <stdexcept>
+# include <cstdlib>  // for rand()
+# include <ctime>    // for time()
 
 # include "AForm.hpp"
 
