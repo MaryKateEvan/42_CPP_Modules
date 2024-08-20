@@ -6,13 +6,11 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 04:00:20 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 12:32:46 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 12:35:10 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
-
-#define DARK_GREY(text) "\033[1;30m" << text << "\033[0m" // Dark Grey color
 
 int main() {
 	
