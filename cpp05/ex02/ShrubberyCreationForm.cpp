@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 00:04:34 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 09:06:47 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 
 	out.close();
 
-	std::cout << BOLD("🌳  Shrubbery has been created in the file: " << outputFilename) << std::endl;
+	std::cout << BOLD("🌳 Shrubbery has been created in the file: " << outputFilename) << std::endl;
 }

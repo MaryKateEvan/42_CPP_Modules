@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/18 19:06:46 by mevangel          #+#    #+#             */
-/*   Updated: 2024/08/20 03:58:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/08/20 09:06:06 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 	checkIfCanBeExecuted(executor);
 
 	// "Makes some drilling noises":
-	std::cout << BOLD("🛠️🔩🌀 Grrrrr.... Vrrrrr... Bzzzz... 🛠️🔩🌀") << std::endl;
+	std::cout << BOLD("🛠️ 🔩🌀 Grrrrr.... Vrrrrr... Bzzzz... 🛠️ 🔩🌀") << std::endl;
 
 	srand(time(NULL)); // sets the seed for rand() using the current time (in seconds), to ensure the seed and randominsing is diferrent every time the program runs
 	
