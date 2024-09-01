@@ -864,6 +864,188 @@ int main() {
 }
 
 
+//! CASTS  -  CPP MODULE 06
+
+int main()
+{
+	int a = 42;
+	double b = a; //implicit converison cast: the compiler will acst it for me
+	double c = (double) a; //explicit cast: i'm telling the compiler to cast it for me
+
+	double	d = a; //implicit promotion => OK
+	int		e = d; //implicit cast - demotion => hazardous !
+	int		f = (int) d; //explicit cast - demotion => OK.     => i'm telling the compiler that im aware for the demotion and loss of accuraccy
+
+	//! promotion: works either as implicit or explicit cast
+	//! demotion: works only as explicit cast. Implicit doesn't compile with specific flag.
+}
+
+//! identity cast: the base value keeps the same bit after conversion in the same order.
+// this particular cast of identity cast, is called REINTERPRETATION CAST
+
+int main() {
+
+	float a = 420.042f;
+
+	void * b = &a; // Implicit reinterpretation cast
+	void *c = (void *) &a; // Explicit reinterpretation cast
+						//here we're reinterpreting the address of a float as an adress to anything. 
+						// we lost in accuracy but gained in generality.
+
+	void *d = &a; //implicit promotion => OK!
+	int *e = d; //implicit cast - demotion => hazardous! //! should never do that!
+	int *f = (int *) d; //explicit cast - demotion => OK. We tell the compiler that the demotion is on purpose.
+}
+
+//! We can not give a float address to an integer address, but we can give a float address to a void address, since a void * is more generic.
+
+//! 3) Type-qualifier cast:
+int main() {
+	
+	int	 	a = 42;
+
+	int	const *b = &a; 					// implicit type-qualifier cast
+	int const *c = (int const *) &a; 	// explicit type-qualifier cast
+
+	int * const d = &a; 				// implicit promotion => OK
+	int * e = d; 						//! implicit demotion => hell no!! 
+										// the compiler will not even allow it
+	int * f = (int *) d; 				// explicit demotion => OK
+
+}
+
+//! 3b : Upcast and downcast in c++:
+{
+#include <iostream>
+
+class Parent {};
+class Child1 : public Parent {};
+class Child2 : public Parent {};
+
+int main() {
+
+	Child1 a;						//reference value
+
+	Parent * b = &a;				// implicit reinterpretation§ cast
+	Parent * c = (Parent *) &a;		// implicit reinterpretation§ cast
+
+	Parent * d = &a;				//! implicit UPCAST => ok!
+	Child1 * e = d;					//! implicit DOWNCAST => hell no! =>the compiler will not even allow it!
+	Child2 * f = (Child2 *)d;		// explicit downcast => will compile, but not good practice!
+}
+
+}
+
+//CASTS IN C++:
+
+//! 1. static_cast:
+// will prevent from cast between classes from separate hierarchy trees
+{
+	int a = 42;
+	double b = a; //implicit promotion
+	int c = b;
+
+	int d = static_cast<int>(b); // explicit demotion (= "make b of type int")
+	//the above example of 'Child2 * f = (Child2 *)d;' in c++ we write it as:
+	Child2 * f = static_cast<Child2 *>(d);
+	//the static cast allows us to make simple conversions, and also upcasts and downcasts, but prevents from casts between unrelated classes
+}
+
+//! 2. dynamic_cast
+// it's the only one that happens in runtime and not during the compilation =>i have to implement the code to detect cases that the dynamic cast will fail
+// it will only work with polymorphic instances. we use sub-type polymorphism.
+{
+#include <iostream>
+
+class Parent { public: virtual ~Parent(void) {} };
+class Child1 : public Parent {};
+class Child2 : public Parent {};
+
+int main() {
+
+	Child1 a;
+	Parent * b = &a; //implicit upcast => Ok!
+
+	// explicit downcast:
+	Child1 * c = dynamic_cast<Child1 *>(b);
+	if ( c == NULL) //we casted it to a pointer so we can check if it's NULL for failure
+		std::cout << "Conversion is NOT okay!" << std::endl;
+	else
+		std::cout << "Conversion is ok!" << std::endl;
+
+	// second scenario with reference now.
+	// we can not check if a reference is NULL of course, so in this case we use exceptions in c++
+	try {
+		Child2 & d = dynamic_cast<Child2 &>(*b); //! this will not work, so we will have the message of the exception below
+		std::cout << "Conversion is okay!" << std::endl;
+	}
+	catch (std::bad_cast &bc) {
+		std::cout << "Conversion is NOT okay: " << bc.what() << std::endl;
+		return 0;
+	}
+
+}
+}
+
+//! 3. reinterpret_cast
+// we can reinterpret any address with any other address
+// the compiler trusts me. I am responsible for the consequences.
+int main() {
+
+	float a = 420.042f;
+
+	void* b = &a;							//implicit promotion
+	int* c = reinterpret_cast<int *>(b); 	// explicit demotion => Ok, I obey!
+	int & d = reinterpret_cast<int &>(b); 	// explicit demotion => Ok, I obey!
+}
+
+//! 4. const_cast
+// 
+int main() {
+
+	int a = 42;
+
+	int const * b = &a; 					// implicit promotion ("promotion" cause "const" variables are higher)
+	int * c = b;							// hell no!
+	int *d = const_cast<int *>(b);			// explicit demotion! okay!
+	// which was the same as above : int const *c = (int const *) &a; 	// explicit type-qualifier cast
+}
+
+//! type-cast operators
+{
+#include <iostream>
+
+class Foo {
+
+	private:
+		float _v;
+	
+	public:
+		Foo (flaot const v) : _v(v) {}
+
+		float getV() { return this->_v; }
+
+		operator float() { return this->_v };
+		operator int() { return static_cast<int>(this->_v); }
+};
+
+
+int main() {
+	Foo a( 420.042f );
+	//and the above two operators of the class Foo allow us to do:
+	float b = a;
+	int c = a;
+
+	std::cout << a.getV() << std::endl;		//prints: 420.042
+	std::cout << b << std::endl;			//prints: 420.042
+	std::cout << c << std::endl;			//prints: 420
+}
+
+}
+
+
+
+
 
 
 
