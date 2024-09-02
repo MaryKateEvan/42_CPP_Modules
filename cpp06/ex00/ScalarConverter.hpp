@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/02 15:45:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/02 16:28:41 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 # define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
+# define GRAY(text) "\033[90m" << text << "\033[0m"
+# define RED(text) "\033[31m" << text << "\033[0m"
+# define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
 class ScalarConverter {
 	
