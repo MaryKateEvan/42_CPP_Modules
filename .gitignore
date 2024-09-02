@@ -1,3 +1,4 @@
+# general stuff 
 .vscode/
 .dist
 */.dist
@@ -11,10 +12,32 @@ a.out
 
 # the executables of the exercises:
 */*/megaphone
+*/*/phone_book
+*/*/recover_lost_file
+*/*/zombies
+*/*/zombies_horde
+*/*/refs_and_pointers
+*/*/unnecessary_violence
+*/*/replace
+*/*/Harl
+*/*/harlFilter
+*/*/fixed
+*/*/fixed_upgraded
+*/*/fixed_upgrade_plus
+*/*/bsp
+*/*/clap_trap
+*/*/scav_trap
+*/*/frag_trap
+*/*/diamond_trap
+*/*/dogs_vs_cats
+*/*/pets_with_brains
+*/*/abstract_AAnimal
+*/*/interface
 */*/bureaucrat
 */*/forms
 */*/crazy_forms
 */*/interns_are_here
+*/*/convert
 
 # files created from the exercises:
 */*/Home_shrubbery
