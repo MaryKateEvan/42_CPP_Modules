@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 04:43:03 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 05:24:41 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <cctype> //for the std::isprint
 # include <sstream> //for the std::istringstream
 # include <limits> // for the std::numeric_limits
+# include <iomanip> // for the std::fixed and std::setprecision
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -33,7 +34,7 @@ class ScalarConverter {
 		ScalarConverter(); //private default constructor cause we don't want the Class to be instanciablee
 
 		//helper methods for the convert:
-		static bool handleChar(const std::string& arg);
+		static bool displayCharConversion(const std::string& arg);
 		// static bool handleInt(const std::string& arg);
 		// static bool handleFloat(const std::string& arg);
 		// static bool handleDouble(const std::string& arg);
