@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 17:15:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:19:38 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,17 @@ static void run_tests() {
 	std::cout << CYAN("-------------------------------------------") << std::endl;
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"a\"")) << std::endl;
 	ScalarConverter::convert("a");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\" \"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\" \"")) << std::endl;
 	ScalarConverter::convert(" ");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"*\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"*\"")) << std::endl;
 	ScalarConverter::convert("*");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"\"\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"\"\"")) << std::endl;
 	ScalarConverter::convert("\"");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"\\\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"\\\"")) << std::endl;
 	ScalarConverter::convert("\\");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"}\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"}\"")) << std::endl;
 	ScalarConverter::convert("}");
+	std::cout << std::endl;
 	waitForEnter();
 
 	std::cout << CYAN("\n-------------------------------------------") << std::endl;
@@ -43,16 +44,17 @@ static void run_tests() {
 	std::cout << CYAN("-------------------------------------------") << std::endl;
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"42\"")) << std::endl;
 	ScalarConverter::convert("42"); // Valid character
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"65\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"65\"")) << std::endl;
 	ScalarConverter::convert("65"); // Valid character
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"0\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"0\"")) << std::endl;
 	ScalarConverter::convert("0"); // Non-displayable character
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"10\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"10\"")) << std::endl;
 	ScalarConverter::convert("10"); // Non-displayable character
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-2147483648\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-2147483648\"")) << std::endl;
 	ScalarConverter::convert("-2147483648"); // INT_MIN
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"2147483647\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"2147483647\"")) << std::endl;
 	ScalarConverter::convert("2147483647"); // INT_MAX
+	std::cout << std::endl;
 	waitForEnter();
 
 	std::cout << CYAN("\n-------------------------------------------") << std::endl;
@@ -60,16 +62,17 @@ static void run_tests() {
 	std::cout << CYAN("-------------------------------------------") << std::endl;
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"42.0f\"")) << std::endl;
 	ScalarConverter::convert("42.0f");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"3.14f\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"3.14f\"")) << std::endl;
 	ScalarConverter::convert("3.14f");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"0.00001f\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"0.00001f\"")) << std::endl;
 	ScalarConverter::convert("0.00001f");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-2345678.25f\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-2345678.25f\"")) << std::endl;
 	ScalarConverter::convert("-2345678.25f");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-2147483649.1\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-2147483649.1\"")) << std::endl;
 	ScalarConverter::convert("-2147483649.1"); // INT_MIN
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"2147483648.7\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"2147483648.7\"")) << std::endl;
 	ScalarConverter::convert("2147483648.7"); // INT_MAX
+	std::cout << std::endl;
 	waitForEnter();
 
 	std::cout << CYAN("\n-------------------------------------------") << std::endl;
@@ -77,14 +80,15 @@ static void run_tests() {
 	std::cout << CYAN("-------------------------------------------") << std::endl;
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"42.042\"")) << std::endl;
 	ScalarConverter::convert("42.042");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-65.352\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-65.352\"")) << std::endl;
 	ScalarConverter::convert("-65.352");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"214748364901354\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"214748364901354\"")) << std::endl;
 	ScalarConverter::convert("214748364901354"); //bigger than INT_MAX
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-1234567893456\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-1234567893456\"")) << std::endl;
 	ScalarConverter::convert("-1234567893456"); //smaller than INT_MIN
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"0.0001\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"0.0001\"")) << std::endl;
 	ScalarConverter::convert("0.0001");
+	std::cout << std::endl;
 	waitForEnter();
 
 	std::cout << CYAN("\n-------------------------------------------") << std::endl;
@@ -93,17 +97,18 @@ static void run_tests() {
 	// float pseudo literals:
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"nanf\"")) << std::endl;
 	ScalarConverter::convert("nanf");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"+inff\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"+inff\"")) << std::endl;
 	ScalarConverter::convert("+inff");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-inff\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-inff\"")) << std::endl;
 	ScalarConverter::convert("-inff");
 	// double pseudo literal:
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"nan\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"nan\"")) << std::endl;
 	ScalarConverter::convert("nan");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"+inf\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"+inf\"")) << std::endl;
 	ScalarConverter::convert("+inf");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-inf\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-inf\"")) << std::endl;
 	ScalarConverter::convert("-inf");
+	std::cout << std::endl;
 	waitForEnter();
 
 	std::cout << CYAN("\n-------------------------------------------") << std::endl;
@@ -111,13 +116,13 @@ static void run_tests() {
 	std::cout << CYAN("-------------------------------------------") << std::endl;
 	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"hello world\"")) << std::endl;
 	ScalarConverter::convert("hello world");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"\"")) << std::endl;
 	ScalarConverter::convert("");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"^35\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"^35\"")) << std::endl;
 	ScalarConverter::convert("^35");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"..34\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"..34\"")) << std::endl;
 	ScalarConverter::convert("..34");
-	std::cout << UNDERLINE("Output for: ./convert " << BOLD("\"-+21\"")) << std::endl;
+	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-+21\"")) << std::endl;
 	ScalarConverter::convert("-+21");
 }
 

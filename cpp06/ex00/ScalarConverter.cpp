@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 17:09:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:17:46 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,5 @@ void ScalarConverter::convert(const std::string& arg) {
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
 	}
-	std::cout << std::endl;
 }
 
