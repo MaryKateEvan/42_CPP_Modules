@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 15:55:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:15:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,11 +102,9 @@ void ScalarConverter::inputIsInt(const int& num_int) {
 }
 
 void ScalarConverter::inputIsFloat(const float& num_float) {
-	
-	std::cout << "the std::stof returned: " << num_float << std::endl;
-	
+
 	int char_num = static_cast<int>(num_float);
-	char c = static_cast<char>(char_num);
+	char c = static_cast<char>(num_float);
 	// 1. character out of char range:
 	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
@@ -120,12 +118,29 @@ void ScalarConverter::inputIsFloat(const float& num_float) {
 	// printing of the rest numberic types:
 	std::cout << "int: " << char_num << std::endl;
 	std::cout << "float: " << num_float << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(7) << static_cast<double>(num_float) << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(10) << static_cast<double>(num_float) << std::endl;
 }
 
-// void ScalarConverter::inputIsDouble(const std::string& arg) {
-	
-// }
+void ScalarConverter::inputIsDouble(const double& num_double) {
+
+	int char_num = static_cast<int>(num_double);
+	char c = static_cast<char>(num_double);
+	// 1. character out of char range:
+	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max())
+		std::cout << "char: impossible" << std::endl;
+	// 2. Non displayable character:
+	else if (std::isprint(c) == false)
+		std::cout << "char: Non displayable" << std::endl;
+	// 3. valid, printable characters:
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
+
+	// printing of the rest numberic types:
+	std::cout << "int: " << char_num << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << static_cast<float>(num_double) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(10) << num_double << std::endl;
+
+}
 
 // void ScalarConverter::inputIsPseudo(const std::string& arg, bool is_float) {
 	
@@ -184,6 +199,9 @@ void ScalarConverter::convert(const std::string& arg) {
 		inputIsInt(std::stoi(arg));
 	else if (type == "float")
 		inputIsFloat(std::stof(arg));
+	else if (type == "double")
+		inputIsDouble(std::stod(arg));
+		
 	
 	std::cout << std::endl;
 	//1st scenario: arg is one character:

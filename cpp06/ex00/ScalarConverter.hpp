@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 15:55:14 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:58:15 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,12 @@ class ScalarConverter {
 		//helper private methods for the convert:
 		static std::string findType(std::string arg);
 		// static bool displayCharConversion(const std::string& arg);
-		// static bool handleInt(const std::string& arg);
-		// static bool handleFloat(const std::string& arg);
-		// static bool handleDouble(const std::string& arg);
 	
 		static void inputIsChar(const char& c);
 		static void inputIsInt(const int& num_int);
 		static void inputIsFloat(const float& num_float);
-		// static void inputIsDouble(const std::string& arg);
+		static void inputIsDouble(const double& num_double);
 		// static void inputIsPseudo(const std::string& arg, bool is_float);
-		// static void handleInt(const std::string& arg);
-		// static void handleFloat(const std::string& arg);
-		// static void handleDouble(const std::string& arg);
 	
 	public:
 
