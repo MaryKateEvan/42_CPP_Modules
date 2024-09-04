@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 05:24:41 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 05:54:41 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class ScalarConverter {
 		ScalarConverter(); //private default constructor cause we don't want the Class to be instanciablee
 
 		//helper methods for the convert:
+		static std::string findType(std::string arg);
 		static bool displayCharConversion(const std::string& arg);
 		// static bool handleInt(const std::string& arg);
 		// static bool handleFloat(const std::string& arg);

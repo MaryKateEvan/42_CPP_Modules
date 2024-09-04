@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 05:35:14 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 06:01:27 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,17 @@ bool ScalarConverter::displayCharConversion(const std::string& arg) {
 	
 // }
 
+std::string ScalarConverter::findType(std::string arg) {
+	
+	if (arg.size() == 1 && !std::isdigit(arg[0]) && std::isprint(arg[0]))
+		return "char";
+	
+
+		
+	else
+		return "unknown";
+}
+
 void ScalarConverter::convert(const std::string& arg) {
 	
 	// if (arg.size() == 1 && std::isalpha(arg[0])) {
@@ -84,7 +95,7 @@ void ScalarConverter::convert(const std::string& arg) {
 	// 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(arg[0]) << "f" << std::endl;
 	// 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(arg[0]) << std::endl;
 	// }
-	// else
+	if (findType(arg) == "char")
 		displayCharConversion(arg);
 	std::cout << std::endl;
 	// 1st scenario: arg is one character:

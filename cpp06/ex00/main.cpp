@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 04:46:33 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 05:35:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ static void run_tests() {
 	std::cout << CYAN("--------------------------------------") << std::endl;
 	ScalarConverter::convert("0"); // Valid character
 	ScalarConverter::convert("70"); // Valid character
-	ScalarConverter::convert("\n"); // Non-displayable character
-	ScalarConverter::convert("ab"); // Invalid: more than one character
+	ScalarConverter::convert("a"); // Valid character
+	ScalarConverter::convert("\\"); // Non-displayable character
+	ScalarConverter::convert("hello"); // Invalid: more than one character
 	ScalarConverter::convert("");   // Invalid: empty string
 
 	std::cout << CYAN("\n--------------------------------------") << std::endl;
