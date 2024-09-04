@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 04:40:40 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 04:58:13 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,27 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const & src) {
 bool ScalarConverter::handleChar(const std::string& arg) {
 	
 	int char_num = 0;
-	
-	std::istringstream parse_string(arg); //a type of stream specifically used for reading from strings as if they were input streams, like reading from the console or a file.
+	if (arg.size() == 1 && std::isalpha(arg[0]))
+		char_num = static_cast<int>(arg[0]);
+	else {
+		std::istringstream parse_string(arg); //a type of stream specifically used for reading from strings as if they were input streams, like reading from the console or a file.
 
-	// here we try to "extract" an integer from the string stream:
-	if (!(parse_string >> char_num) || !parse_string.eof()) {
-		std::cout << "char: impossible" << std::endl;
-		return false; //when an integer couldn't be extracted
-	}
-	
-	//if we successfully extract the integer then we check the possibilities:
-	// 1) out of the char range [-128,127]
-	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max()) {
-		std::cout << "char: impossible" << std::endl;
-		return false;
-	}
-	// 2) non-printable character:
-	if (!std::isprint(char_num)) {
-		std::cout << "char: Non displayable" << std::endl;
-		return false;
+		// here we try to "extract" an integer from the string stream:
+		if (!(parse_string >> char_num) || !parse_string.eof()) {
+			std::cout << "char: impossible" << std::endl;
+			return false; //when an integer couldn't be extracted
+		}
+		//if we successfully extract the integer then we check the possibilities:
+		// 1) out of the char range [-128,127]
+		if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max()) {
+			std::cout << "char: impossible" << std::endl;
+			return false;
+		}
+		// 2) non-printable character:
+		if (!std::isprint(char_num)) {
+			std::cout << "char: Non displayable" << std::endl;
+			return false;
+		}
 	}
 	// 3) valid, printable character:
 	std::cout << "char: '" << static_cast<char>(char_num) << "'" << std::endl;
