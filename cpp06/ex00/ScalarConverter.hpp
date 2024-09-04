@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/02 16:28:41 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 04:43:03 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <iostream>
 # include <string>
 # include <cctype> //for the std::isprint
+# include <sstream> //for the std::istringstream
+# include <limits> // for the std::numeric_limits
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"
 # define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -30,6 +32,12 @@ class ScalarConverter {
 
 		ScalarConverter(); //private default constructor cause we don't want the Class to be instanciablee
 
+		//helper methods for the convert:
+		static bool handleChar(const std::string& arg);
+		// static bool handleInt(const std::string& arg);
+		// static bool handleFloat(const std::string& arg);
+		// static bool handleDouble(const std::string& arg);
+	
 	public:
 
 		ScalarConverter(ScalarConverter const & to_copy);			// copy constructor
@@ -37,7 +45,7 @@ class ScalarConverter {
 		ScalarConverter& operator=(ScalarConverter const & src);	// Assignment operator overload
 		
 		//the method asked form the subject:
-		static void convert(const std::string& input); //static method so it belongs to the class itself rather than separate instances/objects.
+		static void convert(const std::string& arg); //static method so it belongs to the class itself rather than separate instances/objects.
 };
 
 #endif //SCALARCONVERTER_HPP
