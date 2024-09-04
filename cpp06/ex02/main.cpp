@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 19:52:19 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 20:10:10 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 20:24:16 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,39 @@ Base* generate(void) {
 // It prints the actual type of the object pointed to by p: "A", "B" or "C".
 void identify(Base* p) {
 	if (dynamic_cast<A*>(p)) //which means if the cast returns a valid pointer and not null
-		std::cout << "Type of this object is: " << BOLD("A") << std::endl;
+		std::cout << "This object is of class: " << BOLD("A") << std::endl;
 	else if (dynamic_cast<B*>(p))
-		std::cout << "Type of this object is: " << BOLD("B") << std::endl;
+		std::cout << "This object is of class: " << BOLD("B") << std::endl;
 	else if (dynamic_cast<C*>(p))
-		std::cout << "Type of this object is: " << BOLD("C") << std::endl;
+		std::cout << "This object is of class: " << BOLD("C") << std::endl;
 	else
 		std::cout << "This object doesn't belong to any of the A, B, C classes." << std::endl;
 }
 
-// It prints the actual type of the object pointed to by p: "A", "B" or "C".
-void identify(Base& p);
+// It prints the actual type of the object carried by the reference `p`: "A", "B" or "C".
+void identify(Base& p) {
+	//check for Class A:
+	try {
+		(void) dynamic_cast<A&>(p); //void casue i dont really need the cacsted value-reference. I just want to see if the cast is possible
+		std::cout << "This object is of class: " << BOLD("A") << std::endl;
+		return ;
+	}
+	catch (std::bad_cast &bc) {
+		//check for Class B:
+		try {
+			(void) dynamic_cast<B&>(p); //void casue i dont really need the cacsted value-reference. I just want to see if the cast is possible
+			std::cout << "This object is of class: " << BOLD("B") << std::endl;
+		}
+		catch (std::bad_cast &bc) {
+			//check for Class C:
+			try {
+				(void) dynamic_cast<C&>(p); //void casue i dont really need the cacsted value-reference. I just want to see if the cast is possible
+				std::cout << "This object is of class: " << BOLD("C") << std::endl;
+				return ;
+			}
+			catch (std::bad_cast& bc) {
+				std::cout << "This object does not belong to any of the A, B, C classes." << std::endl;
+			}
+		}
+	}
+}
