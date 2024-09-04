@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 14:57:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:09:46 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ std::string ScalarConverter::findType(std::string arg) {
 	std::istringstream parse_string(arg);
 	// 1) parsing a double:
 	double num_double = 0;
-	if ((parse_string >> num_double) && parse_string.eof())
+	if ((arg.find('.') != std::string::npos) && (parse_string >> num_double) && parse_string.eof())
 		return "double";
 	// 2) parsing an integer:
 	parse_string.clear();
