@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 16:43:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:22:35 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <cctype> //for the std::isprint
 # include <sstream> //for the std::istringstream
 # include <limits> // for the std::numeric_limits
+# include <climits> //for INT_MAX and INT_MIN
 # include <iomanip> // for the std::fixed and std::setprecision
 
 # define BOLD(text) "\033[1m" << text << "\033[0m"

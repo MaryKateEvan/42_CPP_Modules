@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 17:19:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:29:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ static void run_tests() {
 	ScalarConverter::convert("..34");
 	std::cout << UNDERLINE("\nOutput for: ./convert " << BOLD("\"-+21\"")) << std::endl;
 	ScalarConverter::convert("-+21");
+	std::cout << std::endl;
 }
 
 int main(int argc, char **argv) {
