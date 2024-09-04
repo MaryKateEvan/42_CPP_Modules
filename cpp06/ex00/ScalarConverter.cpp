@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 06:01:27 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 13:54:47 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,31 @@ std::string ScalarConverter::findType(std::string arg) {
 	
 	if (arg.size() == 1 && !std::isdigit(arg[0]) && std::isprint(arg[0]))
 		return "char";
-	
+	if (arg == "nanf" || arg == "-inff" || arg == "+inff")
+		return "pseudo_float";
+	if (arg == "nan" || arg == "-inf" || arg == "+inf")
+		return "pseudo_double";
 
-		
-	else
-		return "unknown";
+	std::istringstream parse_string(arg);
+	// 1) parsing an integer:
+	int num_int = 0;
+	if ((parse_string >> num_int) && parse_string.eof())
+		return "int";
+	// 2) parsing a double:
+	parse_string.clear(); //to clear from the above parsing for int operation
+	double num_double = 0;
+	if ((parse_string >> num_double) && parse_string.eof())
+		return "double";
+	// 3) parsing a float:
+	parse_string.clear();//to clear from the above parsing for double operation
+	if (arg[arg.size() - 1] == 'f' || arg[arg.size() - 1] == 'F')
+	{
+		parse_string.str(arg.substr(0, arg.size() - 1));
+		float num_float = 0;
+		if ((parse_string >> num_float) && parse_string.eof())
+			return "float";
+	}
+	return "invalid_string";
 }
 
 void ScalarConverter::convert(const std::string& arg) {
@@ -95,9 +115,14 @@ void ScalarConverter::convert(const std::string& arg) {
 	// 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(arg[0]) << "f" << std::endl;
 	// 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(arg[0]) << std::endl;
 	// }
-	if (findType(arg) == "char")
-		displayCharConversion(arg);
-	std::cout << std::endl;
+
+          
+	std::string type = findType(arg);
+	std::cout << "Type for the string \"" << arg << "\" is: " << type << std::endl;
+	
+	// if (type == "char")
+	// 	displayCharConversion(arg);
+	// std::cout << std::endl;
 	// 1st scenario: arg is one character:
 	
 }
