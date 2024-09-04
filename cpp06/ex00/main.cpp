@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 14:11:04 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:37:57 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void run_tests() {
 	
 	ScalarConverter::convert("0"); // Valid character
 	ScalarConverter::convert("70"); // Valid character
+	ScalarConverter::convert("42"); // Valid character
 	ScalarConverter::convert("a"); // Valid character
 	ScalarConverter::convert("\\"); // Non-displayable character
 	ScalarConverter::convert("hello"); // Invalid: more than one character

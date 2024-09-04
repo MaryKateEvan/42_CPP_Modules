@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 14:11:19 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:31:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ class ScalarConverter {
 		// static bool handleDouble(const std::string& arg);
 	
 		static void inputIsChar(const char& c);
-		// static void inputIsInt(const std::string& arg);
+		static void inputIsInt(const int& num_int);
 		// static void inputIsFloat(const std::string& arg);
 		// static void inputIsDouble(const std::string& arg);
 		// static void inputIsPseudo(const std::string& arg, bool is_float);
