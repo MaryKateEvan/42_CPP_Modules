@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 15:00:07 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:19:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ static void run_tests() {
 	ScalarConverter::convert("..34");   // Invalid: empty string
 	ScalarConverter::convert("");   // Invalid: empty string
 	ScalarConverter::convert("0.00f");   // Invalid: empty string
+	ScalarConverter::convert("-2147483648");   // INT_MIN
+	ScalarConverter::convert("2147483647");   // INT_MAX
 	ScalarConverter::convert("-2147483649");   // smaller than INT_MIN
 	ScalarConverter::convert("2147483649345678");   // smaller than INT_MIN
 	
