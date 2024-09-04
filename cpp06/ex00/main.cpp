@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 15:31:00 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 15:49:34 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,13 @@ static void run_tests() {
 	ScalarConverter::convert("-2147483648"); // INT_MIN
 	ScalarConverter::convert("2147483647"); // INT_MAX
 
-	// std::cout << CYAN("\n--------------------------------------") << std::endl;
-	// std::cout << CYAN(BOLD("     CATEGORY 3️⃣ : INPUT IS FLOAT    ")) << std::endl;
-	// std::cout << CYAN("--------------------------------------") << std::endl;
-	
+	std::cout << CYAN("\n--------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("     CATEGORY 3️⃣ : INPUT IS FLOAT    ")) << std::endl;
+	std::cout << CYAN("--------------------------------------") << std::endl;
+	ScalarConverter::convert("42.0f");
+	ScalarConverter::convert("3.14f");
+	ScalarConverter::convert("0.00001f");
+	ScalarConverter::convert("-2345678.25f");
 
 	// std::cout << CYAN("\n--------------------------------------") << std::endl;
 	// std::cout << CYAN(BOLD("     CATEGORY 4️⃣ : INPUT IS DOUBLE    ")) << std::endl;
