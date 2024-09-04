@@ -6,29 +6,34 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:06:30 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 18:19:32 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 18:55:46 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <cstdint> // For uintptr_t
+#include "Serializer.hpp"
+#define IN_GREEN(text) "\033[32m" << text << "\033[0m"
+#define IN_RED(text) "\033[31m" << text << "\033[0m"
 
 int main() {
 	
-	int x = 42;
-	int* ptr = &x;
+	Data* info_initially = new Data("Mary Kate", 23);
+	
+	// Serialization of the pointer to my info:
+	uintptr_t info_int_pointer = Serializer::serialize(info_initially);
 
-	// Convert pointer to uintptr_t
-	uintptr_t ptr_as_int = reinterpret_cast<uintptr_t>(ptr);
+	//deserialize the above pointer back to data* pointer
+	Data* deserialisedInfo = Serializer::deserialize(info_int_pointer);
 
-	// Output the integer value of the pointer
-	std::cout << "Pointer as integer: " << ptr_as_int << std::endl;
-
-	// Convert the integer back to a pointer
-	int* ptr_again = reinterpret_cast<int*>(ptr_as_int);
-
-	// Output the value pointed to by the pointer
-	std::cout << "Value pointed to: " << *ptr_again << std::endl;
+	if (info_initially == deserialisedInfo) {
+		std::cout << IN_GREEN("Serialization and Deserialization were succesful.") << std::endl;
+		std::cout << "The \"deserialisedInfo\" holds the data: " << std::endl;
+		std::cout << "Name: " << deserialisedInfo->name << std::endl;
+		std::cout << "Age: " << deserialisedInfo->age << std::endl;
+	}
+	else
+		std::cout << IN_RED("Serialization and Deserialization did not work.") << std::endl;
+	
+	delete info_initially;
 
 	return 0;
 }
