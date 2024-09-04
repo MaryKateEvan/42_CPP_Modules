@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 18:06:41 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 18:37:38 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 19:12:47 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <iostream>
 # include <string>
-# include <cstdint> // For uintptr_t
+# include <stdint.h>
+# include <cstdlib> // For uintptr_t
 
 # include "Data.hpp"
 
