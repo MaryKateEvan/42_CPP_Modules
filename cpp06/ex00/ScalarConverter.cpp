@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 13:54:47 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:25:07 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,49 @@ bool ScalarConverter::displayCharConversion(const std::string& arg) {
 	return true;
 }
 
-// bool ScalarConverter::handleInt(const std::string& arg) {
+void ScalarConverter::inputIsChar(const char& c) {
+	
+	int char_num = static_cast<int>(c);
+
+	// 1. character out of char range:
+	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max()) {
+		std::cout << "char: impossible" << std::endl;
+		return ;
+	}
+	// 2. Non displayable character:
+	if (std::isprint(c) == false) {
+		std::cout << "char: Non displayable" << std::endl;
+		return ;
+	}
+	// 3. valid, printable characters:
+	std::cout << "char: '" << c << "'" << std::endl;
+
+	// printing of the rest numberic types:
+	std::cout << "int: " << char_num << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(char_num) << "f" << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(char_num) << std::endl;
+}
+
+// void ScalarConverter::inputIsInt(const std::string& arg) {
+
+// }
+
+// void ScalarConverter::inputIsFloat(const std::string& arg) {
 	
 // }
 
-// bool ScalarConverter::handleFloat(const std::string& arg) {
+// void ScalarConverter::inputIsDouble(const std::string& arg) {
 	
 // }
 
-// bool ScalarConverter::handleDouble(const std::string& arg) {
-	
+// void ScalarConverter::inputIsPseudo(const std::string& arg, bool is_float) {
 	
 // }
 
 std::string ScalarConverter::findType(std::string arg) {
 	
-	if (arg.size() == 1 && !std::isdigit(arg[0]) && std::isprint(arg[0]))
+	// if (arg.size() == 1 && !std::isdigit(arg[0]) && std::isprint(arg[0]))
+	if (arg.size() == 1 && !std::isdigit(arg[0]))
 		return "char";
 	if (arg == "nanf" || arg == "-inff" || arg == "+inff")
 		return "pseudo_float";
@@ -120,10 +147,10 @@ void ScalarConverter::convert(const std::string& arg) {
 	std::string type = findType(arg);
 	std::cout << "Type for the string \"" << arg << "\" is: " << type << std::endl;
 	
-	// if (type == "char")
-	// 	displayCharConversion(arg);
-	// std::cout << std::endl;
-	// 1st scenario: arg is one character:
+	if (type == "char")
+		inputIsChar(arg[0]);
+	std::cout << std::endl;
+	//1st scenario: arg is one character:
 	
 }
 

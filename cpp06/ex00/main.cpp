@@ -6,13 +6,15 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:06:52 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 13:57:43 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:11:04 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 static void run_tests() {
+	
+	std::cout << static_cast<int>('a') << std::endl;
 	
 	ScalarConverter::convert("0"); // Valid character
 	ScalarConverter::convert("70"); // Valid character
@@ -28,6 +30,7 @@ static void run_tests() {
 	ScalarConverter::convert("^35");   // Invalid: empty string
 	ScalarConverter::convert("..34");   // Invalid: empty string
 	ScalarConverter::convert("");   // Invalid: empty string
+	ScalarConverter::convert("0.00f");   // Invalid: empty string
 	
 	// std::cout << CYAN("\n--------------------------------------") << std::endl;
 	// std::cout << CYAN(BOLD("          TEST 1️⃣ : CHARS         ")) << std::endl;
