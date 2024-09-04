@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 14:37:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 14:57:24 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,17 +68,14 @@ void ScalarConverter::inputIsChar(const char& c) {
 	int char_num = static_cast<int>(c);
 
 	// 1. character out of char range:
-	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max()) {
+	if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
-		return ;
-	}
 	// 2. Non displayable character:
-	if (std::isprint(c) == false) {
+	else if (std::isprint(c) == false)
 		std::cout << "char: Non displayable" << std::endl;
-		return ;
-	}
 	// 3. valid, printable characters:
-	std::cout << "char: '" << c << "'" << std::endl;
+	else
+		std::cout << "char: '" << c << "'" << std::endl;
 
 	// printing of the rest numberic types:
 	std::cout << "int: " << char_num << std::endl;
@@ -89,17 +86,14 @@ void ScalarConverter::inputIsChar(const char& c) {
 void ScalarConverter::inputIsInt(const int& num_int) {
 
 	// 1. character out of char range:
-	if (num_int < std::numeric_limits<char>::min() || num_int > std::numeric_limits<char>::max()) {
+	if (num_int < std::numeric_limits<char>::min() || num_int > std::numeric_limits<char>::max())
 		std::cout << "char: impossible" << std::endl;
-		return ;
-	}
 	// 2. Non displayable character:
-	if (std::isprint(num_int) == false) {
+	else if (std::isprint(num_int) == false)
 		std::cout << "char: Non displayable" << std::endl;
-		return ;
-	}
 	// 3. valid, printable characters:
-	std::cout << "char: '" << static_cast<char>(num_int) << "'" << std::endl;
+	else
+		std::cout << "char: '" << static_cast<char>(num_int) << "'" << std::endl;
 	
 	// printing of the rest numberic types:
 	std::cout << "int: " << num_int << std::endl;
@@ -132,15 +126,16 @@ std::string ScalarConverter::findType(std::string arg) {
 		return "pseudo_double";
 
 	std::istringstream parse_string(arg);
-	// 1) parsing an integer:
-	int num_int = 0;
-	if ((parse_string >> num_int) && parse_string.eof())
-		return "int";
-	// 2) parsing a double:
-	parse_string.clear(); //to clear from the above parsing for int operation
+	// 1) parsing a double:
 	double num_double = 0;
 	if ((parse_string >> num_double) && parse_string.eof())
 		return "double";
+	// 2) parsing an integer:
+	parse_string.clear();
+	parse_string.str(arg);
+	int num_int = 0;
+	if ((parse_string >> num_int) && parse_string.eof())
+		return "int";
 	// 3) parsing a float:
 	parse_string.clear();//to clear from the above parsing for double operation
 	if (arg[arg.size() - 1] == 'f' || arg[arg.size() - 1] == 'F')
