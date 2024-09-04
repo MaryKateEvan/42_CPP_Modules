@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:28 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 16:15:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 17:09:37 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,36 +32,6 @@ ScalarConverter& ScalarConverter::operator=(ScalarConverter const & src) {
 	(void)src;
 	return *this;
 }
-
-// bool ScalarConverter::displayCharConversion(const std::string& arg) {
-	
-// 	int char_num = 0;
-// 	if (arg.size() == 1 && !std::isdigit(arg[0]) && std::isprint(arg[0]))
-// 		char_num = static_cast<int>(arg[0]);
-// 	else {
-// 		std::istringstream parse_string(arg); //a type of stream specifically used for reading from strings as if they were input streams, like reading from the console or a file.
-
-// 		// here we try to "extract" an integer from the string stream:
-// 		if (!(parse_string >> char_num) || !parse_string.eof()) {
-// 			std::cout << "char: impossible" << std::endl;
-// 			return false; //when an integer couldn't be extracted
-// 		}
-// 		//if we successfully extract the integer then we check the possibilities:
-// 		// 1) out of the char range [-128,127]
-// 		if (char_num < std::numeric_limits<char>::min() || char_num > std::numeric_limits<char>::max()) {
-// 			std::cout << "char: impossible" << std::endl;
-// 			return false;
-// 		}
-// 		// 2) non-printable character:
-// 		if (!std::isprint(char_num)) {
-// 			std::cout << "char: Non displayable" << std::endl;
-// 			return false;
-// 		}
-// 	}
-// 	// 3) valid, printable character:
-// 	std::cout << "char: '" << static_cast<char>(char_num) << "'" << std::endl;
-// 	return true;
-// }
 
 void ScalarConverter::inputIsChar(const char& c) {
 	
@@ -116,8 +86,11 @@ void ScalarConverter::inputIsFloat(const float& num_float) {
 		std::cout << "char: '" << c << "'" << std::endl;
 
 	// printing of the rest numberic types:
-	std::cout << "int: " << char_num << std::endl;
-	std::cout << "float: " << num_float << "f" << std::endl;
+	if (num_float > INT_MAX || num_float < INT_MIN)
+		std::cout << "int: overflow" << std::endl;
+	else
+		std::cout << "int: " << char_num << std::endl;
+	std::cout << "float: " << std::fixed << std::setprecision(6) << num_float << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(10) << static_cast<double>(num_float) << std::endl;
 }
 
@@ -135,16 +108,30 @@ void ScalarConverter::inputIsDouble(const double& num_double) {
 	else
 		std::cout << "char: '" << c << "'" << std::endl;
 
-	// printing of the rest numberic types:
-	std::cout << "int: " << char_num << std::endl;
+	// check for int overflow:
+	if (num_double > INT_MAX || num_double < INT_MIN)
+		std::cout << "int: overflow" << std::endl;
+	else
+		std::cout << "int: " << char_num << std::endl;
+	
 	std::cout << "float: " << std::fixed << std::setprecision(6) << static_cast<float>(num_double) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(10) << num_double << std::endl;
 
 }
 
-// void ScalarConverter::inputIsPseudo(const std::string& arg, bool is_float) {
+void ScalarConverter::inputIsPseudo(const std::string& arg, bool is_float) {
 	
-// }
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if (is_float) {
+		std::cout << "float: " << arg << std::endl;
+		std::cout << "double: " << arg.substr(0, arg.size() - 1) << std::endl;
+	}
+	else {
+		std::cout << "float: " << arg << "f" << std::endl;
+		std::cout << "double: " << arg << std::endl;
+	}
+}
 
 std::string ScalarConverter::findType(std::string arg) {
 	
@@ -182,16 +169,9 @@ std::string ScalarConverter::findType(std::string arg) {
 }
 
 void ScalarConverter::convert(const std::string& arg) {
-	
-	// if (arg.size() == 1 && std::isalpha(arg[0])) {
-	// 	std::cout << "char: '" << arg[0] << "'" << std::endl;
-	// 	std::cout << "int: " << static_cast<int>(arg[0]) << std::endl;
-	// 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(arg[0]) << "f" << std::endl;
-	// 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(arg[0]) << std::endl;
-	// }
 
 	std::string type = findType(arg);
-	std::cout << "Type for the string \"" << arg << "\" is: " << type << std::endl;
+	// std::cout << "Type for the string \"" << arg << "\" is: " << type << std::endl;
 	
 	if (type == "char")
 		inputIsChar(arg[0]);
@@ -201,10 +181,16 @@ void ScalarConverter::convert(const std::string& arg) {
 		inputIsFloat(std::stof(arg));
 	else if (type == "double")
 		inputIsDouble(std::stod(arg));
-		
-	
+	else if (type == "pseudo_float")
+		inputIsPseudo(arg, true);
+	else if (type == "pseudo_double")
+		inputIsPseudo(arg, false);
+	else {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: impossible" << std::endl;
+		std::cout << "double: impossible" << std::endl;
+	}
 	std::cout << std::endl;
-	//1st scenario: arg is one character:
-	
 }
 

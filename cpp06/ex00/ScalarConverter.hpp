@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 23:27:32 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/04 15:58:15 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/04 16:43:39 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ class ScalarConverter {
 
 		ScalarConverter(); //private default constructor cause we don't want the Class to be instanciablee
 
-		//helper private methods for the convert:
-		static std::string findType(std::string arg);
-		// static bool displayCharConversion(const std::string& arg);
-	
+		//helper functions for the convert:
+		static std::string findType(std::string arg);	
 		static void inputIsChar(const char& c);
 		static void inputIsInt(const int& num_int);
 		static void inputIsFloat(const float& num_float);
 		static void inputIsDouble(const double& num_double);
-		// static void inputIsPseudo(const std::string& arg, bool is_float);
+		static void inputIsPseudo(const std::string& arg, bool is_float);
 	
 	public:
 
