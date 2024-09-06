@@ -1040,11 +1040,122 @@ int main() {
 	std::cout << b << std::endl;			//prints: 420.042
 	std::cout << c << std::endl;			//prints: 420
 }
-
 }
 
 
+//! TEMPLATE FUNCTIONS:
 
+{
+
+#include <iostream>
+
+int max(int x, int y) {
+	return (x>=y ? x : y); // ="if x is greater or equal than y, return x. Else return y."
+}
+
+But lets say we wwant our function to work with different types of variables.
+Then we can use a "Global type" T, like:
+
+template< typename T >
+T max(T x, T y) {
+	return (x>=y ? x : y);
+}
+
+or a small upgrade:
+
+template< typename Type>
+Type const & max(Type const & x, Type const & y) {
+	return (x>=y ? x : y);
+}
+// So this way, our template function `max` can work for any type of variable (int, char, float etc) or even 
+// instances of classes, as long as we have the >= operator overloaded.
+
+int main() {
+	int a = 5;
+	int b = 10;
+
+	std::cout << max<int>(a, b) << std::endl; //explicit instantiation
+	std::cout << max(a, b) << std::endl; //implicit instantiation
+
+}
+
+//! TEMPLATE CLASSES:
+// (in file `ClassName.class.tpp`) from the intra video recommendation
+
+template < typename T >
+class List {
+
+	public:
+
+		List<T>(T const & content) {...}
+
+		List<T>(List<T> const & list) {...}
+		
+		~List<T>() {}
+
+	private:
+
+		T * _content;
+		List<T> * _next;
+}
+
+//instanciation of the template classes:
+int main () {
+	List< int >			a(42);
+	List< float >		b(3.14f);
+	List< List< int > >	c(a);
+}
+
+//! default typess in templates
+{
+template < typename T = float> // = "If i don't tell you what type it is, assume it's `float`" => So we set the `default type` to be float!
+class Vertex {
+	public:
+		Vertex(T const & x, T const & y, T const & z) : _x(x), _y(y, _z(z)) {}
+		~Vertex() {}
+
+		T const & getX() const { return this->_x; }
+		T const & getY() const { return this->_y; }
+		T const & getZ() const { return this->_z; }
+
+		//etc...
+
+	private:
+		T const _x;
+		T const _y;
+		T const _z;
+
+		Vertex(void); // we do the default constructor private so that the user can instanciate this class only with the paramter constructor above, when he gives 3 values for x,y,z
+};
+
+//and in that case we instanciate like:
+int main() {
+	Vertex<int> v1(12, 14, 25); //then T will be int
+	Vertex<> 	v2(12, 14, 25); //the we use the default type which is `float` now, so the three integer vvalues will be implicitly converted to float, in order to instantiate our template class Vertex.
+}
+
+//And we can even overload the insertion operator with tempaltes:
+template <typename T>
+std::ostream & operator<<(std::ostream & o, Vertex<T> const & v) {
+	std::cout.precision(1);
+	o << setiosflags(std::ios::fixed);
+	o << "Vertex( ";
+	o << v.getX() << ", ";
+	o << v.getY() << ", ";
+	o << v.getZ() << " )";
+	return o;
+}
+
+//so that if I do in the main, something like:
+std::cout << v1 << std::endl;
+std::cout << v2 << std::endl;
+
+//then this would output:
+Vertex(12, 14, 25);
+Vertex(12.0, 14.0, 25.0);
+
+}
+}
 
 
 
