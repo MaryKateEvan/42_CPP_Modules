@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   templateFunctions.hpp                              :+:      :+:    :+:   */
+/*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:46:19 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/06 22:54:44 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/06 23:03:40 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TEMPLATEFUNCTIONS_HPP
-# define TEMPLATEFUNCTIONS_HPP
+#ifndef WHATEVER_HPP
+# define WHATEVER_HPP
 
 # include <iostream>
 # include <string>
@@ -36,5 +36,4 @@ Type const & max(Type const & a, Type const & b) {
 	return (a > b ? a : b);
 }
 
-
-#endif //TEMPLATEFUNCTIONS_HPP
+#endif //WHATEVER_HPP
