@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 03:45:36 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/16 21:24:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/16 23:27:21 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string>
 
 /**
+ * @brief: template function that applies the passed `function` in all the
+ * elements of the passed `array`
  * @param array of typename A : the address of an array of elements
  * @param len: the number of elements in that array
  * @param function: the function to be called on every element of the array

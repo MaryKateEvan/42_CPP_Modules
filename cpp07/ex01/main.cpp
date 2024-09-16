@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:44:56 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/16 23:18:10 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/16 23:30:40 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void printCoordinates(coords<Type> point) {
 	std::cout << "Point is in (x,y,z): (" << point.x << "," << point.y << "," << point.z << ")" << std::endl;
 }
 
-
 /**
  * @brief: template function to be able to print the content of an array, regardless
  * if that array contains strings or integers or doubles or anything else... 
@@ -85,8 +84,8 @@ void printArrayElements(Type array, size_t size) {
 
 int main() {
 
-	std::cout << CYAN(BOLD("\nTest 1️⃣ : the `iter` on STRINGS")) << std::endl;
-	std::cout << CYAN("-------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTest 1️⃣ : the `iter` on array of STRINGS")) << std::endl;
+	std::cout << CYAN("----------------------------------------") << std::endl;
 	{
 		std::string words[5] = {"Hello", "world", "@mk", "here", "wondering!"};
 		std::cout << UNDERLINE("The array initially") << ": ";
@@ -97,8 +96,8 @@ int main() {
 		std::cout << std::endl;
 	}
 	
-	std::cout << CYAN(BOLD("\nTest 2️⃣ : the `iter` on INTS")) << std::endl;
-	std::cout << CYAN("----------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTest 2️⃣ : the `iter` on array of INTS")) << std::endl;
+	std::cout << CYAN("-------------------------------------") << std::endl;
 	{
 		int array[5] = {1, -4, 10, 7, 42};
 		std::cout << UNDERLINE("The array initially") << ": ";
@@ -109,8 +108,8 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	std::cout << CYAN(BOLD("\nTest 3️⃣ : the `iter` on FLOATS")) << std::endl;
-	std::cout << CYAN("-------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTest 3️⃣ : the `iter` on array of FLOATS")) << std::endl;
+	std::cout << CYAN("---------------------------------------") << std::endl;
 	{
 		float array[4] = {42.0f, 5.0f, 1.25f, -4.2f};
 		std::cout << UNDERLINE("The array initially") << ": ";
@@ -121,8 +120,8 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	std::cout << CYAN(BOLD("\nTest 4️⃣ : double `iter` on DOUBLES")) << std::endl;
-	std::cout << CYAN("----------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTest 4️⃣ : double `iter` on array of DOUBLES")) << std::endl;
+	std::cout << CYAN("-------------------------------------------") << std::endl;
 	{
 		double array[4] = {42, 5, 1.25, -4.20};
 		std::cout << UNDERLINE("The array initially") << ": ";
@@ -135,8 +134,8 @@ int main() {
 		std::cout << std::endl;
 	}
 
-	std::cout << CYAN(BOLD("\nTest 5️⃣ : `iter` on STRUCTS")) << std::endl;
-	std::cout << CYAN("----------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("\nTest 5️⃣ : the `iter` on array of STRUCTS")) << std::endl;
+	std::cout << CYAN("---------------------------------------") << std::endl;
 	{
 		coords<int> points[3] = {{0, 0, 0}, {42, 1, 21}, {-25, 11, 15}};
 		::iter(points, 3, printCoordinates<int>);
