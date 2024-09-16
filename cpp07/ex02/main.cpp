@@ -1,39 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.tpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/17 00:20:12 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/17 00:30:23 by mevangel         ###   ########.fr       */
+/*   Created: 2024/09/16 23:36:19 by mevangel          #+#    #+#             */
+/*   Updated: 2024/09/17 00:35:00 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Array.hpp"
+#include <iostream>
 
-// default constructor
-template< typename T >
-Array<T>::Array() : _array(NULL), _size(0) {}
+#define CYAN(text) "\033[1;96m" << text << "\033[0m"
+#define BOLD(text) "\033[1m" << text << "\033[0m"
+#define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 
-// copy constructor
-template< typename T >
-Array<T>::Array(Array<T> const & to_copy) {
+int main( void ) {
 
-}
-
-template< typename T >
-Array<T>& Array<T>::operator=(Array<T> const & src) {
+	int * a = new int();
 	
-}
-
-// destructor
-template< typename T >
-Array<T>::~Array() {}
-
-
-
-// the getter:
-size_t Array<T>::size() const {
-	return this->_size;
+	std::cout << *a << std::endl;
+	 
+	return 0;
 }

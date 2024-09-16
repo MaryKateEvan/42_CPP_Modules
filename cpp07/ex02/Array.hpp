@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:36:38 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/17 00:10:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/17 00:28:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <exception>
 
 template< typename T >
 class Array {
@@ -27,9 +28,9 @@ class Array {
 	
 		// Orthodox Canonical form elements:
 		Array();								// default constructor
-		Array(Array const & to_copy);			// copy constructor
+		Array(Array<T> const & to_copy);			// copy constructor
 		~Array();								// destructor
-		Array& operator=(Array const & src);	// Assignment operator overload
+		Array<T>& operator=(Array<T> const & src);	// Assignment operator overload
 
 		//additional constructor asked form subject:
 		Array(unsigned int n);
