@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:44:56 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/06 23:20:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/16 20:49:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 int main( void ) {
 
 	std::cout << CYAN("\n------------------------------------") << std::endl;
-	std::cout << CYAN(BOLD(" 1) THE TEST FROM THE SUBJECT.PDF:     ")) << std::endl;
+	std::cout << CYAN(BOLD("   1) THE TEST FROM THE SUBJECT:     ")) << std::endl;
 	std::cout << CYAN("------------------------------------") << std::endl;
-	// std::cout << BOLD("1) THE TEST FROM THE SUBJECT.PDF: ") << std::endl;
+	
 	{
 		int a = 2;
 		int b = 3;
