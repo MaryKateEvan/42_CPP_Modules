@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:36:38 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/19 19:21:18 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 20:02:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ class Array {
 		// Orthodox Canonical form elements:
 		Array();									// default constructor
 		Array(Array<T> const & to_copy);			// copy constructor
-		~Array();									// destructor
 		Array<T>& operator=(Array<T> const & src);	// Assignment operator overload
+		~Array();									// destructor
 
 		//additional constructor asked from subject:
 		Array(unsigned int n);
 
-		T& operator[](unsigned int index); // [] operator overload to be able to access the elements of the array
+		T& operator[](unsigned int index) const; // [] operator overload to be able to access the elements of the array
 	
-		class IndexOutOfBounds : public std::exception {
-			public:
-				virtual const char* what() const throw();  //override of the what() method
-		};
+		// class IndexOutOfBoundsException : public std::exception {
+		// 	public:
+		// 		virtual const char* what() const throw();  //override of the what() method
+		// };
 		
 		unsigned int size() const;
 };
@@ -52,7 +52,7 @@ class Array {
 template< typename T >
 Array<T>::Array() : _array(NULL), _size(0) {}
 
-// the requested constructor
+// the requested parameter constructor
 template< typename T >
 Array<T>::Array(unsigned int n) : _array(new T[n]), _size(n) {}
 
@@ -85,13 +85,15 @@ Array<T>& Array<T>::operator=(Array<T> const & src) {
 
 // destructor
 template< typename T >
-Array<T>::~Array() {}
-
-// EXCEPTION:
-template< typename T >
-const char* Array<T>::IndexOutOfBounds::what() const throw() {
-	return "index is out of bounds!";
+Array<T>::~Array() {
+	delete[] this->_array;
 }
+
+// // EXCEPTION:
+// template< typename T >
+// const char* Array<T>::IndexOutOfBoundsException::what() const throw() {
+// 	return "index is out of bounds!";
+// }
 
 // the getter:
 template< typename T >
@@ -99,3 +101,19 @@ unsigned int Array<T>::size() const {
 	return this->_size;
 }
 
+// template< typename T >
+// T& Array<T>::operator[](unsigned int index) const {
+	
+// 	if (index >= this->_size)
+// 		throw IndexOutOfBoundsException();
+// 	return (_array[index]);
+// }
+
+// the alternative that i don't need my own exception:
+template< typename T >
+T& Array<T>::operator[](unsigned int index) const {
+	
+	if (index >= this->_size)
+		throw std::out_of_range("index out of bounds");
+	return (this->_array[index]);
+}
