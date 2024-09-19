@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:36:38 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/19 18:59:03 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 19:21:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,19 @@ Array<T>::Array(Array<T> const & to_copy) : _array(new T[to_copy._size]), _size(
 template< typename T >
 Array<T>& Array<T>::operator=(Array<T> const & src) {
 	
+	if (this != &src) {
+		// Only if sizes differ, i need to reallocate memory:
+		if (this->_size != src._size) {
+			delete[] _array; //free the current memory
+			_size = src._size; //update the current size with the source's size
+			_array = new T[_size]; //allocate new memory for the new size
+		}
+		//and then we copy the elements from the source array to the current array:
+		for (unsigned int i = 0; i < this->_size; ++i) {
+			this->_array[i] = src._array[i];
+		}
+	}
+	return (*this);
 }
 
 // destructor
