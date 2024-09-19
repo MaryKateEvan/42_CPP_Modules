@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:36:38 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/19 20:04:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 21:47:43 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ class Array {
 		//getter for the private attribute _size
 		unsigned int size() const;
 };
-
-// to inform the compiler on the implementation of the above teplate class:
-// #include "Array.tpp"
 
 // default constructor
 template< typename T >
