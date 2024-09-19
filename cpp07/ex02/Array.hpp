@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 23:36:38 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/19 20:02:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 20:04:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,10 @@ class Array {
 		//additional constructor asked from subject:
 		Array(unsigned int n);
 
-		T& operator[](unsigned int index) const; // [] operator overload to be able to access the elements of the array
-	
-		// class IndexOutOfBoundsException : public std::exception {
-		// 	public:
-		// 		virtual const char* what() const throw();  //override of the what() method
-		// };
+		// [] operator overload to be able to access the elements of the array
+		T& operator[](unsigned int index) const;
 		
+		//getter for the private attribute _size
 		unsigned int size() const;
 };
 
@@ -89,25 +86,11 @@ Array<T>::~Array() {
 	delete[] this->_array;
 }
 
-// // EXCEPTION:
-// template< typename T >
-// const char* Array<T>::IndexOutOfBoundsException::what() const throw() {
-// 	return "index is out of bounds!";
-// }
-
 // the getter:
 template< typename T >
 unsigned int Array<T>::size() const {
 	return this->_size;
 }
-
-// template< typename T >
-// T& Array<T>::operator[](unsigned int index) const {
-	
-// 	if (index >= this->_size)
-// 		throw IndexOutOfBoundsException();
-// 	return (_array[index]);
-// }
 
 // the alternative that i don't need my own exception:
 template< typename T >
