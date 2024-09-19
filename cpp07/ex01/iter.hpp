@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 03:45:36 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/16 23:27:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:10:32 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
  * @param function: the function to be called on every element of the array
  */
 template< typename A, typename ft >
-void iter(A array, size_t len, ft function) {
+void iter(A& array, size_t len, ft function) {
 	for (size_t i = 0; i < len; ++i)
 		function(array[i]);
 }

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 22:44:56 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/16 23:30:40 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/19 18:25:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 #define BOLD(text) "\033[1m" << text << "\033[0m"
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 
-// struct to store the coordinates of a point, in any type the user wants. 
-// for example: int, float, double
+// struct to store the coordinates of a point, in any type the user wants, 
+// like int, float, double
 template <typename Type>
 struct coords {
 	Type x;
