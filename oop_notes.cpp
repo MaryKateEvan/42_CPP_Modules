@@ -1158,6 +1158,76 @@ Vertex(12.0, 14.0, 25.0);
 }
 
 
+//! STL (Standard Templates Library) && CONTAINERS
+{
+#include <iostream>
+#include <map>
+#include <vector>
+#include <list>
+
+class IOperation ;
+
+int main() {
+
+	// 1. LIST
+	{
+	std::list<int>		lst1;
+
+	// then we can add numbers to the the list like:
+	lst1.push_back(1);
+	lst1.push_back(17);
+	lst1.push_back(42);
+
+	// and we can iterate to the list like:
+	std::list<int>::const_iterator	it;
+	std::list<int>::const_iterator	ite = lst1.end();
+	// iterators are like pointers pointing to the elements of the container
+
+	for (it = lst1.begin(); it != ite; ++it) {
+		std::cout << *it << std::endl;
+	}
+	}
+
+	// 2. MAPS
+	std::map< std::string, IOperation* > map1;
+
+	map1["opA"] = new OperationA; // Operation A and B are derived Classes from IOperation
+	map1["opB"] = new OperationB;
+
+	// 3. VECTORS
+	std::vector<int>	v1;
+	std::vector<int>	v2(42, 100);
+}
+
+//! ALGORITHMS
+
+#include <iostream>
+#include <algorithm>
+#include <list>
+
+void displayInt(int i) {
+	std::cout << i << std::endl;
+}
+
+int main() {
+	
+	std::list<int> lst;
+
+	lst.push_back(10);
+	lst.push_back(7);
+	lst.push_back(42);
+	lst.push_back(8);
+	lst.push_back(21);
+
+	//and instead of the for loop before, we ca actually do:
+	for_each(lst.begin(), lst.end(), displayInt);
+
+	return 0;
+
+}
+
+
+}
 
 
 
