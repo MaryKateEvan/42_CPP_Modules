@@ -6,13 +6,14 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 23:21:45 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/23 00:45:40 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/23 00:59:27 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
+#include <iterator> //for the std::distance
 
 #define BOLD(text) "\033[1m" << text << "\033[0m"
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -60,21 +61,21 @@ int main() {
 
 	std::list<int> nums_list;
 
-	//filling-in the vector with 4 random numbers:
+	//filling-in the list with 4 random numbers:
 	nums_list.push_back(15);
 	nums_list.push_back(25);
 	nums_list.push_back(-10);
 	nums_list.push_back(20);
 
 	std::cout << UNDERLINE("\nList holds the elements") << ": ";
-	// Iterate over the vector using a range-based for loop
+	// Iterate over the list using a range-based for loop
 	for (int num : nums_list) { //this is C++11 condition
 		std::cout << num << " ";
 	}
 	std::cout << std::endl;
 	
 	try {
-		std::cout << "\n1) Searching number " BOLD("25") << " in the vector: " << std::endl;
+		std::cout << "\n1) Searching number " BOLD("25") << " in the list: " << std::endl;
 		std::list<int>::iterator search = easyfind(nums_list, 25);
 		std::cout << GREEN("Found, at index " << std::distance(nums_list.begin(), search)) << std::endl;
 
@@ -85,46 +86,7 @@ int main() {
 	catch (const std::exception& e) {
 		std::cerr << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
 	}
-
-	
-	// // Get the size of the list
-	// std::cout << "Size of vector: " << nums_list.size() << std::endl;
-
-	// // Remove the last element
-	// numbers.pop_back();
-
-	// std::cout << "After pop_back, size of vector: " << numbers.size() << std::endl;
-	// std::cout << "Last element after pop_back: " << numbers.back() << std::endl;  // 20
-
-	// try {
-	// 	std::cout << numbers.at(5);
-	// }
-	// catch (const std::exception& e) {
-	// 	std::cerr << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
-	// }
-	// std::cout << std::endl;
-
-
-	// std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
-	// std::cout << CYAN(BOLD("      TEST 2️⃣ : Easy find on LIST container     ")) << std::endl;
-	// std::cout << CYAN("------------------------------------------------------------") << std::endl;
-	
-
-
-
-
-	// std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
-	// std::cout << CYAN(BOLD("         TEST 3️⃣ : Trying to access out of range:          ")) << std::endl;
-	// std::cout << CYAN("------------------------------------------------------------") << std::endl;
-
-	try {
-
-	}
-	catch (const std::exception& e) {
-		std::cerr << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
-	}
 	std::cout << std::endl;
 
-	
 	return 0;
 }

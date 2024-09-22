@@ -1,7 +1,7 @@
-NAME	 =	array
+NAME	 =	easyfind
 
 CPP		 =	c++
-CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
+CPPFLAGS =	-Wall -Wextra -Werror -std=c++17
 
 GREEN	 =	\033[0;32m
 CYAN	 =	\033[0;36m
