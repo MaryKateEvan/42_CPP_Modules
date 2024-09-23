@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 01:18:54 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/23 23:31:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/23 23:45:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ size_t Span::shortestSpan() const {
 	std::vector<int> differences(sorted_vec.size());
 	std::adjacent_difference(sorted_vec.begin(), sorted_vec.end(), differences.begin()); //this saves the differences in the `differences` vector
 
-	//so then we return the minimum of all the differences (we pass the first element only cause it is just itself, not the difference with the second element)
+	//so then we return the minimum of all the differences (we skip the first element only cause it does not represent a difference)
 	return (static_cast<size_t>(*std::min_element(differences.begin() + 1, differences.end())));
 }
 
@@ -77,7 +77,7 @@ const char* Span::SpanOutOfSpaceException::what() const throw() {
 	return "not enough space in the span!";
 }
 const char* Span::NotEnoughNumbersException::what() const throw() {
-	return "not enough numbers in the span";
+	return "not enough numbers in the span!";
 }
 
 void Span::printNumbers() const {
