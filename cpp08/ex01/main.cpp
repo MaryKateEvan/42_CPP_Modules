@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 01:18:08 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/23 23:55:12 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/24 00:11:51 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #define GREEN(text) "\033[32m" << text << "\033[0m"
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
-
-// #define MAX_VAL 42
 
 int main() {
 
