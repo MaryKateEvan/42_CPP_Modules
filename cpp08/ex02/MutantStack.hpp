@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:42:17 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/24 00:59:07 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/24 01:39:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,42 @@ class MutantStack : public std::stack<T, Container> {
 		MutantStack() : std::stack<T, Container>() {} //default constructor
 		MutantStack(MutantStack const & to_copy) : std::stack<T, Container>(to_copy) {} //copy constructor
 		MutantStack& operator=(MutantStack const & src) {
-			if (this != &src)
+			if (this != &src) {
 				std::stack<T, Container>::operator=(src);
 				return *this;
+			}
 		}
 		~MutantStack() {}
 
-		//Member functions to expose the iterators of deque:
-		typename Container::iterator begin() {
+		//expose of the 4 `iterator` types from the underlying container (deque):
+		typedef typename Container::iterator iterator;
+		typedef typename Container::reverse_iterator reverse_iterator;
+		typedef typename Container::const_iterator const_iterator;
+		typedef typename Container::const_reverse_iterator const_reverse_iterator; 
+
+		//Member functions to retrieve the iterators of deque:
+		iterator begin() {
 			return this->c.begin();
 		}
-		typename Container::iterator end() {
+		iterator end() {
 			return this->c.end();
 		}
-		
-
-
-
+		reverse_iterator rbegin() {
+			return this->c.rbegin();
+		}
+		reverse_iterator rend() {
+			return this->c.rend();
+		}
+		const_iterator begin() const {
+			return this->c.begin();
+		}
+		const_iterator end() const {
+			return this->c.end();
+		}
+		const_reverse_iterator rbegin() const {
+			return this->c.rbegin();
+		}
+		const_reverse_iterator rend() const {
+			return this->c.rend();
+		}
 };
