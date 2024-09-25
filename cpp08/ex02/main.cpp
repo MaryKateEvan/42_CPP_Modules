@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:14:08 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/24 01:31:06 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/25 22:46:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@
 
 #define BOLD(text) "\033[1m" << text << "\033[0m"
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
+#define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
 int main() {
 	
-	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
-	std::cout << CYAN(BOLD("              1️⃣ : THE TEST FROM THE SUBJECT     ")) << std::endl;
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n--------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("                   A) SUBJECT'S TEST:     ")) << std::endl;
+	std::cout << CYAN("--------------------------------------------------------") << std::endl;
+	
+	std::cout << UNDERLINE("1. Result using MutantStack:") << std::endl;
 	{
 		MutantStack<int> mstack;
 		mstack.push(5);
@@ -47,10 +50,13 @@ int main() {
 		}
 		std::stack<int> s(mstack);
 	}
-
-	std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
-	std::cout << CYAN(BOLD("      TEST 2️⃣ : SAME TEST, NOW WITH LIST     ")) << std::endl;
-	std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << UNDERLINE("\n2. Result using list:") << std::endl;
+	/* modifications from mstack --to--> list:
+	stack.push() --becomes--> list.push_back()
+	stack.pop() ----> list.pop_back()
+	stack.top ----> list.back()
+	because the list has two ends but stack only one, the `top`
+	*/
 	{
 		std::list<int> mstack;
 		mstack.push_back(5);
@@ -75,9 +81,61 @@ int main() {
 		std::list<int> s(mstack);
 	}
 
-	// std::cout << CYAN("\n------------------------------------------------------------") << std::endl;
-	// std::cout << CYAN(BOLD("         TEST 3️⃣ : Trying to access out of range:          ")) << std::endl;
-	// std::cout << CYAN("------------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n--------------------------------------------------------") << std::endl;
+	std::cout << CYAN(BOLD("                  B) ADDITIONAL TESTS:     ")) << std::endl;
+	std::cout << CYAN("--------------------------------------------------------") << std::endl;
+	
+	std::cout << BOLD_UNDERLINE(CYAN("\n1️⃣  Testing the inherited methods from stack:\n")) << std::endl;
+	MutantStack<int> mstack;
+	// filling the stack with 10 numbers:
+	for (int i = 0; i < 10; ++i)
+		mstack.push(i * 42);
+	if (mstack.empty() == false)
+		std::cout << "mstack has size " << BOLD(mstack.size()) << std::endl;
+	mstack.pop();
+	mstack.pop();
+	std::cout << "After " << UNDERLINE("popping 2 times") << ", mstack has size: " << BOLD(mstack.size()) << std::endl;
+	std::cout << "Top element holds the number: " << mstack.top() << std::endl;
+
+	/******************************************************************************************************/
+	std::cout << BOLD_UNDERLINE(CYAN("\n2️⃣  Testing the CONST iterators:\n")) << std::endl;
+	
+	std::cout << "The stack holds the numbers: ";
+	for (MutantStack<int>::const_iterator cit = mstack.cbegin(); cit != mstack.cend(); ++cit)
+		std::cout << *cit << " ";
+	std::cout << std::endl;
+	
+	std::cout << "Or in " << BOLD("reverse_iteration: ");
+	for (MutantStack<int>::const_reverse_iterator crit = mstack.crbegin(); crit != mstack.crend(); ++crit)
+		std::cout << *crit << " ";
+	std::cout << std::endl;
+
+	/******************************************************************************************************/
+	std::cout << BOLD_UNDERLINE(CYAN("\n3️⃣  Testing the \"normal\" (non-const) iterators:\n")) << std::endl;
+	// Modification of the mstack's elements by division with 2 and then adding 10:
+	for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
+		*it /= 2;
+	std::cout << "Current image of the stack, after " << UNDERLINE("modifying the elements") << " is: " << std::endl;
+	for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
+		*rit += 10;
+		std::cout << *rit << std::endl;
+	}
+
+	/******************************************************************************************************/
+	std::cout << BOLD_UNDERLINE(CYAN("\n4️⃣  Testing the copy constructor && assignment operator:\n")) << std::endl;
+	
+	MutantStack<int> test1(mstack);
+	std::cout << "test1 Stack has size " << BOLD(test1.size()) << std::endl; //should have the same size as `mstack` which is currently 8
+	test1.pop();
+	test1.pop();
+	test1.pop(); //popping 3 times, leave the test1 stack with size 5. 
+	
+	MutantStack<int> test2 = test1;
+	std::cout << "\ntest2 Stack has size " << BOLD(test2.size()) << " and holds the numbers:" << std::endl;
+
+	for (MutantStack<int>::const_reverse_iterator crit = test2.crbegin(); crit != test2.crend(); ++crit)
+		std::cout << *crit << std::endl;
+	std::cout << std::endl;
 
 	return 0;
 }

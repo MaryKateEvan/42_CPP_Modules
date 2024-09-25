@@ -1,4 +1,4 @@
-NAME	 =	mutated_abomination
+NAME	 =	mstack
 
 CPP		 =	c++
 CPPFLAGS =	-Wall -Wextra -Werror -std=c++98
