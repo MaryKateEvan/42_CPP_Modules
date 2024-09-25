@@ -6,12 +6,11 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 00:14:08 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/25 22:46:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/26 00:13:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <cstdlib>  // for rand()
 #include <list>
 
 #define BOLD(text) "\033[1m" << text << "\033[0m"
@@ -22,9 +21,9 @@
 
 int main() {
 	
-	std::cout << CYAN("\n--------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n---------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("                   A) SUBJECT'S TEST:     ")) << std::endl;
-	std::cout << CYAN("--------------------------------------------------------") << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	
 	std::cout << UNDERLINE("1. Result using MutantStack:") << std::endl;
 	{
@@ -81,9 +80,9 @@ int main() {
 		std::list<int> s(mstack);
 	}
 
-	std::cout << CYAN("\n--------------------------------------------------------") << std::endl;
+	std::cout << CYAN("\n---------------------------------------------------------") << std::endl;
 	std::cout << CYAN(BOLD("                  B) ADDITIONAL TESTS:     ")) << std::endl;
-	std::cout << CYAN("--------------------------------------------------------") << std::endl;
+	std::cout << CYAN("---------------------------------------------------------") << std::endl;
 	
 	std::cout << BOLD_UNDERLINE(CYAN("\n1️⃣  Testing the inherited methods from stack:\n")) << std::endl;
 	MutantStack<int> mstack;
@@ -100,12 +99,12 @@ int main() {
 	/******************************************************************************************************/
 	std::cout << BOLD_UNDERLINE(CYAN("\n2️⃣  Testing the CONST iterators:\n")) << std::endl;
 	
-	std::cout << "The stack holds the numbers: ";
+	std::cout << "The mstack holds the numbers: ";
 	for (MutantStack<int>::const_iterator cit = mstack.cbegin(); cit != mstack.cend(); ++cit)
 		std::cout << *cit << " ";
 	std::cout << std::endl;
 	
-	std::cout << "Or in " << BOLD("reverse_iteration: ");
+	std::cout << "Or in " << BOLD("reverse iteration: ");
 	for (MutantStack<int>::const_reverse_iterator crit = mstack.crbegin(); crit != mstack.crend(); ++crit)
 		std::cout << *crit << " ";
 	std::cout << std::endl;
@@ -115,7 +114,7 @@ int main() {
 	// Modification of the mstack's elements by division with 2 and then adding 10:
 	for (MutantStack<int>::iterator it = mstack.begin(); it != mstack.end(); ++it)
 		*it /= 2;
-	std::cout << "Current image of the stack, after " << UNDERLINE("modifying the elements") << " is: " << std::endl;
+	std::cout << "Current image of the mstack, after " << UNDERLINE("modifying the elements") << ":" << std::endl;
 	for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
 		*rit += 10;
 		std::cout << *rit << std::endl;
@@ -124,14 +123,14 @@ int main() {
 	/******************************************************************************************************/
 	std::cout << BOLD_UNDERLINE(CYAN("\n4️⃣  Testing the copy constructor && assignment operator:\n")) << std::endl;
 	
-	MutantStack<int> test1(mstack);
-	std::cout << "test1 Stack has size " << BOLD(test1.size()) << std::endl; //should have the same size as `mstack` which is currently 8
+	MutantStack<int> test1(mstack); //to call copy constructor
+	std::cout << "mstack \"test1\" has size " << BOLD(test1.size()) << std::endl; //should have the same size as `mstack` which is currently 8
 	test1.pop();
 	test1.pop();
-	test1.pop(); //popping 3 times, leave the test1 stack with size 5. 
+	test1.pop(); //popping 3 times, leave the test1 stack with size 5.
 	
-	MutantStack<int> test2 = test1;
-	std::cout << "\ntest2 Stack has size " << BOLD(test2.size()) << " and holds the numbers:" << std::endl;
+	MutantStack<int> test2 = test1; //to call assignment operator
+	std::cout << "\nmstack \"test2\" has size " << BOLD(test2.size()) << " and holds the numbers:" << std::endl;
 
 	for (MutantStack<int>::const_reverse_iterator crit = test2.crbegin(); crit != test2.crend(); ++crit)
 		std::cout << *crit << std::endl;
