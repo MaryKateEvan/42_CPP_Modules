@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 01:18:08 by mevangel          #+#    #+#             */
-/*   Updated: 2024/09/24 00:11:51 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/09/26 00:47:40 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main() {
 		/******************************************************************************************************/
 		std::cout << BOLD(CYAN("\n1️⃣  Enough space in Span to fill in the numbers ✅:")) << std::endl;
 		Span sp1 = Span(15000); //instantiation of a Span with 15.000 maximum Capacity"
-		//fill-in the Span with the 11.000 numbers from the nums_list:
+		//fill-in the Span with the 14.999 numbers from the nums_list:
 		sp1.addNumsFromRange(nums_list.begin(), nums_list.end());
 		// add also one more number manually to test the `addNumber`:
 		sp1.addNumber(42);
