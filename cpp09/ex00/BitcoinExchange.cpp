@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/15 22:27:24 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:54:20 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,24 @@ static std::string checkTheDate(std::string const & date) {
 	return "Ok!";
 }
 
+bool isNumRepresentation(std::string const & str) {
+	
+	bool foundDot = false;
+	// bool foundNum = false;
+	
+	if (std::isdigit(str[0]) == false)
+		return false;
+	for (size_t i = 1; i < str.size(); ++i) {
+		if (str[i] == '.' && foundDot == false)
+			foundDot = true;
+		else if (str[i] == '.' && foundDot) //for cases like 0..53
+			return false;
+		else if (!(std::isdigit(str[i]) || str[i] == '-'))
+			return false;
+	}
+	return true;
+}
+
 std::string checkRateValue(std::string const & rate_str) {
 	// Trim whitespaces
 	size_t start = rate_str.find_first_not_of(" \t");
@@ -121,8 +139,10 @@ std::string checkRateValue(std::string const & rate_str) {
 	//remove the last character if the value has float representation:
 	if (rate.back() == 'f' || rate.back() == 'F')
 		rate.pop_back();
-	if (rate.empty())
+	if (rate.empty()) // in case rate_str was like: "    F	  "
 		return "value is missing";
+	if (isNumRepresentation(rate) == false)
+		return "not a valid number";
 	
 	
 		
