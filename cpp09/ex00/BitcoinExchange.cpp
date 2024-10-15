@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/15 21:34:10 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/15 22:27:24 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static bool parseDataBase(const char* file, std::map<std::string, double>& dataM
 	return true;
 }
 
-std::string checkTheDate(std::string const & date) {
+static std::string checkTheDate(std::string const & date) {
 
 	int i = 0;
 	int len = date.size();
@@ -69,8 +69,6 @@ std::string checkTheDate(std::string const & date) {
 	int month = std::stoi(date.substr(i, 2)); // Extracts the month
 	if (month < 1 || month > 12)
 		return "Invalid month";
-	// if (year == 2024 && month > 10)
-	// 	return "We currently have October 2024!";
 	i += 2;
 	if (i >= len || date[i] != '-')
 		return "Date not in the format: YYYY-MM-DD";
@@ -81,7 +79,7 @@ std::string checkTheDate(std::string const & date) {
 		return "Date not in the format: YYYY-MM-DD";
 	int day = std::stoi(date.substr(i, 2)); // Extracts the month
 	i += 2;
-	if (day < 1 || day > 31) //this needs more check i guess
+	if (day < 1 || day > 31)
 		return "Invalid day"; // Invalid day
 	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
 		return "Invalid Date: this month has only 30 days"; // Invalid day for months with 30 days
@@ -107,6 +105,28 @@ std::string checkTheDate(std::string const & date) {
 		return "Invalid characters present";
 	
 	// If none of the above were met, it should be a valid Date:
+	return "Ok!";
+}
+
+std::string checkRateValue(std::string const & rate_str) {
+	// Trim whitespaces
+	size_t start = rate_str.find_first_not_of(" \t");
+	if (start == std::string::npos) //like if rate_str is "    "
+		return "value is missing";
+	size_t end = rate_str.find_last_not_of(" \t");
+	std::string rate = rate_str.substr(start, end - start + 1);
+	// Check the number in between if its empty
+	if (rate.empty())
+		return "value is missing";
+	//remove the last character if the value has float representation:
+	if (rate.back() == 'f' || rate.back() == 'F')
+		rate.pop_back();
+	if (rate.empty())
+		return "value is missing";
+	
+	
+		
+	// std::cout << "rate is: " << rate << std::endl;
 	return "Ok!";
 }
 
@@ -149,12 +169,23 @@ void bitcoinExchanger(const char* input) {
 		std::getline(ss, date, '|'); //extracts from the `line` the string until the '|' character
 		std::string check_result = checkTheDate(date);
 		if (check_result != "Ok!") {
-			std::cout << RED("Error: bad input => ") << RED(date)
-				<< GRAY(" [" << check_result << "]") << std::endl;
+			std::cout << RED("Error: bad input => ") << RED(date) << GRAY(" [" << check_result << "]") << std::endl;
 			continue ;
 		}
-		else
-			std::cout << line << ": in progress ... " << std::endl;
+		std::getline(ss, rate_str); //extracts the remaining string of the line, after the pipe till the end of the line
+		if (rate_str.empty()){
+			std::cout << RED("Error: value is missing.") << std::endl;
+			continue ;
+		}
+		std::string check_rate = checkRateValue(rate_str);
+		if (check_rate != "Ok!") {
+			std::cout << RED("Error: " << check_rate << ".") << std::endl;
+			continue ;
+		}
+		
+
+		std::cout << line << ": in progress ... " << std::endl;
+		// std::cout << "date is: " << date << ", and rate_str is:" << rate_str << "\n";
 	}
 
 	// Close the file
