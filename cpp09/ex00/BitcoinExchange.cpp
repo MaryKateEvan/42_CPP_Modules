@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/15 19:44:58 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/15 21:34:10 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,69 @@ static bool parseDataBase(const char* file, std::map<std::string, double>& dataM
 	return true;
 }
 
-bool dateIsValid(std::string const & date) {
-	for (char ch : date) {
-		// Check each character of the string
-		if (!(std::isdigit(ch) || ch == '-' || std::isspace(ch))) {
-			return false; // Invalid character found
-		}
+std::string checkTheDate(std::string const & date) {
+
+	int i = 0;
+	int len = date.size();
+
+	// Step 1: Skip/accept leading whitespaces if there are any
+	while (i < len && std::isspace(date[i]))
+		++i;
+
+	// Step 2: Check for a valid 4-digit year
+	if (i + 4 > len || !std::isdigit(date[i]) || !std::isdigit(date[i+1]) || !std::isdigit(date[i+2]) || !std::isdigit(date[i+3]))
+		return "Date not in the format: YYYY-MM-DD";
+	int year = std::stoi(date.substr(i, 4)); // Extracts the year
+	i += 4;
+	if (i >= len || date[i] != '-')
+		return "Date not in the format: YYYY-MM-DD";
+	++i; //to pass the dash
+
+	// Step 3: check for a valid 2-digit month
+	if (i + 2 > len || !std::isdigit(date[i]) || !std::isdigit(date[i+1]))
+		return "Date not in the format: YYYY-MM-DD";
+	int month = std::stoi(date.substr(i, 2)); // Extracts the month
+	if (month < 1 || month > 12)
+		return "Invalid month";
+	// if (year == 2024 && month > 10)
+	// 	return "We currently have October 2024!";
+	i += 2;
+	if (i >= len || date[i] != '-')
+		return "Date not in the format: YYYY-MM-DD";
+	++i; //to pass the dash
+
+	// Step 4: check for a valid 2-digit day
+	if (i + 2 > len || !std::isdigit(date[i]) || !std::isdigit(date[i+1]))
+		return "Date not in the format: YYYY-MM-DD";
+	int day = std::stoi(date.substr(i, 2)); // Extracts the month
+	i += 2;
+	if (day < 1 || day > 31) //this needs more check i guess
+		return "Invalid day"; // Invalid day
+	if ((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+		return "Invalid Date: this month has only 30 days"; // Invalid day for months with 30 days
+	//checks also for the leap years:
+	if (month == 2) {
+		bool isLeap = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+		if (day > (isLeap ? 29 : 28))
+			return "Not a leap year!"; // Invalid day for February
 	}
-	return true;
+
+	// some additional checks:
+	if ((year < 2009) || (year == 2009 && month == 1 && day == 1))
+		return "Date before the first entry in the data base";
+	if (year > 2024)
+		return "We can not predict the future";
+
+	// Step 5: Skips trailing whitespaces
+	while (i < len && std::isspace(date[i]))
+		++i;
+
+	// If there are any other, random, characters left, it's shouldnt be a valid date
+	if (i != len)
+		return "Invalid characters present";
+	
+	// If none of the above were met, it should be a valid Date:
+	return "Ok!";
 }
 
 /**
@@ -92,8 +147,10 @@ void bitcoinExchanger(const char* input) {
 		std::string date, rate_str;
 		
 		std::getline(ss, date, '|'); //extracts from the `line` the string until the '|' character
-		if (dateIsValid(date) == false) {
-			std::cout << "Error: bad input => " << date << std::endl;
+		std::string check_result = checkTheDate(date);
+		if (check_result != "Ok!") {
+			std::cout << RED("Error: bad input => ") << RED(date)
+				<< GRAY(" [" << check_result << "]") << std::endl;
 			continue ;
 		}
 		else
