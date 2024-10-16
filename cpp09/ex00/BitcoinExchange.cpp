@@ -6,12 +6,12 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 00:11:25 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/17 00:17:35 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-#include <iomanip> // For std::fixed and std::setprecision
+// #include <iomanip> // For std::fixed and std::setprecision
 
 static bool parseDataBase(const char* file, std::map<std::string, double>& dataMap) {
 
@@ -198,20 +198,20 @@ double findRateAccordingToDate(const std::map<std::string, double>& dataBase, co
  * STEPS:
  * 1. Parse the "Data Base" from the data.csv file and store everything in a std::map
  * 2. Open and parse the "input.txt" file.
- * 	  For every line read in the loop:
+ * For every line read in the loop:
  * 3. VALIDATE the line:
  * 	  a) check for line formatting: DATE | value
  * 	  b) check for the date to be valid
  * 	  c) check for the value to be valid, only positive floats, and integers accepted (range of integers).
  * 		 (also it shouldn't be alphabetical or any other character rather than digits and . in the floats)
- * 4. Print the corresponding result for the line.
+ * 4. Retrieve the exchange_rate from the DataBase according to the parsed "date" of the line
+ * 5. Calculate and print the asked value for that line
  */
 void bitcoinExchange(const char* input) {
 
 	std::map<std::string, double> dataBase; //it will save respectively: <date, exchange_rate>
 	if (!parseDataBase("data.csv", dataBase))
 		return ;
-	// printMap(dataBase);
 
 	//opens the file from argv[1] and saves it in an input file stream:
 	std::ifstream inputFile(input);
