@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 00:17:35 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/17 00:25:36 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ static std::string checkTheDate(std::string const & date) {
 }
 
 // examples it rejects: ++352, +-352, --352, +352-, -3252+235, .352, 0..352, 35.235.23
-bool isNumRepresentation(std::string const & str) {
+static bool isNumRepresentation(std::string const & str) {
 	
 	bool foundDot = false;
 	bool foundSign = false;
@@ -137,7 +137,7 @@ bool isNumRepresentation(std::string const & str) {
 	return true;
 }
 
-std::string checkTheValue(std::string const & rate_str, double& rate_num) {
+static std::string checkTheValue(std::string const & rate_str, double& rate_num) {
 	// Trim whitespaces
 	size_t start = rate_str.find_first_not_of(" \t");
 	if (start == std::string::npos) //like if rate_str is "    "
@@ -165,7 +165,7 @@ std::string checkTheValue(std::string const & rate_str, double& rate_num) {
 }
 
 // Trims leading and trailing spaces and tabs form the date and value
-std::string trim(const std::string& str) {
+static std::string trim(const std::string& str) {
 	size_t start = 0;
 	// we find the first non-whitespace character from the left
 	while (start < str.size() && std::isspace(str[start]))
@@ -180,7 +180,7 @@ std::string trim(const std::string& str) {
 	return str.substr(start, end - start + 1);
 }
 
-double findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date) {
+static double findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date) {
 	// we find the first entry which is "BIGGER THAN" (string compare in our case) the target date. (in the map they are sorted by the dates):
 	std::map<std::string, double>::const_iterator it = dataBase.lower_bound(date);
 
