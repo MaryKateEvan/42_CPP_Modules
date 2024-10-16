@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/16 23:55:26 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/17 00:11:25 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -206,7 +206,7 @@ double findRateAccordingToDate(const std::map<std::string, double>& dataBase, co
  * 		 (also it shouldn't be alphabetical or any other character rather than digits and . in the floats)
  * 4. Print the corresponding result for the line.
  */
-void bitcoinExchanger(const char* input) {
+void bitcoinExchange(const char* input) {
 
 	std::map<std::string, double> dataBase; //it will save respectively: <date, exchange_rate>
 	if (!parseDataBase("data.csv", dataBase))
@@ -233,7 +233,9 @@ void bitcoinExchanger(const char* input) {
 		std::getline(ss, date, '|'); //extracts from the `line` the string until the '|' character
 		std::string check_result = checkTheDate(date);
 		if (check_result != "Ok!") {
-			std::cout << RED("Error: bad input => ") << RED(date) << GRAY(" [" << check_result << "]") << std::endl;
+			std::cout << RED("Error: bad input => ") << RED(date) << std::endl;
+			//alternatively, to see also the date that has the problem:
+			// std::cout << RED("Error: bad input => ") << RED(date) << GRAY(" [" << check_result << "]") << std::endl;
 			continue ;
 		}
 		std::getline(ss, value_str); //extracts the remaining string of the line, after the pipe till the end of the line
@@ -244,15 +246,17 @@ void bitcoinExchanger(const char* input) {
 		double value_num;
 		std::string check_value = checkTheValue(value_str, value_num);
 		if (check_value != "Ok!") {
-			std::cout << RED("Error: " << check_value << ".") << GRAY(" [" << value_str << " ]") << std::endl;
+			std::cout << RED("Error: " << check_value << ".") << std::endl;
+			//alternatively, to see also the value that has the problem:
+			// std::cout << RED("Error: " << check_value << ".") << GRAY(" [" << value_str << " ]") << std::endl;
 			continue ;
 		}
 		// so if we reach here, we have both a valid date and a vlid value
 		double exchange_rate = findRateAccordingToDate(dataBase, trim(date));
 		// the output as the pdf wants it:
-		// std::cout << trim(date) << " => " << trim(value_str) << " = " << std::fixed << std::setprecision(2) << (value_num * exchange_rate) << std::endl;
+		std::cout << GREEN(trim(date) << " => " << trim(value_str) << " = " << BOLD((value_num * exchange_rate))) << std::endl;
 		// the output that makes more sense:
-		std::cout << trim(date) << " => " << trim(value_str) << " * " << exchange_rate << " = " << (value_num * exchange_rate) << std::endl;
+		// std::cout << trim(date) << " => " << trim(value_str) << " * " << exchange_rate << " = " << (value_num * exchange_rate) << std::endl;
 	}
 
 	// Close the file

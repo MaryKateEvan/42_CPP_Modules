@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:05:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/16 22:14:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/17 00:09:47 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
 #define BOLD_UNDERLINE(text) "\033[1;4m" << text << "\033[0m"
 #define GRAY(text) "\033[90m" << text << "\033[0m"
+#define GREEN(text) "\033[32m" << text << "\033[0m"
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
-void bitcoinExchanger(const char* input_file);
+void bitcoinExchange(const char* input_file);
