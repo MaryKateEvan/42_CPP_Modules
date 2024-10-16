@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/16 22:04:49 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/16 22:10:52 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,7 @@ bool isNumRepresentation(std::string const & str) {
 	
 	bool foundDot = false;
 	bool foundSign = false;
+	bool foundNum = false;
 	
 	if (str[0] == '.' || str == "-0")
 		return false;
@@ -125,9 +126,14 @@ bool isNumRepresentation(std::string const & str) {
 			foundSign = true;
 		else if ((str[i] == '-' || str[i] == '+') && foundSign)
 			return false;
+		else if (std::isdigit(str[i]) && foundNum == false)
+			return true;
 		else if (std::isdigit(str[i]) == false)
 			return false;
 	}
+	if (foundNum == false) //for cases like "-" or "+"
+		return false;
+		
 	return true;
 }
 
@@ -212,6 +218,7 @@ void bitcoinExchanger(const char* input) {
 			std::cout << RED("Error: " << check_rate << ".") << GRAY(" [" << rate_str << " ]") << std::endl;
 			continue ;
 		}
+		// so if we reach here, we have both a valid date and a vlid rate
 
 		std::cout << "double that is saved here: " << std::fixed << std::setprecision(8) << rate_num << std::endl;
 		// std::cout << "date is: " << date << ", and rate_str is:" << rate_str << "\n";
