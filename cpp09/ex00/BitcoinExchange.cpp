@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/15 22:54:20 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/16 22:04:49 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,25 +108,30 @@ static std::string checkTheDate(std::string const & date) {
 	return "Ok!";
 }
 
+// examples it rejects: ++352, +-352, --352, +352-, -3252+235, .352, 0..352, 35.235.23
 bool isNumRepresentation(std::string const & str) {
 	
 	bool foundDot = false;
-	// bool foundNum = false;
+	bool foundSign = false;
 	
-	if (std::isdigit(str[0]) == false)
+	if (str[0] == '.' || str == "-0")
 		return false;
-	for (size_t i = 1; i < str.size(); ++i) {
+	for (size_t i = 0; i < str.size(); ++i) {
 		if (str[i] == '.' && foundDot == false)
 			foundDot = true;
 		else if (str[i] == '.' && foundDot) //for cases like 0..53
 			return false;
-		else if (!(std::isdigit(str[i]) || str[i] == '-'))
+		else if ((str[i] == '-' || str[i] == '+') && foundSign == false)
+			foundSign = true;
+		else if ((str[i] == '-' || str[i] == '+') && foundSign)
+			return false;
+		else if (std::isdigit(str[i]) == false)
 			return false;
 	}
 	return true;
 }
 
-std::string checkRateValue(std::string const & rate_str) {
+std::string checkRateValue(std::string const & rate_str, double& rate_num) {
 	// Trim whitespaces
 	size_t start = rate_str.find_first_not_of(" \t");
 	if (start == std::string::npos) //like if rate_str is "    "
@@ -143,9 +148,13 @@ std::string checkRateValue(std::string const & rate_str) {
 		return "value is missing";
 	if (isNumRepresentation(rate) == false)
 		return "not a valid number";
-	
-	
-		
+	// if we reach here it means we have a valid number to be converted to double
+	rate_num = std::stod(rate);
+	if (rate_num < 0)
+		return "not a positive number";
+	else if (rate_num > std::numeric_limits<int>::max())
+		return "too large a number";
+
 	// std::cout << "rate is: " << rate << std::endl;
 	return "Ok!";
 }
@@ -197,14 +206,14 @@ void bitcoinExchanger(const char* input) {
 			std::cout << RED("Error: value is missing.") << std::endl;
 			continue ;
 		}
-		std::string check_rate = checkRateValue(rate_str);
+		double rate_num;
+		std::string check_rate = checkRateValue(rate_str, rate_num);
 		if (check_rate != "Ok!") {
-			std::cout << RED("Error: " << check_rate << ".") << std::endl;
+			std::cout << RED("Error: " << check_rate << ".") << GRAY(" [" << rate_str << " ]") << std::endl;
 			continue ;
 		}
-		
 
-		std::cout << line << ": in progress ... " << std::endl;
+		std::cout << "double that is saved here: " << std::fixed << std::setprecision(8) << rate_num << std::endl;
 		// std::cout << "date is: " << date << ", and rate_str is:" << rate_str << "\n";
 	}
 
