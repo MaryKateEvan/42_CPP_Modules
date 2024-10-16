@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/16 23:35:48 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/16 23:55:26 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,12 @@ bool isNumRepresentation(std::string const & str) {
 			foundDot = true;
 		else if (str[i] == '.' && foundDot) //for cases like 0..53
 			return false;
-		else if ((str[i] == '-' || str[i] == '+') && foundSign == false)
+		else if ((str[i] == '-' || str[i] == '+') && !foundSign)
 			foundSign = true;
 		else if ((str[i] == '-' || str[i] == '+') && foundSign)
 			return false;
 		else if (std::isdigit(str[i]) && foundNum == false)
-			return true;
+			foundNum = true;
 		else if (std::isdigit(str[i]) == false)
 			return false;
 	}
@@ -216,7 +216,7 @@ void bitcoinExchanger(const char* input) {
 	//opens the file from argv[1] and saves it in an input file stream:
 	std::ifstream inputFile(input);
 	if (!inputFile.is_open()) {
-		std::cout << RED("❌ Error: ") << "could not open file " << input << std::endl;
+		std::cout << RED("❌ Error: " << "could not open file \"" << input << "\"") << std::endl;
 		return ;
 	}
 	// THE MAIN LOOP:
@@ -250,7 +250,9 @@ void bitcoinExchanger(const char* input) {
 		// so if we reach here, we have both a valid date and a vlid value
 		double exchange_rate = findRateAccordingToDate(dataBase, trim(date));
 		// the output as the pdf wants it:
-		std::cout << trim(date) << " => " << trim(value_str) << " = " << std::fixed << std::setprecision(2) << (value_num * exchange_rate) << std::endl;
+		// std::cout << trim(date) << " => " << trim(value_str) << " = " << std::fixed << std::setprecision(2) << (value_num * exchange_rate) << std::endl;
+		// the output that makes more sense:
+		std::cout << trim(date) << " => " << trim(value_str) << " * " << exchange_rate << " = " << (value_num * exchange_rate) << std::endl;
 	}
 
 	// Close the file
