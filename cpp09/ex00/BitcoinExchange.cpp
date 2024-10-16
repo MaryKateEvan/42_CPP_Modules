@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/16 22:10:52 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/16 23:35:48 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ bool isNumRepresentation(std::string const & str) {
 	return true;
 }
 
-std::string checkRateValue(std::string const & rate_str, double& rate_num) {
+std::string checkTheValue(std::string const & rate_str, double& rate_num) {
 	// Trim whitespaces
 	size_t start = rate_str.find_first_not_of(" \t");
 	if (start == std::string::npos) //like if rate_str is "    "
@@ -161,8 +161,37 @@ std::string checkRateValue(std::string const & rate_str, double& rate_num) {
 	else if (rate_num > std::numeric_limits<int>::max())
 		return "too large a number";
 
-	// std::cout << "rate is: " << rate << std::endl;
 	return "Ok!";
+}
+
+// Trims leading and trailing spaces and tabs form the date and value
+std::string trim(const std::string& str) {
+	size_t start = 0;
+	// we find the first non-whitespace character from the left
+	while (start < str.size() && std::isspace(str[start]))
+		start++;
+
+	size_t end = str.size() - 1;
+	//  and then the first non-whitespace character from the right
+	while (end > start && std::isspace(str[end]))
+		end--;
+
+	// Then we return the substring, with the leading and trailing spaces removed
+	return str.substr(start, end - start + 1);
+}
+
+double findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date) {
+	// we find the first entry which is "BIGGER THAN" (string compare in our case) the target date. (in the map they are sorted by the dates):
+	std::map<std::string, double>::const_iterator it = dataBase.lower_bound(date);
+
+	// If the exact date is found in the data base, we return its rate:
+	if (it != dataBase.end() && it->first == date)
+		return it->second;
+
+	// else we return the rate of the previous entry (above) in the data base:
+	if (it != dataBase.begin())
+		--it;
+	return it->second;
 }
 
 /**
@@ -199,7 +228,7 @@ void bitcoinExchanger(const char* input) {
 			continue ; //it continues reading the next line of the file
 		
 		std::stringstream ss(line); //new string stream for every line that was read
-		std::string date, rate_str;
+		std::string date, value_str;
 		
 		std::getline(ss, date, '|'); //extracts from the `line` the string until the '|' character
 		std::string check_result = checkTheDate(date);
@@ -207,21 +236,21 @@ void bitcoinExchanger(const char* input) {
 			std::cout << RED("Error: bad input => ") << RED(date) << GRAY(" [" << check_result << "]") << std::endl;
 			continue ;
 		}
-		std::getline(ss, rate_str); //extracts the remaining string of the line, after the pipe till the end of the line
-		if (rate_str.empty()){
+		std::getline(ss, value_str); //extracts the remaining string of the line, after the pipe till the end of the line
+		if (value_str.empty()){
 			std::cout << RED("Error: value is missing.") << std::endl;
 			continue ;
 		}
-		double rate_num;
-		std::string check_rate = checkRateValue(rate_str, rate_num);
-		if (check_rate != "Ok!") {
-			std::cout << RED("Error: " << check_rate << ".") << GRAY(" [" << rate_str << " ]") << std::endl;
+		double value_num;
+		std::string check_value = checkTheValue(value_str, value_num);
+		if (check_value != "Ok!") {
+			std::cout << RED("Error: " << check_value << ".") << GRAY(" [" << value_str << " ]") << std::endl;
 			continue ;
 		}
-		// so if we reach here, we have both a valid date and a vlid rate
-
-		std::cout << "double that is saved here: " << std::fixed << std::setprecision(8) << rate_num << std::endl;
-		// std::cout << "date is: " << date << ", and rate_str is:" << rate_str << "\n";
+		// so if we reach here, we have both a valid date and a vlid value
+		double exchange_rate = findRateAccordingToDate(dataBase, trim(date));
+		// the output as the pdf wants it:
+		std::cout << trim(date) << " => " << trim(value_str) << " = " << std::fixed << std::setprecision(2) << (value_num * exchange_rate) << std::endl;
 	}
 
 	// Close the file

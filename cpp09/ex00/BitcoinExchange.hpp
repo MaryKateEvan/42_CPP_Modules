@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:05:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/15 21:49:47 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/16 22:14:13 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <fstream> // "file stream"
 #include <sstream> // "string stream"
 #include <cctype> // for isdigit()
-#include <cstdlib> // for std::stoi()
+#include <cstdlib> // for std::stoi() and std::stod()
 #include <limits>  // for INT_MAX
 #include <map>
 
