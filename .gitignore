@@ -58,6 +58,8 @@ a.out
 canonical_format/
 cpp05/ex00/main_before.cpp
 git_history.txt
+git_history_notes_old.txt
+add_remote_steps.txt
 test.cpp
 */*/ex01evalTest.cpp
 */*/subject_main.cpp
