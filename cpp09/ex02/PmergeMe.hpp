@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 07:09:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 07:47:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ class PmergeMe {
 			return true;
 		}
 
-		// Function to check all arguments
+		// Function to parse, check and save all valid arguments
 		bool parseArguments(int argc, char** argv) {
 			for (int i = 1; i < argc; ++i) {  // Skips argv[0] (program name)
 				std::string arg = argv[i];
@@ -116,9 +116,35 @@ class PmergeMe {
 			return true;
 		}
 
-		double TimeMergeInsertionSort(int argc, char** argv) {
+		void MergeInsertionSort() {
 			
-			// // STEP 1: we parse the arguments and save them in container `input` if they're valid integers:
+			if (input.size() == 1 || isSorted(input))
+				main_seq = input;
+			else if (input.size() == 2) {
+				main_seq = input;
+				std::swap(main_seq[0], main_seq[1]);
+			}
+			else {
+				// STEP 1: check if I have a "straggler" in case of odd-numbered sequence
+				if (input.size() % 2 != 0)
+					straggler = input[input.size() - 1];
+				// STEP 2: Creation of the pairs
+				for (size_t i = 0; i < input.size() - 1; i += 2) {
+					int a = input[i];
+					int b = input[i + 1];
+					if (a < b)
+						pairs.push_back(std::make_pair(b, a));
+					else
+						pairs.push_back(std::make_pair(a, b));
+				}
+				// STEP 3: divide and sort the pairs, according to max val
+				
+			}
+		}
+
+		double countTimeWhileSorting(int argc, char** argv) {
+			
+			// STEP 1: we parse the arguments and save them in container `input` if they're valid integers:
 			parseArguments(argc, argv);
 			
 			// clock_t start_time = clock();
@@ -131,9 +157,8 @@ class PmergeMe {
 
 			auto start_time = std::chrono::high_resolution_clock::now();
 			// ... sorting part ...
+			MergeInsertionSort();
 
-
-			
 			auto end_time = std::chrono::high_resolution_clock::now();
 
 			// Calculate the duration in milliseconds
@@ -154,7 +179,16 @@ class PmergeMe {
 		}
 		
 		/* -------------------------------- UTILS --------------------------------------*/
-		void printContainerNums(const Container<int>& container) {
+		
+		bool isSorted(const Container<int>& container) const {
+			for (size_t i = 0; i < container.size() - 1; ++i) {
+				if (container[i] > container[i + 1])
+					return false; // Found an element that is greater than the next one
+			}
+			return true; // All elements are in order
+		}
+		
+		void printContainerNums(const Container<int>& container) const {
 			for (int num : container)
 				std::cout << num << " ";
 			std::cout << std::endl;

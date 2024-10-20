@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:16:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 07:09:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 07:29:23 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main(int argc, char** argv) {
 		PmergeMe<std::vector> sort_vector;
 		PmergeMe<std::deque> sort_deque;
 
-		double vector_time = sort_vector.TimeMergeInsertionSort(argc, argv);
-		double deque_time = sort_deque.TimeMergeInsertionSort(argc, argv);
+		double vector_time = sort_vector.countTimeWhileSorting(argc, argv);
+		double deque_time = sort_deque.countTimeWhileSorting(argc, argv);
 
 		std::cout << BOLD(YELLOW("⏳ Before: "));
 		sort_vector.printContainerNums(sort_vector.getInput());
