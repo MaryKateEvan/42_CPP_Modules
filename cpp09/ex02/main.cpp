@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:16:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 07:29:23 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 08:28:05 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int argc, char** argv) {
 		std::cout << BOLD(YELLOW("⏳ Before: "));
 		sort_vector.printContainerNums(sort_vector.getInput());
 		std::cout << BOLD(GREEN("✅ After: "));
-		// printVector(sort_vector.getMainSeq());
+		sort_vector.printContainerNums(sort_vector.getMainSeq());
 
 		std::cout << CYAN("Time for vector: ") << vector_time << std::endl;
 		std::cout << CYAN("Time for deque: ") << deque_time << std::endl;

@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 07:47:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 08:27:04 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,23 @@ class PmergeMe {
 			return true;
 		}
 
+		void DivideSortMerge(Container<std::pair<int, int>>& pairs_con) {
+			if (pairs_con.size() < 2)
+				return ;
+			//we divide the container of the pairs_con in two halfs:
+			size_t middle_idx = pairs_con.size() / 2;
+			Container<std::pair<int, int>> left_half(pairs_con.begin(), pairs_con.begin() + middle_idx);
+			Container<std::pair<int, int>> right_half(pairs_con.begin() + middle_idx, pairs_con.end());
+			
+			// recursively continue diving, until each half is broken down into containers of size 1 or 0 (in that case each sub-container is already sorted by nature of having only one element.)
+			DivideSortMerge(left_half);
+			DivideSortMerge(right_half);
+			
+			//and when all the divisions have concluded, merge and sort all the tmp halfs back together:
+			std::merge(left_half.begin(), left_half.end(), right_half.begin(), right_half.end(), pairs_con.begin());
+			// the std::merge sorts by default with the first elements of the pair. Thats why we placed the bigger elements to be the first
+		}
+
 		void MergeInsertionSort() {
 			
 			if (input.size() == 1 || isSorted(input))
@@ -133,12 +150,19 @@ class PmergeMe {
 					int a = input[i];
 					int b = input[i + 1];
 					if (a < b)
-						pairs.push_back(std::make_pair(b, a));
+						pairs.push_back(std::make_pair(b, a)); //the bigger value has to be the first in the pair, because of the way std::merge compares.
 					else
 						pairs.push_back(std::make_pair(a, b));
 				}
-				// STEP 3: divide and sort the pairs, according to max val
-				
+				// STEP 3: divide and sort-merge the pairs, according to the max val of them
+				DivideSortMerge(this->pairs);
+				// STEP 4: extract from the sorted pairs, the a values (main_seq) and b values(pend_seq)
+				for (typename Container<std::pair<int, int>>::iterator it = pairs.begin(); it != pairs.end(); ++it) {
+					this->main_seq.push_back(it->first);  // Access the first value of the pair
+					this->pend_seq.push_back(it->second); // Access the second value of the pair
+				}
+				if (straggler > 0)
+					this->pend_seq.push_back(straggler); //adds the straggler to the pending_seq 
 			}
 		}
 
