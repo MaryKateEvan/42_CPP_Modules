@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 23:20:55 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 23:48:16 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 18:55:01 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 #include <iostream>
 #include <string>
 #include <sstream> // "string stream"
-#include <cctype> // for isdigit()
-#include <cstdlib> // for std::stoi() and std::stod()
+#include <stdexcept>
 #include <limits>  // for INT_MAX
-#include <map>
+#include <algorithm>
+#include <cctype> // for isdigit()
+#include <cstdlib> // for std::stoi()
+#include <stack>
 
 #define BOLD(text) "\033[1m" << text << "\033[0m"
 #define UNDERLINE(text) "\033[4m" << text << "\033[0m"
@@ -28,5 +30,21 @@
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
-bool parseExpression(std::string const & expr);
+class RPN {
+	
+	private:
+		
+		std::stack<double> rpn_stack;		// double, cause the results of divisions might not be integers
+
+	public:
+		
+		RPN();								// default constructor
+		RPN(RPN const & to_copy);			// copy constructor
+		~RPN();								// destructor
+		RPN& operator=(RPN const & src);	// Assignment operator overload
+		
+		void parseExpression(std::string const & expr);
+
+};
+
 void calculateRPN(const char* input);

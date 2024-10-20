@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 23:20:22 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 23:49:04 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 19:03:55 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,18 @@ int main(int argc, char** argv) {
 		std::cout << UNDERLINE("Example:") << BOLD(" ./RPN \"7 7 * 7 -\"") << std::endl;
 		return 0;
 	}
-	(void)argv;
-	parseExpression(argv[1]);
-	// calculateRPN(argv[1]);
+
+	try {
+
+		RPN calculator;
+		
+		calculator.parseExpression(argv[1]);
+		// calculateRPN(argv[1]);
+		
+	}
+	catch (const std::exception& e) {
+		std::cout << RED("❗ Error: " << UNDERLINE(e.what())) << std::endl;
+	}
+
 	return 0;
 }
