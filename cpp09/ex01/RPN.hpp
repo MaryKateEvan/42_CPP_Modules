@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 23:20:55 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 22:55:02 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/21 00:53:03 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ class RPN {
 		~RPN();								// destructor
 		RPN& operator=(RPN const & src);	// Assignment operator overload
 		
-		void parseExpression(std::string const & expr);
+		void parseAndDoExpression(std::string const & expr);
+		double getResult() const ;
 
+		void printStack(std::stack<double> stack); //util method for debugging
 };
-
-void calculateRPN(const char* input);
