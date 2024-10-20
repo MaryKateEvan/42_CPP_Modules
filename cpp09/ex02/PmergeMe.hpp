@@ -6,14 +6,11 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 06:22:17 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 06:55:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
-
-#include <thread>  // for std::this_thread
-#include <chrono>  // for std::chrono::seconds
 
 #include <iostream>
 #include <string>
@@ -23,9 +20,9 @@
 #include <limits>  // for INT_MAX
 #include <algorithm>
 #include <utility> // for std::pair
-
 #include <cctype> // for isdigit()
 #include <cstdlib> // for std::stoi() and std::stod()
+#include <chrono>  // for std::chrono::seconds
 
 //the containers used in this exercise:
 #include <vector>
@@ -38,6 +35,8 @@
 #define GREEN(text) "\033[32m" << text << "\033[0m"
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
+#define YELLOW(text) "\033[33m" << text << "\033[0m"
+
 
 template <template <typename...> class Container>
 class PmergeMe {
@@ -49,15 +48,13 @@ class PmergeMe {
 		Container<int> main_seq; //the `main` sequence (S) of the vector
 		Container<int> pend_seq; //the pending sequence of the smaller numbers
 		int straggler;
-		clock_t start_time;
-		clock_t end_time;
 
 	public:
 
 		/* ---------------------------- CANONICAL FORM ---------------------------------*/
 		
 		//default constructor
-		PmergeMe() : straggler(0), start_time(0), end_time(0) {}
+		PmergeMe() : straggler(0) {}
 		
 		// copy constructor
 		PmergeMe(PmergeMe const & to_copy) : input(to_copy.input),
@@ -71,8 +68,6 @@ class PmergeMe {
 				this->main_seq = src.main_seq;
 				this->pend_seq = src.pend_seq;
 				this->straggler = src.straggler;
-				this->start_time = src.start_time;
-				this->end_time = src.end_time;
 			}
 			return *this;
 		}
@@ -93,7 +88,6 @@ class PmergeMe {
 
 		// Function to check if a string is a positive integer
 		bool isPositiveInteger(const std::string& str) {
-
 			if (str.empty() || str[0] == '0')
 				return false; //if the string is empty or '0..'
 			for (size_t i = 0; i < str.size(); ++i) {
@@ -129,7 +123,6 @@ class PmergeMe {
 			parseArguments(argc, argv);
 			
 			// clock_t start_time = clock();
-			// // ... sorting part ...
 			// std::this_thread::sleep_for(std::chrono::seconds(4));
 			// clock_t end_time = clock();
 
@@ -138,10 +131,7 @@ class PmergeMe {
 			// return sorting_time;
 
 			auto start_time = std::chrono::high_resolution_clock::now();
-			
-			// Simulating the sorting part with sleep
-			std::this_thread::sleep_for(std::chrono::seconds(4));
-			
+			// ... sorting part ...
 			auto end_time = std::chrono::high_resolution_clock::now();
 
 			// Calculate the duration in milliseconds
@@ -150,4 +140,14 @@ class PmergeMe {
 			return sorting_time.count(); // returns the duration in milliseconds
 		}
 
+		/* ------------------------------- GETTERS -------------------------------------*/
+		const Container<int>& getInput() const {
+			return this->input;
+		}
+		const Container<int>& getMainSeq() const {
+			return this->main_seq;
+		}
+		const Container<int>& getPendSeq() const {
+			return this->pend_seq;
+		}
 };
