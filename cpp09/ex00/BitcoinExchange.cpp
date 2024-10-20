@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/21 01:38:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/21 01:49:45 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,8 +216,7 @@ double BitcoinExchange::findRateAccordingToDate(const std::map<std::string, doub
 void BitcoinExchange::printMap(const std::map<std::string, double>& dataMap) const {
 	for (const auto& entry : dataMap) {
 		std::cout << "Date: " << entry.first 
-					<< ", Exchange rate: " << std::fixed << std::setprecision(8) 
-					<< entry.second << std::endl;
+					<< ", Exchange rate: " << entry.second << std::endl;
 	}
 }
 
