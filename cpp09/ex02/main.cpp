@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:16:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 09:58:13 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 10:33:22 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(int argc, char** argv) {
 		std::cout << UNDERLINE("Correct usage:") << BOLD(" ./PmergeMe int1 int2 int3 ...") << std::endl;
 		return 1;
 	}
+
+	std::cout << "i gave " << argc - 1 << " numbers.\n" << std::endl;
 
 	try {
 		
@@ -39,7 +41,7 @@ int main(int argc, char** argv) {
 		
 	}
 	catch (const std::exception& e) {
-		std::cout << RED("❗ Exception found: " << UNDERLINE(e.what())) << std::endl;
+		std::cout << RED("❗ Error: " << UNDERLINE(e.what())) << std::endl;
 	}
 
 	return 0;

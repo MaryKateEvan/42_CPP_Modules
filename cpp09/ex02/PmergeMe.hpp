@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 10:01:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 10:35:50 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,8 +134,27 @@ class PmergeMe {
 			// the std::merge sorts by default with the first elements of the pair. Thats why we placed the bigger elements to be the first
 		}
 
-		void createJacobsthalNumsArray() {
-			
+		/*
+		The Jacobsthal sequence is a sequence of numbers generated using the recurrence relation: 
+		𝐽 (𝑛) = 𝐽 (𝑛 − 1) + 2 × 𝐽 ( 𝑛 − 2 ) with initial values: 𝐽(0)=0, 𝐽(1)=1 (the relation is used from index 2 and on).
+		The first few numbers of the Jacobsthal sequence are: 0,1,1,3,5,11,21,43,…
+		We generate the sequence using the above relation, until the generated number exceeds the `threshold` which
+		is the size of the pend_seq container.
+		*/
+		void createJacobsthalNumsArray(int threshold) {
+			// first two numbers are added directly
+			if (threshold > 0)
+				jacobsthal_Nums.push_back(0);
+			if (threshold > 1)
+				jacobsthal_Nums.push_back(1);
+			// after index 2 we use the mathematical relation:
+			for (int i = 2; i < threshold; ++i) {
+				int num = jacobsthal_Nums[i - 1] + 2 * jacobsthal_Nums[i - 2];
+				if (num > threshold)
+					break ;
+				jacobsthal_Nums.push_back(num);
+			}
+			printContainerNums(this->jacobsthal_Nums);
 		}
 
 		void MergeInsertionSort() {
@@ -169,7 +188,7 @@ class PmergeMe {
 				if (straggler > 0)
 					this->pend_seq.push_back(straggler); //adds the straggler to the pending_seq 
 				// STEP 5: Create the `jacobsthal_Nums` according to which the pend_seq will be inserted in the main_seq
-				
+				createJacobsthalNumsArray(pend_seq.size());
 			}
 		}
 
