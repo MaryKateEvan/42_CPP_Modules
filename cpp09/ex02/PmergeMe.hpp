@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 14:46:42 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 15:36:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
 #define YELLOW(text) "\033[33m" << text << "\033[0m"
-
 
 template <template <typename...> class Container>
 class PmergeMe {
@@ -150,13 +149,27 @@ class PmergeMe {
 			if (threshold > 1)
 				jacobsthal_Nums.push_back(1);
 			// after index 2 we use the mathematical relation:
-			for (int i = 2; i < threshold; ++i) {
+			for (int i = 2; i <= threshold; ++i) {
 				int num = jacobsthal_Nums[i - 1] + 2 * jacobsthal_Nums[i - 2];
 				jacobsthal_Nums.push_back(num);
-				if (num > threshold)
+				// if (num > threshold)
+				if (num >= threshold)
 					break ;
 			}
-			printContainerNums(this->jacobsthal_Nums);
+			printContainerNums(this->jacobsthal_Nums); //! to be deleted after too
+		}
+
+		void insertPendSeqToMain() {
+			// Since the general Jacobsthal sequence behavior 'kicks in' only from the third element onward 
+			// (i.e., from jsn[2]), we handle the pend_seq[0] and pend_seq[1] separately:
+			main_seq.insert(main_seq.begin(), pend_seq[0]); //the first num of the pend_seq goes at index 0 of the main_seq:
+			if (pend_seq.size() > 1 && jacobsthal_Nums.size() > 1) {
+				typename Container<int>::iterator insertion_it = std::lower_bound(main_seq.begin(), main_seq.end(), pend_seq[1]);
+				main_seq.insert(insertion_it, pend_seq[1]); //for the second num, we search the position with the lower_bound which points to the first element which is bigger than the `pend_seq[1]`
+			}
+			// and then for 3rd element and on, of the pend_seq, we use the Jacobsthal numbers:
+			
+			
 		}
 
 		void MergeInsertionSort() {
@@ -191,13 +204,13 @@ class PmergeMe {
 					this->pend_seq.push_back(straggler); //adds the straggler to the pending_seq 
 				// STEP 5: Create the `jacobsthal_Nums` according to which the pend_seq will be inserted in the main_seq
 				createJacobsthalNumsArray(pend_seq.size());
+				// STEP 6: insert the pend_seq in the main_seq according to the Jacobsthal Numbers
+				insertPendSeqToMain();
 			}
 		}
 
 		double countTimeWhileSorting(int argc, char** argv) {
-			
-			// STEP 1: we parse the arguments and save them in container `input` if they're valid integers:
-			
+
 			//VERSION 1:
 			// clock_t start_time = clock();
 			// parseArguments(argc, argv);
