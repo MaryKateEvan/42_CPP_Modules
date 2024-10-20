@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 10:35:50 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:29:54 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,10 +195,10 @@ class PmergeMe {
 		double countTimeWhileSorting(int argc, char** argv) {
 			
 			// STEP 1: we parse the arguments and save them in container `input` if they're valid integers:
-			parseArguments(argc, argv);
 			
 			//VERSION 1:
 			// clock_t start_time = clock();
+			// parseArguments(argc, argv);
 			// MergeInsertionSort();
 			// clock_t end_time = clock();
 			// double sorting_time = (end_time - start_time) * 1000.0 / CLOCKS_PER_SEC; // converts from clock ticks to seconds ( the `/ CLOCKS_PER_SEC`), and then from seconds to milliseconds by multiplying with 1000
@@ -206,6 +206,7 @@ class PmergeMe {
 
 			//VERSION 2 (more precise time):
 			auto start_time = std::chrono::high_resolution_clock::now();
+			parseArguments(argc, argv);
 			MergeInsertionSort();
 			auto end_time = std::chrono::high_resolution_clock::now();
 			// Calculate the duration in milliseconds
