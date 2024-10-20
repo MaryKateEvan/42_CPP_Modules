@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 16:49:56 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 17:26:28 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@
 #define GRAY(text) "\033[90m" << text << "\033[0m"
 #define GREEN(text) "\033[32m" << text << "\033[0m"
 #define RED(text) "\033[31m" << text << "\033[0m"
-#define CYAN(text) "\033[1;96m" << text << "\033[0m"
+#define CYAN_BOLD(text) "\033[1;96m" << text << "\033[0m"
+#define CYAN(text) "\033[96m" << text << "\033[0m"
 #define YELLOW(text) "\033[33m" << text << "\033[0m"
 
 template <template <typename...> class Container>
@@ -49,42 +50,7 @@ class PmergeMe {
 		Container<int> jacobsthal_Nums; //the container to store Jacobsthal numbers, in amount according to the numbers we have to sort
 		int straggler;
 
-	public:
-
-		/* ---------------------------- CANONICAL FORM ---------------------------------*/
-		
-		//default constructor
-		PmergeMe() : straggler(0) {}
-		
-		// copy constructor
-		PmergeMe(PmergeMe const & to_copy) : input(to_copy.input),
-			pairs(to_copy.pairs), main_seq(to_copy.main_seq), pend_seq(to_copy.pend_seq) {}
-		
-		// assignement operator overload
-		PmergeMe& operator=(PmergeMe const & src) {
-			if (this != &src) {
-				this->input = src.input;
-				this->pairs = src.pairs;
-				this->main_seq = src.main_seq;
-				this->pend_seq = src.pend_seq;
-				this->straggler = src.straggler;
-			}
-			return *this;
-		}
-
-		// destructor
-		~PmergeMe() {}
-
-		/* -------------------------- CUSTOM EXCEPTIONS --------------------------------*/
-
-		class InvalidInputException : public std::exception {
-			public:
-				virtual const char* what() const throw() {
-					return "invalid input";
-				}
-		};
-
-		/* ------------------------ PARSING THE ARGUMENTS ------------------------------*/
+		/* ------------------- METHODS FOR PARSING THE ARGUMENTS -----------------------*/
 
 		// Function to check if a string is a positive integer
 		bool isPositiveInteger(const std::string& str) {
@@ -115,7 +81,9 @@ class PmergeMe {
 			}
 			return true;
 		}
-
+		
+		/* ---------------------------- SORTING METHODS --------------------------------*/
+		
 		void DivideSortMerge(Container<std::pair<int, int>>& pairs_con) {
 			if (pairs_con.size() < 2)
 				return ;
@@ -219,6 +187,46 @@ class PmergeMe {
 			}
 		}
 
+		
+	public:
+
+		/* ---------------------------- CANONICAL FORM ---------------------------------*/
+		
+		//default constructor
+		PmergeMe() : straggler(0) {}
+		
+		// copy constructor
+		PmergeMe(PmergeMe const & to_copy) : input(to_copy.input), pairs(to_copy.pairs),
+			main_seq(to_copy.main_seq), pend_seq(to_copy.pend_seq), jacobsthal_Nums(to_copy.jacobsthal_Nums) {}
+		
+		// assignement operator overload
+		PmergeMe& operator=(PmergeMe const & src) {
+			if (this != &src) {
+				this->input = src.input;
+				this->pairs = src.pairs;
+				this->main_seq = src.main_seq;
+				this->pend_seq = src.pend_seq;
+				this->jacobsthal_Nums = src.jacobsthal_Nums;
+				this->straggler = src.straggler;
+			}
+			return *this;
+		}
+
+		// destructor
+		~PmergeMe() {}
+
+		/* -------------------------- CUSTOM EXCEPTIONS --------------------------------*/
+
+		class InvalidInputException : public std::exception {
+			public:
+				virtual const char* what() const throw() {
+					return "invalid input";
+				}
+		};
+
+		/* -------------------------- THE MAIN SORTING  --------------------------------*/
+		
+		// The main public function to be called from the main() that evokes the sorting:
 		double countTimeWhileSorting(int argc, char** argv) {
 
 			//VERSION 1:
