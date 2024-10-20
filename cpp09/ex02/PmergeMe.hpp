@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 08:27:04 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 10:01:56 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ class PmergeMe {
 		Container<std::pair<int, int>> pairs;
 		Container<int> main_seq; //the `main` sequence (S) of the vector
 		Container<int> pend_seq; //the pending sequence of the smaller numbers
+		Container<int> jacobsthal_Nums; //the container to store Jacobsthal numbers, in amount according to the numbers we have to sort
 		int straggler;
 
 	public:
@@ -133,6 +134,10 @@ class PmergeMe {
 			// the std::merge sorts by default with the first elements of the pair. Thats why we placed the bigger elements to be the first
 		}
 
+		void createJacobsthalNumsArray() {
+			
+		}
+
 		void MergeInsertionSort() {
 			
 			if (input.size() == 1 || isSorted(input))
@@ -163,6 +168,8 @@ class PmergeMe {
 				}
 				if (straggler > 0)
 					this->pend_seq.push_back(straggler); //adds the straggler to the pending_seq 
+				// STEP 5: Create the `jacobsthal_Nums` according to which the pend_seq will be inserted in the main_seq
+				
 			}
 		}
 
@@ -171,27 +178,24 @@ class PmergeMe {
 			// STEP 1: we parse the arguments and save them in container `input` if they're valid integers:
 			parseArguments(argc, argv);
 			
+			//VERSION 1:
 			// clock_t start_time = clock();
-			// std::this_thread::sleep_for(std::chrono::seconds(4));
+			// MergeInsertionSort();
 			// clock_t end_time = clock();
-
 			// double sorting_time = (end_time - start_time) * 1000.0 / CLOCKS_PER_SEC; // converts from clock ticks to seconds ( the `/ CLOCKS_PER_SEC`), and then from seconds to milliseconds by multiplying with 1000
-			
 			// return sorting_time;
 
+			//VERSION 2 (more precise time):
 			auto start_time = std::chrono::high_resolution_clock::now();
-			// ... sorting part ...
 			MergeInsertionSort();
-
 			auto end_time = std::chrono::high_resolution_clock::now();
-
 			// Calculate the duration in milliseconds
 			std::chrono::duration<double, std::milli> sorting_time = end_time - start_time;
-			
 			return sorting_time.count(); // returns the duration in milliseconds
 		}
 
 		/* ------------------------------- GETTERS -------------------------------------*/
+		
 		const Container<int>& getInput() const {
 			return this->input;
 		}
