@@ -59,6 +59,7 @@ a.out
 canonical_format/
 cpp05/ex00/main_before.cpp
 cpp09/ex02/PmergeMeBefore.hpp
+cpp09/ex01/RPNbefore.cpp
 git_history.txt
 git_history_notes_old.txt
 add_remote_steps.txt
