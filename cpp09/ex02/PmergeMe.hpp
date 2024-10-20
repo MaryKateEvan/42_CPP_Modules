@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 16:17:09 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:49:56 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,6 +249,15 @@ class PmergeMe {
 		}
 		const Container<int>& getPendSeq() const {
 			return this->pend_seq;
+		}
+		size_t getInputSize() const {
+			return this->input.size();
+		}
+		size_t getMainSeqSize() const {
+			return this->main_seq.size();
+		}
+		size_t getPendSeqSize() const {
+			return this->pend_seq.size();
 		}
 		
 		/* -------------------------------- UTILS --------------------------------------*/
