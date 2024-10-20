@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 06:55:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 07:09:17 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ class PmergeMe {
 		bool parseArguments(int argc, char** argv) {
 			for (int i = 1; i < argc; ++i) {  // Skips argv[0] (program name)
 				std::string arg = argv[i];
-				// Check if the argument is a positive integer
 				if (!isPositiveInteger(arg))
 					throw InvalidInputException();
 			}
@@ -132,6 +131,9 @@ class PmergeMe {
 
 			auto start_time = std::chrono::high_resolution_clock::now();
 			// ... sorting part ...
+
+
+			
 			auto end_time = std::chrono::high_resolution_clock::now();
 
 			// Calculate the duration in milliseconds
@@ -149,5 +151,12 @@ class PmergeMe {
 		}
 		const Container<int>& getPendSeq() const {
 			return this->pend_seq;
+		}
+		
+		/* -------------------------------- UTILS --------------------------------------*/
+		void printContainerNums(const Container<int>& container) {
+			for (int num : container)
+				std::cout << num << " ";
+			std::cout << std::endl;
 		}
 };
