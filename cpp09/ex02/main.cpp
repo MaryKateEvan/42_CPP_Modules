@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:16:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 10:33:22 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:17:18 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char** argv) {
 		return 1;
 	}
 
-	std::cout << "i gave " << argc - 1 << " numbers.\n" << std::endl;
+	// std::cout << "i gave " << argc - 1 << " numbers.\n" << std::endl;
 
 	try {
 		

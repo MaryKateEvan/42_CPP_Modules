@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 16:13:39 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:17:09 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ class PmergeMe {
 		For example, if the pend_seq has 11 numbers, then the Jacobsthal sequence will be: 0,1,1,3,5,11,21
 		*/
 		void createJacobsthalNumsArray(int threshold) {
-			std::cout << "threshold here is " << threshold << std::endl; //!to be deletecd after
+			// std::cout << "threshold here is " << threshold << std::endl; //!to be deletecd after
 			// first two numbers are added directly
 			if (threshold > 0)
 				jacobsthal_Nums.push_back(0);
@@ -156,7 +156,7 @@ class PmergeMe {
 				if (num >= threshold)
 					break ;
 			}
-			printContainerNums(this->jacobsthal_Nums); //! to be deleted after too
+			// printContainerNums(this->jacobsthal_Nums); //! to be deleted after too
 		}
 
 		void insertPendSeqToMain() {
@@ -180,20 +180,7 @@ class PmergeMe {
 					--target;
 				}
 			}
-			
 		}
-
-		// for (size_t i = 2; i < jsn.size(); i++) {
-		// 	size_t j = jsn[i - 1];
-		// 	size_t k = jsn[i];
-		// 	if (k > append.size() - 1)
-		// 		k = append.size() - 1;
-		// 	while (k > j) {
-		// 		bit it = std::lower_bound(main.begin(), main.end(), append[k]);
-		// 		main.insert(it, append[k]);
-		// 		--k;
-		// 	}
-		// }
 
 		void MergeInsertionSort() {
 			
