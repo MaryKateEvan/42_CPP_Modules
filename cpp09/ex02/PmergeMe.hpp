@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 14:29:54 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 14:46:42 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,10 @@ class PmergeMe {
 		The first few numbers of the Jacobsthal sequence are: 0,1,1,3,5,11,21,43,…
 		We generate the sequence using the above relation, until the generated number exceeds the `threshold` which
 		is the size of the pend_seq container.
+		For example, if the pend_seq has 11 numbers, then the Jacobsthal sequence will be: 0,1,1,3,5,11,21
 		*/
 		void createJacobsthalNumsArray(int threshold) {
+			std::cout << "threshold here is " << threshold << std::endl; //!to be deletecd after
 			// first two numbers are added directly
 			if (threshold > 0)
 				jacobsthal_Nums.push_back(0);
@@ -150,9 +152,9 @@ class PmergeMe {
 			// after index 2 we use the mathematical relation:
 			for (int i = 2; i < threshold; ++i) {
 				int num = jacobsthal_Nums[i - 1] + 2 * jacobsthal_Nums[i - 2];
+				jacobsthal_Nums.push_back(num);
 				if (num > threshold)
 					break ;
-				jacobsthal_Nums.push_back(num);
 			}
 			printContainerNums(this->jacobsthal_Nums);
 		}
