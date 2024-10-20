@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:43 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 15:36:30 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 16:13:39 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,13 +164,36 @@ class PmergeMe {
 			// (i.e., from jsn[2]), we handle the pend_seq[0] and pend_seq[1] separately:
 			main_seq.insert(main_seq.begin(), pend_seq[0]); //the first num of the pend_seq goes at index 0 of the main_seq:
 			if (pend_seq.size() > 1 && jacobsthal_Nums.size() > 1) {
-				typename Container<int>::iterator insertion_it = std::lower_bound(main_seq.begin(), main_seq.end(), pend_seq[1]);
-				main_seq.insert(insertion_it, pend_seq[1]); //for the second num, we search the position with the lower_bound which points to the first element which is bigger than the `pend_seq[1]`
+				typename Container<int>::iterator insertion_pos = std::lower_bound(main_seq.begin(), main_seq.end(), pend_seq[1]);
+				main_seq.insert(insertion_pos, pend_seq[1]); //for the second num, we search the position with the lower_bound which points to the first element which is bigger than the `pend_seq[1]`
 			}
 			// and then for 3rd element and on, of the pend_seq, we use the Jacobsthal numbers:
-			
+			for (size_t i = 2; i < jacobsthal_Nums.size(); ++i) {
+				//we first verify that `target` (the Jacobsthal index) doesn't exceed the size of pend_seq. If it does we assign it the last index of pend_seq
+				size_t target = static_cast<size_t>(jacobsthal_Nums[i]);
+				if (target > pend_seq.size() - 1)
+					target = pend_seq.size() - 1;
+				//and from target and until current index, i, we insert the numbers to the main chain:
+				while (target > static_cast<size_t>(jacobsthal_Nums[i - 1])) {
+					typename Container<int>::iterator pos = std::lower_bound(main_seq.begin(), main_seq.end(), pend_seq[target]);
+					main_seq.insert(pos, pend_seq[target]);
+					--target;
+				}
+			}
 			
 		}
+
+		// for (size_t i = 2; i < jsn.size(); i++) {
+		// 	size_t j = jsn[i - 1];
+		// 	size_t k = jsn[i];
+		// 	if (k > append.size() - 1)
+		// 		k = append.size() - 1;
+		// 	while (k > j) {
+		// 		bit it = std::lower_bound(main.begin(), main.end(), append[k]);
+		// 		main.insert(it, append[k]);
+		// 		--k;
+		// 	}
+		// }
 
 		void MergeInsertionSort() {
 			
