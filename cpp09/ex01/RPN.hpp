@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 23:20:55 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 19:27:21 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 22:55:02 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class RPN {
 		
 		std::stack<double> rpn_stack;		// double, cause the results of divisions might not be integers
 
+		bool isAnOperator(char c) const ;
+		void do_operation(double& num1, double& num2, char Operator);
 
 	public:
 		
