@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:16:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 05:53:53 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 06:15:29 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int main(int argc, char** argv) {
 		PmergeMe<std::vector> sort_vector;
 		PmergeMe<std::deque> sort_deque;
 
-		sort_vector.mergeInsertionSort(argc, argv);
-		sort_deque.mergeInsertionSort(argc, argv);
+		std::cout << "Time for vector: " << sort_vector.TimeMergeInsertionSort(argc, argv) << std::endl;
+		std::cout << "Time for deque: " << sort_deque.TimeMergeInsertionSort(argc, argv) << std::endl;
 		
 		// if (sort.parseArguments(argc, argv) == false)
 		// 	return 1;
