@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/19 18:15:53 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/19 19:56:01 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 04:38:28 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,3 +53,52 @@ int PmergeMe::getStraggler() const {
 
 	return this->straggler;
 }
+
+/* -------------------------- PARSING FUNCTIONS --------------------------- */
+
+// Function to check if a string is a positive integer
+bool PmergeMe::isPositiveInteger(const std::string& str) {
+
+	// if (str.empty() || str[0] == '0' || (str.size() == 1 && str[0] == '-'))
+	if (str.empty() || str[0] == '0')
+		return false; //if the string is empty or '0'
+
+	// // then we ensure every character is a digit:
+	// for (char c : str) {
+	// 	if (!std::isdigit(c))
+	// 		return false;
+	// }
+
+	for (size_t i = 0; i < str.size(); ++i) {
+		if (i == 0 && str.size() != 1 && str[i] == '+')
+			continue;
+		if (!std::isdigit(str[i]))
+			return false;
+	}
+	
+	long long tmp = std::stoll(str);
+	if (tmp < 1 || tmp > std::numeric_limits<int>::max())
+		return false;
+
+	// If all characters are digits, it's a positive integer
+	return true;
+}
+
+// Function to check all arguments
+bool PmergeMe::parseArguments(int argc, char** argv) {
+	for (int i = 1; i < argc; ++i) {  // Skips argv[0] (program name)
+		std::string arg = argv[i];
+		// Check if the argument is a positive integer
+		if (!isPositiveInteger(arg)) {
+			std::cerr << RED("Error: invalid input!") << std::endl;
+			return false;
+		}
+	}
+	return true;
+}
+
+// void PmergeMe::MergeInsertionSort(int argv, char** argv, Type type) {
+	
+// }
+
+
