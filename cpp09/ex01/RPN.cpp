@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 23:38:03 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/20 19:02:37 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/20 19:53:44 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,29 @@ void RPN::parseExpression(std::string const & expr) {
 		throw std::invalid_argument("empty expression");
 	// 2. check for different characters than the: \t\n\r0123456789+-*/
 	for (char c : expr) {
-		if (!(std::isdigit(c) || c == '+' || c == '-' || c == '*' || c == '/' || c == ' ' || std::isspace(c)))
-			throw std::invalid_argument("invalid character in the expression");
-			
+		if (!(std::isdigit(c) || c == '+' || c == '-' || c == '*' || c == '/' || c == ' ' || std::isspace(static_cast<unsigned char>(c))))
+			throw std::invalid_argument("invalid character(s) present");
 	}
-
+	// 3. Parse the args of the expression. [For example, the "7 8 * 1 -" has 5 "arguments", 3 numbers, 2 operators]
+	// 	  - digits are always at indexes: 0,1,3,5, ... , args - 2
+	// 	  - operators are always at indexes: 2,4,6,8, ... , args - 1
+	size_t argsCount = 0;
+	for (size_t i = 0; i < expr.size(); ++i) {
+		char ch = static_cast<unsigned char>(expr[i]);
+		if (std::isspace(ch)) //this way we ensure the value is always in the range [0, 255] before promote it to int
+			continue; // to skip whitespaces
+		if (std::isdigit(ch)) {
+			if (argsCount % 2 != 0)
+				throw std::invalid_argument("expected a digit at index " + std::to_string(i));
+			argsCount++;
+		}
+		else if (ch == '+' || ch == '-' || ch == '*' || ch == '/') {
+			
+		}
+	}
+	
 	
 }
-
-
-
 
 
 
