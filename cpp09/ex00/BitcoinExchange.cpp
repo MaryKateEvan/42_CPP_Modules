@@ -6,14 +6,32 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:04:57 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 00:25:36 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/21 01:38:30 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
-// #include <iomanip> // For std::fixed and std::setprecision
 
-static bool parseDataBase(const char* file, std::map<std::string, double>& dataMap) {
+// default constructor
+BitcoinExchange::BitcoinExchange() {}
+
+// Copy constructor
+BitcoinExchange::BitcoinExchange(BitcoinExchange const & to_copy) {
+	(void)to_copy;
+}
+
+// Copy assignment Operator overload
+BitcoinExchange& BitcoinExchange::operator=(BitcoinExchange const & src) {
+	(void)src;
+	return *this;
+}
+
+// Destructor
+BitcoinExchange::~BitcoinExchange () {}
+
+/* -------------------------- THE PRIVATE METHODS NEEDED FROM THE MAIN CALCULATOR ---------------------------*/
+
+bool BitcoinExchange::parseDataBase(const char* file, std::map<std::string, double>& dataMap) {
 
 	std::ifstream dataFile(file);
 
@@ -45,7 +63,7 @@ static bool parseDataBase(const char* file, std::map<std::string, double>& dataM
 	return true;
 }
 
-static std::string checkTheDate(std::string const & date) {
+std::string BitcoinExchange::checkTheDate(std::string const & date) {
 
 	int i = 0;
 	int len = date.size();
@@ -109,7 +127,7 @@ static std::string checkTheDate(std::string const & date) {
 }
 
 // examples it rejects: ++352, +-352, --352, +352-, -3252+235, .352, 0..352, 35.235.23
-static bool isNumRepresentation(std::string const & str) {
+bool BitcoinExchange::isNumRepresentation(std::string const & str) {
 	
 	bool foundDot = false;
 	bool foundSign = false;
@@ -137,7 +155,7 @@ static bool isNumRepresentation(std::string const & str) {
 	return true;
 }
 
-static std::string checkTheValue(std::string const & rate_str, double& rate_num) {
+std::string BitcoinExchange::checkTheValue(std::string const & rate_str, double& rate_num) {
 	// Trim whitespaces
 	size_t start = rate_str.find_first_not_of(" \t");
 	if (start == std::string::npos) //like if rate_str is "    "
@@ -165,7 +183,7 @@ static std::string checkTheValue(std::string const & rate_str, double& rate_num)
 }
 
 // Trims leading and trailing spaces and tabs form the date and value
-static std::string trim(const std::string& str) {
+std::string BitcoinExchange::trim(const std::string& str) {
 	size_t start = 0;
 	// we find the first non-whitespace character from the left
 	while (start < str.size() && std::isspace(str[start]))
@@ -180,7 +198,7 @@ static std::string trim(const std::string& str) {
 	return str.substr(start, end - start + 1);
 }
 
-static double findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date) {
+double BitcoinExchange::findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date) {
 	// we find the first entry which is "BIGGER THAN" (string compare in our case) the target date. (in the map they are sorted by the dates):
 	std::map<std::string, double>::const_iterator it = dataBase.lower_bound(date);
 
@@ -193,6 +211,17 @@ static double findRateAccordingToDate(const std::map<std::string, double>& dataB
 		--it;
 	return it->second;
 }
+
+// Function to verify the result from the `parseDataBase()`
+void BitcoinExchange::printMap(const std::map<std::string, double>& dataMap) const {
+	for (const auto& entry : dataMap) {
+		std::cout << "Date: " << entry.first 
+					<< ", Exchange rate: " << std::fixed << std::setprecision(8) 
+					<< entry.second << std::endl;
+	}
+}
+
+/* --------------------------------- THE MAIN, PUBLIC, CALCULATION FUNCTION ---------------------------------*/
 
 /**
  * STEPS:
@@ -207,7 +236,7 @@ static double findRateAccordingToDate(const std::map<std::string, double>& dataB
  * 4. Retrieve the exchange_rate from the DataBase according to the parsed "date" of the line
  * 5. Calculate and print the asked value for that line
  */
-void bitcoinExchange(const char* input) {
+void BitcoinExchange::CalculateExchange(const char* input) {
 
 	std::map<std::string, double> dataBase; //it will save respectively: <date, exchange_rate>
 	if (!parseDataBase("data.csv", dataBase))
@@ -263,12 +292,3 @@ void bitcoinExchange(const char* input) {
 	inputFile.close();
 }
 
-
-// // Function to verify the result from the `parseDataBase()`
-// void printMap(const std::map<std::string, double>& dataMap) {
-// 	for (const auto& entry : dataMap) {
-// 		std::cout << "Date: " << entry.first 
-// 					<< ", Exchange rate: " << std::fixed << std::setprecision(8) 
-// 					<< entry.second << std::endl;
-// 	}
-// }

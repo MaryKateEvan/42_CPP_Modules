@@ -6,7 +6,7 @@
 /*   By: mevangel <mevangel@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 18:05:11 by mevangel          #+#    #+#             */
-/*   Updated: 2024/10/17 00:09:47 by mevangel         ###   ########.fr       */
+/*   Updated: 2024/10/21 01:34:58 by mevangel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,25 @@
 #define RED(text) "\033[31m" << text << "\033[0m"
 #define CYAN(text) "\033[1;96m" << text << "\033[0m"
 
-void bitcoinExchange(const char* input_file);
+class BitcoinExchange {
+
+	private:
+
+		bool parseDataBase(const char* file, std::map<std::string, double>& dataMap);
+		std::string checkTheDate(std::string const & date);
+		bool isNumRepresentation(std::string const & str);
+		std::string checkTheValue(std::string const & rate_str, double& rate_num);
+		std::string trim(const std::string& str);
+		double findRateAccordingToDate(const std::map<std::string, double>& dataBase, const std::string& date);
+		void printMap(const std::map<std::string, double>& dataMap) const; //util function for debugging
+
+	public:
+		
+		BitcoinExchange();											// default constructor
+		BitcoinExchange(BitcoinExchange const & to_copy);			// copy constructor
+		~BitcoinExchange();											// destructor
+		BitcoinExchange& operator=(BitcoinExchange const & src);	// Assignment operator overload
+		
+		void CalculateExchange(const char* input_file);
+		
+};
